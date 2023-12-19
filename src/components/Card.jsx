@@ -7,11 +7,11 @@ export default function Card({ currentRescueCats }) {
       key={item.id}
       //決定邊框顏色的className
       className={
-        item.riskLevel === "高"
+        item.riskLevel === 3
           ? "border-red-700 border-2 hover:scale-110 shadow border-2 rounded-xl"
-          : item.riskLevel === "中"
+          : item.riskLevel === 2
           ? "border-yellow-700 border-2 hover:scale-110 shadow border-2 rounded-xl"
-          : item.riskLevel === "低"
+          : item.riskLevel === 1
           ? "border-green-700 border-2 hover:scale-110 shadow border-2 rounded-xl"
           : "border-gray-400 border-2 hover:scale-110 shadow border-2 rounded-xl"
       }
@@ -40,17 +40,17 @@ export default function Card({ currentRescueCats }) {
         </div>
         <div className="flex ">
           <Pane>
-            {item.riskLevel === "高" && (
+            {item.riskLevel === 3 && (
               <Badge color="red" marginRight={8}>
                 高
               </Badge>
             )}
-            {item.riskLevel === "中" && (
+            {item.riskLevel === 2 && (
               <Badge color="yellow" marginRight={8}>
                 中
               </Badge>
             )}
-            {item.riskLevel === "低" && (
+            {item.riskLevel === 1 && (
               <Badge color="green" marginRight={8}>
                 低
               </Badge>
