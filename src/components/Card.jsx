@@ -1,9 +1,8 @@
-import rescueData from "../assets/rescueData.json";
 import { Pane, Badge } from "evergreen-ui";
 import { HeartIcon } from "evergreen-ui";
 
-export default function Card() {
-  const cardsList = rescueData.map((item) => (
+export default function Card({ currentRescueCats }) {
+  const cardsList = currentRescueCats.map((item) => (
     <li
       key={item.id}
       //決定邊框顏色的className
@@ -69,7 +68,7 @@ export default function Card() {
   ));
   return (
     <>
-      <ul className="grid  gap-4 lg:grid-cols-4  md:grid-cols-3  sm:grid-cols-2">
+      <ul className="grid  gap-4 lg:grid-cols-4  md:grid-cols-3  sm:grid-cols-2 mb-4">
         {cardsList}
       </ul>
     </>
