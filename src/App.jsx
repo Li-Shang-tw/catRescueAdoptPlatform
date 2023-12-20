@@ -32,6 +32,7 @@ function App() {
       <div className="container mx-auto px-4">
         <RescueOverview
           currentRescueCats={currentRescueCats}
+          setRescueCats={setRescueCats}
           totalPages={totalPages}
           currentPage={currentPage}
           handlePageChange={handlePageChange}

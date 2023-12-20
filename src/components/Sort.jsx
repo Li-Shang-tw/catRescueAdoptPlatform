@@ -1,4 +1,7 @@
-export default function Sort() {
+export default function Sort({ sort }) {
+  function handleOptionChange(e) {
+    sort(e.target.value);
+  }
   return (
     <div>
       <div className="flex justify-end mb-4">
@@ -9,6 +12,7 @@ export default function Sort() {
           className="border-2 border-gray-300 rounded-md text-gray-700 text-sm font-bold mr-2"
           name="sort"
           id="sort"
+          onChange={handleOptionChange}
         >
           <option value="timeDes">新>舊(時間)</option>
           <option value="timeAsc">舊>新(時間)</option>
