@@ -1,5 +1,5 @@
 import "./App.css";
-import RescueOverview from "./assets/view/RescueOverview";
+import RescueOverview from "./view/RescueOverview";
 import rescueData from "../src/assets/rescueData.json";
 import { useState } from "react";
 

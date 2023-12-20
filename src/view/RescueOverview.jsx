@@ -1,8 +1,7 @@
 //導入元件
-import Card from "../../components/Card";
-import PaginationComponent from "../../components/Pagination";
-import Sort from "../../components/Sort";
-import { useState } from "react";
+import Card from "../components/Card";
+import PaginationComponent from "../components/Pagination.jsx";
+import Sort from "../components/Sort.jsx";
 
 export default function RescueOverview({
   currentRescueCats,
