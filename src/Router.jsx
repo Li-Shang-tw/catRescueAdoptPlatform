@@ -10,11 +10,13 @@ import AdoptDetail from "./page/AdoptDetail";
 import UserProfile from "./page/UserProfile";
 import RescueContainer from "./page/RescueContainer";
 import RescueDetail from "./page/RescueDetail";
+import ErrorPage from "./page/ErrorPage";
 
 export const Router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
+    errorElement: <ErrorPage />,
     children: [
       { path: "", element: <Home /> },
       { path: "adopt", element: <AdoptOverview /> },
