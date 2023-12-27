@@ -1,9 +1,9 @@
-import "./App.css";
-import RescueOverview from "./view/RescueOverview";
-import rescueData from "../src/assets/rescueData.json";
+import RescueOverview from "../page/RescueOverview";
 import { useState } from "react";
+//載入救援的資料
+import rescueData from "../assets/rescueData.json";
 
-function App() {
+export default function RescueContainer() {
   //rescueData
   const [rescueCats, setRescueCats] = useState(rescueData);
 
@@ -43,5 +43,3 @@ function App() {
     </>
   );
 }
-
-export default App;

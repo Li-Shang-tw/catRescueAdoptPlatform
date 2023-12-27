@@ -8,6 +8,8 @@ import Home from "./page/Home";
 import AdoptOverview from "./page/AdoptOverView";
 import AdoptDetail from "./page/AdoptDetail";
 import UserProfile from "./page/UserProfile";
+import RescueContainer from "./page/RescueContainer";
+import RescueDetail from "./page/RescueDetail";
 
 export const Router = createBrowserRouter([
   {
@@ -18,6 +20,8 @@ export const Router = createBrowserRouter([
       { path: "adopt", element: <AdoptOverview /> },
       { path: "adopt/:id", element: <AdoptDetail /> },
       { path: "user/:id", element: <UserProfile /> },
+      { path: "rescue", element: <RescueContainer /> },
+      { path: "rescue/:id", element: <RescueDetail /> },
     ],
   },
 ]);
