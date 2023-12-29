@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 export default function SignIn() {
   const {
@@ -6,6 +7,8 @@ export default function SignIn() {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  //使用useNavigate
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     //登入的信箱與密碼
@@ -20,6 +23,8 @@ export default function SignIn() {
     if (signInEmail === signUpEmail && signInPassword === signUpPassword) {
       //alert登入成功
       alert("登入成功!!");
+      //導向user
+      navigate("/user/1");
     } else {
       if (signInEmail === signUpEmail) {
         //信箱正確，密碼錯誤
