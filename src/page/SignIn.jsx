@@ -16,15 +16,17 @@ export default function SignIn() {
     const signInPassword = data.password;
 
     //從localStorage取出註冊資料
-    const { email: signUpEmail, password: signUpPassword } = JSON.parse(
-      localStorage.getItem("user")
-    );
+    const {
+      id,
+      email: signUpEmail,
+      password: signUpPassword,
+    } = JSON.parse(localStorage.getItem("user"));
     //判斷登入信箱與密碼是否與註冊資料相同
     if (signInEmail === signUpEmail && signInPassword === signUpPassword) {
       //alert登入成功
       alert("登入成功!!");
       //導向user
-      navigate("/user/1");
+      navigate(`/user/${id}`);
     } else {
       if (signInEmail === signUpEmail) {
         //信箱正確，密碼錯誤
