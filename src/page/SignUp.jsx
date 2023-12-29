@@ -9,8 +9,12 @@ export default function SignUp() {
 
   const setPassword = watch("password");
 
-  const onSubmit = (data) => console.log(data);
-
+  const onSubmit = (data) => {
+    //將註冊資料存入localStorage
+    localStorage.setItem("user", JSON.stringify(data));
+    //alert註冊成功
+    alert("註冊成功");
+  };
   return (
     <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
       <div className="flex flex-col items-center  mt-10">

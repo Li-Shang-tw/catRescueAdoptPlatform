@@ -12,6 +12,7 @@ import RescueContainer from "./page/RescueContainer";
 import RescueDetail from "./page/RescueDetail";
 import ErrorPage from "./page/ErrorPage";
 import SignUp from "./page/SignUp";
+import SignIn from "./page/SignIn";
 
 export const Router = createBrowserRouter([
   {
@@ -30,5 +31,9 @@ export const Router = createBrowserRouter([
   {
     path: "/signUp",
     element: <SignUp />,
+  },
+  {
+    path: "/signIn",
+    element: <SignIn />,
   },
 ]);
