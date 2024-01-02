@@ -2,19 +2,7 @@ import Chip from "@mui/material/Chip";
 
 export default function Card({ currentRescueCats }) {
   const cardsList = currentRescueCats.map((item) => (
-    <li
-      key={item.id}
-      //決定邊框顏色的className
-      className={
-        item.riskLevel === 3
-          ? "border-red-700 border-2 hover:scale-110 shadow border-2 rounded-xl"
-          : item.riskLevel === 2
-          ? "border-yellow-700 border-2 hover:scale-110 shadow border-2 rounded-xl"
-          : item.riskLevel === 1
-          ? "border-green-700 border-2 hover:scale-110 shadow border-2 rounded-xl"
-          : "border-gray-400 border-2 hover:scale-110 shadow border-2 rounded-xl"
-      }
-    >
+    <li key={item.id} className="hover:scale-110 shadow-lg  rounded-xl">
       <div className="relative">
         <img
           className="rounded-md rounded-b-3xl mb-2.5 "
