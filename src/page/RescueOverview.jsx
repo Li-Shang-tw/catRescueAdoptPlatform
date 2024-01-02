@@ -9,8 +9,6 @@ export default function RescueOverview({
   totalPages,
   currentPage,
   handlePageChange,
-  handleNextPage,
-  handlePreviousPage,
 }) {
   //排序
   function sort(order) {
@@ -52,8 +50,6 @@ export default function RescueOverview({
         totalPages={totalPages}
         currentPage={currentPage}
         handlePageChange={handlePageChange}
-        handleNextPage={handleNextPage}
-        handlePreviousPage={handlePreviousPage}
       />
     </div>
   );

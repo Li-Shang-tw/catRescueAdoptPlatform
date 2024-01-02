@@ -6,17 +6,11 @@ import rescueData from "../assets/rescueData.json";
 export default function RescueContainer() {
   //rescueData
   const [rescueCats, setRescueCats] = useState(rescueData);
-
   //current page
   const [currentPage, setCurrentPage] = useState(1);
-  function handlePageChange(page) {
+
+  function handlePageChange(event, page) {
     setCurrentPage(page);
-  }
-  function handleNextPage() {
-    setCurrentPage(currentPage + 1);
-  }
-  function handlePreviousPage() {
-    setCurrentPage(currentPage - 1);
   }
 
   //顯示當前頁面的資料
@@ -36,8 +30,6 @@ export default function RescueContainer() {
           totalPages={totalPages}
           currentPage={currentPage}
           handlePageChange={handlePageChange}
-          handleNextPage={handleNextPage}
-          handlePreviousPage={handlePreviousPage}
         />
       </div>
     </>
