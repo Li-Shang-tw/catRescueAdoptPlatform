@@ -1,4 +1,4 @@
-import { Pane, Badge } from "evergreen-ui";
+import Chip from "@mui/material/Chip";
 import { HeartIcon } from "evergreen-ui";
 
 export default function Card({ currentRescueCats }) {
@@ -38,29 +38,13 @@ export default function Card({ currentRescueCats }) {
           <span className="mb-px mr-2.5">{item.ageCategory}</span>
           <span className="mb-px">{item.location}</span>
         </div>
-        <div className="flex ">
-          <Pane>
-            {item.riskLevel === 3 && (
-              <Badge color="red" marginRight={8}>
-                高
-              </Badge>
-            )}
-            {item.riskLevel === 2 && (
-              <Badge color="yellow" marginRight={8}>
-                中
-              </Badge>
-            )}
-            {item.riskLevel === 1 && (
-              <Badge color="green" marginRight={8}>
-                低
-              </Badge>
-            )}
-            {item.riskLevel === "" && (
-              <Badge color="neutral" marginRight={8}>
-                未分類
-              </Badge>
-            )}
-          </Pane>
+        <div className="flex items-baseline mt-1">
+          <div className="mr-1">
+            {item.riskLevel === 3 && <Chip label="高" color="error" />}
+            {item.riskLevel === 2 && <Chip label="中" color="warning" />}
+            {item.riskLevel === 1 && <Chip label="低" color="success" />}
+            {item.riskLevel === "" && <Chip label="未分類" />}
+          </div>
           <p className="mb-5">{item.symptoms}</p>
         </div>
       </div>
