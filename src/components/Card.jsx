@@ -1,5 +1,4 @@
 import Chip from "@mui/material/Chip";
-import { HeartIcon } from "evergreen-ui";
 
 export default function Card({ currentRescueCats }) {
   const cardsList = currentRescueCats.map((item) => (
@@ -23,11 +22,6 @@ export default function Card({ currentRescueCats }) {
             item.images[0] ? item.images[0] : "src/assets/imgs/rescuephoto2.jpg"
           }
           alt="rescueImg"
-        />
-        <HeartIcon
-          size={29}
-          color="gray200"
-          className="absolute top-2 right-2"
         />
       </div>
       <div className="mx-1.5">
