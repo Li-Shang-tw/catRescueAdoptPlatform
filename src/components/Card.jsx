@@ -2,7 +2,10 @@ import Chip from "@mui/material/Chip";
 
 export default function Card({ currentRescueCats }) {
   const cardsList = currentRescueCats.map((item) => (
-    <li key={item.id} className="hover:scale-110 shadow-lg  rounded-xl">
+    <li
+      key={item.id}
+      className=" shadow  rounded-xl duration-100 hover:scale-110  hover:shadow-lg"
+    >
       <div className="relative">
         <img
           className="rounded-md rounded-b-3xl mb-2.5 "
