@@ -39,12 +39,13 @@ export default function RescueOverview({
 
   return (
     <div>
-      <h1 className="text-4xl font-bold text-gray-900 leading-tight mb-2">
-        貓咪救援總覽
-      </h1>
-      <p className="mb-4">可愛的貓貓需要你的幫忙</p>
-      <Sort sort={sort} />
-      <hr className="mb-4 border-2 border-gray-300"></hr>
+      <div className="drop-shadow-md">
+        <h1 className="text-4xl font-bold text-gray-900 leading-tight mb-2">
+          貓咪救援總覽
+        </h1>
+        <p className="mb-4">可愛的貓貓需要你的幫忙</p>
+        <Sort sort={sort} />
+      </div>
       <Card currentRescueCats={currentRescueCats} />
       <PaginationComponent
         totalPages={totalPages}
