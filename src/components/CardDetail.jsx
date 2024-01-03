@@ -28,7 +28,11 @@ export default function RescueDetail({ rescueProject }) {
         </div>
         <div className="flex justify-between">
           <p>{rescueProject.ctaRescue}</p>
-          <Button variant="contained" color="warning">
+          <Button
+            variant="contained"
+            color="warning"
+            className="duration-100 hover:scale-110  hover:shadow-lg"
+          >
             斗內
           </Button>
         </div>

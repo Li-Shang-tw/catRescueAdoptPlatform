@@ -31,7 +31,11 @@ export default function CardRescuer({ id }) {
         </div>
         <div className="flex justify-center">
           <Link to={`/user/${id}`}>
-            <Button variant="contained" color="warning">
+            <Button
+              variant="contained"
+              color="warning"
+              className="duration-100 hover:scale-110  hover:shadow-lg"
+            >
               About
             </Button>
           </Link>
