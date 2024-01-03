@@ -1,6 +1,7 @@
 import RescueOverview from "../page/RescueOverview";
 import { useState } from "react";
-//載入救援的資料
+//載入救援資料的context
+
 import rescueData from "../assets/rescueData.json";
 
 export default function RescueContainer() {
