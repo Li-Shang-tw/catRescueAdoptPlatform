@@ -5,7 +5,9 @@ export default function RescueDetail({ rescueProject }) {
   console.log(rescueProject);
   return (
     <div className="shadow  rounded-xl px-3 py-4">
-      <h2 className="text-2xl font-bold  mb-2">{rescueProject.name}</h2>
+      <h2 className="text-2xl font-bold  mb-2">
+        {rescueProject.name ? rescueProject.name : "待救援的貓貓"}
+      </h2>
       <div className="flex justify-start mb-3">
         <h4>{rescueProject.location}</h4>
         <h4>{rescueProject.ageCategory}</h4>
