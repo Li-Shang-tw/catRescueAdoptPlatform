@@ -5,6 +5,7 @@ import rescurData from "../assets/rescueData.json";
 //載入元件
 import Carousel from "../components/Carousel";
 import CardDetail from "../components/CardDetail";
+import CardRescuer from "../components/CardRescuer";
 export default function RescueDetail() {
   //取得id,並轉成數字
   const { id } = useParams();
@@ -16,8 +17,13 @@ export default function RescueDetail() {
   return (
     <div>
       <Carousel />
-      <div className="flex justify-between">
-        <CardDetail rescueProject={rescueProject} />
+      <div className="flex">
+        <div className="w-8/12 mr-14">
+          <CardDetail rescueProject={rescueProject} />
+        </div>
+        <div className="w-3/12">
+          <CardRescuer id={id} />
+        </div>
       </div>
     </div>
   );
