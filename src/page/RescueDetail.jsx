@@ -17,8 +17,8 @@ export default function RescueDetail() {
   return (
     <div>
       <Carousel />
-      <div className="flex">
-        <div className="w-8/12 mr-14">
+      <div className="flex justify-between ">
+        <div className="w-8/12 ">
           <CardDetail rescueProject={rescueProject} />
         </div>
         <div className="w-3/12">
