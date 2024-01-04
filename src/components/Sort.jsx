@@ -1,25 +1,29 @@
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+
 export default function Sort({ sort }) {
   function handleOptionChange(e) {
     sort(e.target.value);
   }
   return (
-    <div>
-      <div className="flex justify-end mb-4">
-        <label className="text-gray-700 text-sm font-bold mr-2" htmlFor="sort">
-          排序方式
-        </label>
-        <select
-          className="border-2 border-gray-300 rounded-md text-gray-700 text-sm font-bold mr-2"
-          name="sort"
-          id="sort"
+    <Box sx={{ minWidth: 120 }}>
+      <FormControl fullWidth>
+        <InputLabel id="demo-simple-select-label">Age</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value="10"
+          label="Age"
           onChange={handleOptionChange}
         >
-          <option value="timeDes">新>舊(時間)</option>
-          <option value="timeAsc">舊>新(時間)</option>
-          <option value="riskDes">高>低(危險度)</option>
-          <option value="riskAsc">低>高(危險度)</option>
-        </select>
-      </div>
-    </div>
+          <MenuItem value={10}>Ten</MenuItem>
+          <MenuItem value={20}>Twenty</MenuItem>
+          <MenuItem value={30}>Thirty</MenuItem>
+        </Select>
+      </FormControl>
+    </Box>
   );
 }

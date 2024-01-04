@@ -1,14 +1,15 @@
 import RescueOverview from "../page/RescueOverview";
-import { useState } from "react";
+import { useState, useContext } from "react";
 //載入救援資料的context
-
-import rescueData from "../assets/rescueData.json";
+import { RescueContext } from "../context/RescueContext";
 
 export default function RescueContainer() {
-  //rescueData
-  const [rescueCats, setRescueCats] = useState(rescueData);
+  //使用context
+  const rescueData = useContext(RescueContext);
+  const { rescueCats, setRescueCats } = rescueData;
   //current page
   const [currentPage, setCurrentPage] = useState(1);
+
   //=========pagination=========
   function handlePageChange(event, page) {
     setCurrentPage(page);
