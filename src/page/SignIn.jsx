@@ -1,5 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { CurrentUserContext } from "../context/CurrentUserContext";
+import { useContext } from "react";
 
 export default function SignIn() {
   const {
@@ -9,6 +11,8 @@ export default function SignIn() {
   } = useForm();
   //使用useNavigate
   const navigate = useNavigate();
+  const userData = useContext(CurrentUserContext);
+  const { setCurrentUser } = userData;
 
   const onSubmit = (data) => {
     //登入的信箱與密碼
@@ -26,6 +30,8 @@ export default function SignIn() {
 
     //判斷登入信箱與密碼是否與註冊資料相同
     if (signInEmail === signUpEmail && signInPassword === signUpPassword) {
+      //將註冊資料存入userContext
+      setCurrentUser(JSON.parse(localStorage.getItem("user")));
       //alert登入成功
       alert("登入成功!!");
       //導向user
