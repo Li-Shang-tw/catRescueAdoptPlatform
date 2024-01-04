@@ -21,6 +21,9 @@ export default function SignIn() {
       email: signUpEmail,
       password: signUpPassword,
     } = JSON.parse(localStorage.getItem("user"));
+
+    //登入狀態
+
     //判斷登入信箱與密碼是否與註冊資料相同
     if (signInEmail === signUpEmail && signInPassword === signUpPassword) {
       //alert登入成功

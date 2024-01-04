@@ -16,6 +16,8 @@ export default function SignUp() {
   const onSubmit = (data) => {
     //產生id
     data.id = nanoid();
+    //設定登入狀態
+
     //將註冊資料存入localStorage
     localStorage.setItem("user", JSON.stringify(data));
     //alert註冊成功
