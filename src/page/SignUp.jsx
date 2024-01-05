@@ -20,7 +20,6 @@ export default function SignUp() {
     //將註冊資料存入localStorage
     const response = await postUserAPI(data);
 
-    localStorage.setItem("user", JSON.stringify(data));
     //alert註冊成功
     alert("註冊成功");
     //導向user

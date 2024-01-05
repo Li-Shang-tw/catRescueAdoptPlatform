@@ -1,6 +1,8 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
+import { getUsersAPI } from "../callAPI";
+
 export default function SignIn() {
   const {
     register,
@@ -10,35 +12,50 @@ export default function SignIn() {
   //使用useNavigate
   const navigate = useNavigate();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     //登入的信箱與密碼
     const signInEmail = data.email;
     const signInPassword = data.password;
 
-    //從localStorage取出註冊資料
-    const {
-      id,
-      email: signUpEmail,
-      password: signUpPassword,
-    } = JSON.parse(localStorage.getItem("user"));
-    //判斷登入信箱與密碼是否與註冊資料相同
-    if (signInEmail === signUpEmail && signInPassword === signUpPassword) {
+    const users = await getUsersAPI();
+    //在users中找出與登入信箱與密碼相同的使用者
+    const user = users.find(
+      (user) =>
+        (user.email === signInEmail) & (user.password === signInPassword)
+    );
+    //如果有找到相同的使用者
+    if (user) {
       //alert登入成功
       alert("登入成功!!");
       //導向user
-      navigate(`/user/${id}`);
+      navigate(`/user/${user.pathId}`);
     } else {
-      if (signInEmail === signUpEmail) {
-        //信箱正確，密碼錯誤
+      const emailCorrect = users.find((user) => user.email === signInEmail);
+
+      if (emailCorrect) {
         alert("登入失敗!!密碼錯誤");
-      } else if (signInPassword === signUpPassword) {
-        //密碼正確，信箱錯誤
-        alert("登入失敗!!信箱錯誤");
       } else {
-        //信箱與密碼皆錯誤
-        alert("登入失敗!!信箱與密碼都錯誤");
+        alert("登入失敗!!信箱不存在");
       }
     }
+    //判斷登入信箱與密碼是否與註冊資料相 同
+    // if (signInEmail === signUpEmail && signInPassword === signUpPassword) {
+    //   //alert登入成功
+    //   alert("登入成功!!");
+    //   //導向user
+    //   navigate(`/user/${pathId}`);
+    // } else {
+    //   if (signInEmail === signUpEmail) {
+    //     //信箱正確，密碼錯誤
+    //     alert("登入失敗!!密碼錯誤");
+    //   } else if (signInPassword === signUpPassword) {
+    //     //密碼正確，信箱錯誤
+    //     alert("登入失敗!!信箱錯誤");
+    //   } else {
+    //     //信箱與密碼皆錯誤
+    //     alert("登入失敗!!信箱與密碼都錯誤");
+    //   }
+    // }
   };
   return (
     <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
