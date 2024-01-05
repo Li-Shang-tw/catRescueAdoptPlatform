@@ -1,20 +1,10 @@
 import { useParams } from "react-router-dom";
-import { useReducer } from "react";
-import UserReducer from "../userReducer";
 export default function UserProfile() {
-  const [users, dispatch] = useReducer(UserReducer);
-  function handleGetUsers() {
-    dispatch({
-      type: "getUsers",
-    });
-  }
-  handleGetUsers();
-  console.log(users);
-  const { id } = useParams();
+  const { pathId } = useParams();
 
   return (
     <div>
-      <h1>UserProfile{id}</h1>
+      <h1>UserProfile{pathId}</h1>
     </div>
   );
 }

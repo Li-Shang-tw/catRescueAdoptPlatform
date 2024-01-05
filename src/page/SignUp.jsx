@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { nanoid } from "nanoid";
+import { postUserAPI } from "../callAPI";
 export default function SignUp() {
   const {
     register,
@@ -13,15 +14,17 @@ export default function SignUp() {
   //使用useNavigate
   const navigate = useNavigate();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     //產生id
-    data.id = nanoid();
+    data.pathId = nanoid();
     //將註冊資料存入localStorage
+    const response = await postUserAPI(data);
+
     localStorage.setItem("user", JSON.stringify(data));
     //alert註冊成功
     alert("註冊成功");
     //導向user
-    navigate(`/user/${data.id}}`);
+    navigate(`/user/${data.pathId}}`);
     // //導向其他頁面
     // if (window.history.length === 0) {
     //   //1.沒有歷史紀錄，導向userProfile
