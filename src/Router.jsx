@@ -3,6 +3,8 @@ import { createBrowserRouter } from "react-router-dom";
 //載入Root
 import Root from "./page/RootTRoute";
 
+//載入Layout
+import RescueLayout from "./RescueLayout";
 //載入頁面
 import Home from "./page/Home";
 import AdoptOverview from "./page/AdoptOverView";
@@ -24,7 +26,14 @@ export const Router = createBrowserRouter([
       { path: "adopt", element: <AdoptOverview /> },
       { path: "adopt/:id", element: <AdoptDetail /> },
       { path: "user/:pathId", element: <UserProfile /> },
-      { path: "rescue", element: <RescueContainer /> },
+      {
+        path: "rescue",
+        element: (
+          <RescueLayout>
+            <RescueContainer />
+          </RescueLayout>
+        ),
+      },
       { path: "rescue/:id", element: <RescueDetail /> },
     ],
   },

@@ -1,22 +1,18 @@
 import RescueOverview from "../page/RescueOverview";
-import { useState } from "react";
-//載入救援的資料
-import rescueData from "../assets/rescueData.json";
+import { useState, useContext } from "react";
+//載入救援資料的context
+import { RescueContext } from "../context/RescueContext";
 
 export default function RescueContainer() {
-  //rescueData
-  const [rescueCats, setRescueCats] = useState(rescueData);
-
+  //使用context
+  const rescueData = useContext(RescueContext);
+  const { rescueCats, setRescueCats } = rescueData;
   //current page
   const [currentPage, setCurrentPage] = useState(1);
-  function handlePageChange(page) {
+
+  //=========pagination=========
+  function handlePageChange(event, page) {
     setCurrentPage(page);
-  }
-  function handleNextPage() {
-    setCurrentPage(currentPage + 1);
-  }
-  function handlePreviousPage() {
-    setCurrentPage(currentPage - 1);
   }
 
   //顯示當前頁面的資料
@@ -26,7 +22,29 @@ export default function RescueContainer() {
   );
   //所有頁數
   const totalPages = Math.ceil(rescueCats.length / 8);
-  // console.log(import.meta.env.VITE_CAT_API_KEY);
+
+  //=========sort=========
+  function handleSort(order) {
+    //分開已定義與未定義危險度的陣列
+    const undefinedRisk = rescueCats.filter((item) => item.riskLevel === "");
+    const definedRisk = rescueCats.filter((item) => item.riskLevel !== "");
+    if (order === "riskDes") {
+      //排序已定義危險度的陣列
+      definedRisk.sort((a, b) => {
+        return b.riskLevel - a.riskLevel;
+      });
+      //合併陣列
+      const sortedRescueCats = [...definedRisk, ...undefinedRisk];
+      setRescueCats(sortedRescueCats);
+    } else if (order === "riskAsc") {
+      definedRisk.sort((a, b) => {
+        return a.riskLevel - b.riskLevel;
+      });
+      //合併陣列
+      const sortedRescueCats = [...definedRisk, ...undefinedRisk];
+      setRescueCats(sortedRescueCats);
+    }
+  }
   return (
     <>
       <div className="container mx-auto px-4">
@@ -36,8 +54,7 @@ export default function RescueContainer() {
           totalPages={totalPages}
           currentPage={currentPage}
           handlePageChange={handlePageChange}
-          handleNextPage={handleNextPage}
-          handlePreviousPage={handlePreviousPage}
+          handleSort={handleSort}
         />
       </div>
     </>
