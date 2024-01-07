@@ -4,8 +4,19 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
+import { CurrentUserContext } from "../context/CurrentUserContext";
+import { useContext } from "react";
 
 export default function Navigator() {
+  //---取得登入者資料-----
+  const userData = useContext(CurrentUserContext);
+  const { currentUser } = userData;
+  //取得用戶名稱與路徑id
+  const pathId = currentUser.pathId;
+  const userName = currentUser.name;
+  //用戶名稱只取最後一個字
+  const userNameLastWord = userName.substr(userName.length - 1);
+  //-----處理下拉選單---------
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -70,8 +81,8 @@ export default function Navigator() {
         </li>
       </ul>
       <div className=" hover:shadow-md cursor-pointer rounded-full">
-        <NavLink to="/user/1">
-          <Avatar>S</Avatar>
+        <NavLink to={`/user/${pathId}`}>
+          <Avatar>{userNameLastWord}</Avatar>
         </NavLink>
       </div>
     </div>
