@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { nanoid } from "nanoid";
-import Cookies from "js-cookie";
+
 import { CurrentUserContext } from "../context/CurrentUserContext";
 import { useContext } from "react";
 
@@ -28,7 +28,6 @@ export default function SignUp() {
     //將註冊資料存入userContext
     setCurrentUser(data);
     //在cookie中儲存id
-    Cookies.set("id", data.id);
 
     //alert註冊成功
     alert("註冊成功");
