@@ -5,6 +5,7 @@ import Root from "./page/RootTRoute";
 
 //載入Layout
 import RescueLayout from "./RescueLayout";
+import CurrentUserLayout from "./CurrentUserLayout";
 //載入頁面
 import Home from "./page/Home";
 import AdoptOverview from "./page/AdoptOverView";
@@ -19,7 +20,11 @@ import SignIn from "./page/SignIn";
 export const Router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
+    element: (
+      <CurrentUserLayout>
+        <Root />
+      </CurrentUserLayout>
+    ),
     errorElement: <ErrorPage />,
     children: [
       { path: "", element: <Home /> },
@@ -39,10 +44,18 @@ export const Router = createBrowserRouter([
   },
   {
     path: "/signUp",
-    element: <SignUp />,
+    element: (
+      <CurrentUserLayout>
+        <SignUp />
+      </CurrentUserLayout>
+    ),
   },
   {
     path: "/signIn",
-    element: <SignIn />,
+    element: (
+      <CurrentUserLayout>
+        <SignIn />
+      </CurrentUserLayout>
+    ),
   },
 ]);

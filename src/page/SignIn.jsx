@@ -1,5 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { CurrentUserContext } from "../context/CurrentUserContext";
+import { useContext } from "react";
 
 import { getUsersAPI } from "../callAPI";
 
@@ -11,12 +13,13 @@ export default function SignIn() {
   } = useForm();
   //使用useNavigate
   const navigate = useNavigate();
+  const userData = useContext(CurrentUserContext);
+  const { setCurrentUser } = userData;
 
   const onSubmit = async (data) => {
     //登入的信箱與密碼
     const signInEmail = data.email;
     const signInPassword = data.password;
-
     const users = await getUsersAPI();
     //在users中找出與登入信箱與密碼相同的使用者
     const user = users.find(
@@ -38,24 +41,6 @@ export default function SignIn() {
         alert("登入失敗!!信箱不存在");
       }
     }
-    //判斷登入信箱與密碼是否與註冊資料相 同
-    // if (signInEmail === signUpEmail && signInPassword === signUpPassword) {
-    //   //alert登入成功
-    //   alert("登入成功!!");
-    //   //導向user
-    //   navigate(`/user/${pathId}`);
-    // } else {
-    //   if (signInEmail === signUpEmail) {
-    //     //信箱正確，密碼錯誤
-    //     alert("登入失敗!!密碼錯誤");
-    //   } else if (signInPassword === signUpPassword) {
-    //     //密碼正確，信箱錯誤
-    //     alert("登入失敗!!信箱錯誤");
-    //   } else {
-    //     //信箱與密碼皆錯誤
-    //     alert("登入失敗!!信箱與密碼都錯誤");
-    //   }
-    // }
   };
   return (
     <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">

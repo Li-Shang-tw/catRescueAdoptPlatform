@@ -1,7 +1,11 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { nanoid } from "nanoid";
+
 import { postUserAPI } from "../callAPI";
+import { CurrentUserContext } from "../context/CurrentUserContext";
+import { useContext } from "react";
+
 export default function SignUp() {
   const {
     register,
@@ -10,6 +14,9 @@ export default function SignUp() {
     watch,
   } = useForm();
 
+  //取得userContext的user
+  const userData = useContext(CurrentUserContext);
+  const { setCurrentUser } = userData;
   const setPassword = watch("password");
   //使用useNavigate
   const navigate = useNavigate();
@@ -17,8 +24,11 @@ export default function SignUp() {
   const onSubmit = async (data) => {
     //產生id
     data.pathId = nanoid();
-    //將註冊資料存入localStorage
+    //將註冊資料傳送到api
     const response = await postUserAPI(data);
+    //將註冊資料存入userContext
+    setCurrentUser(data);
+    //在cookie中儲存id
 
     //alert註冊成功
     alert("註冊成功");
