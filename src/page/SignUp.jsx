@@ -1,8 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { nanoid } from "nanoid";
-
-import { postUserAPI } from "../callAPI";
+import { postUserAPI, getUsersAPI } from "../callAPI";
 import { CurrentUserContext } from "../context/CurrentUserContext";
 import { useContext } from "react";
 
@@ -23,17 +21,17 @@ export default function SignUp() {
 
   const onSubmit = async (data) => {
     //產生id
-    data.pathId = nanoid();
-    //將註冊資料傳送到api
-    const response = await postUserAPI(data);
-    //將註冊資料存入userContext
-    setCurrentUser(data);
-    //在cookie中儲存id
 
+    //將註冊資料傳送到api
+    await postUserAPI(data);
+    //從api中取得剛剛建立的資料，存入userContext
+    const users = await getUsersAPI();
+    const currentUser = users[users.length - 1];
+    setCurrentUser(currentUser);
     //alert註冊成功
     alert("註冊成功");
     //導向user
-    navigate(`/user/${data.pathId}}`);
+    navigate(`/user/${currentUser.id}}`);
     // //導向其他頁面
     // if (window.history.length === 0) {
     //   //1.沒有歷史紀錄，導向userProfile
