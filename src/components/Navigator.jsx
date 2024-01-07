@@ -1,6 +1,5 @@
 import Avatar from "@mui/material/Avatar";
 
-import MenuIcon from "@mui/icons-material/Menu";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { NavLink } from "react-router-dom";
@@ -70,12 +69,10 @@ export default function Navigator() {
           </Menu>
         </li>
       </ul>
-      <div className="flex items-center border-2 px-3 py-2 rounded-full hover:shadow-md cursor-pointer">
-        <div className="mr-2">
-          <MenuIcon />
-        </div>
-
-        <Avatar>N</Avatar>
+      <div className=" hover:shadow-md cursor-pointer rounded-full">
+        <NavLink to="/user/1">
+          <Avatar>S</Avatar>
+        </NavLink>
       </div>
     </div>
   );
