@@ -28,10 +28,11 @@ export default function SignIn() {
     );
     //如果有找到相同的使用者
     if (user) {
+      setCurrentUser(user);
       //alert登入成功
       alert("登入成功!!");
       //導向user
-      navigate(`/user/${user.pathId}`);
+      navigate(`/user/${user.id}`);
     } else {
       const emailCorrect = users.find((user) => user.email === signInEmail);
 
