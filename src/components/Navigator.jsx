@@ -12,7 +12,7 @@ export default function Navigator() {
   const userData = useContext(CurrentUserContext);
   const { currentUser } = userData;
   //取得用戶名稱與路徑id
-  const pathId = currentUser.pathId;
+  const id = currentUser.id;
   const userName = currentUser.name;
   //用戶名稱只取最後一個字
   const userNameLastWord = userName.substr(userName.length - 1);
@@ -81,7 +81,7 @@ export default function Navigator() {
         </li>
       </ul>
       <div className=" hover:shadow-md cursor-pointer rounded-full">
-        <NavLink to={`/user/${pathId}`}>
+        <NavLink to={`/user/${id}`}>
           <Avatar>{userNameLastWord}</Avatar>
         </NavLink>
       </div>
