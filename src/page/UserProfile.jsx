@@ -6,9 +6,7 @@ import { Link } from "react-router-dom";
 import UserCard from "../components/UserCard";
 import CardInUserPage from "../components/CardInUserPage";
 import CardItemInUserPage from "../components/CardItemInUserPage";
-//引入icon
-import ModeEditIcon from "@mui/icons-material/ModeEdit";
-import KeyIcon from "@mui/icons-material/Key";
+import AccountSetting from "../components/AccountSetting";
 import CastleIcon from "@mui/icons-material/Castle";
 import MedicationIcon from "@mui/icons-material/Medication";
 import PersonIcon from "@mui/icons-material/Person";
@@ -24,24 +22,8 @@ export default function UserProfile() {
       <div className="mb-10">
         <UserCard currentUser={currentUser} />
       </div>
+      <AccountSetting />
 
-      <CardInUserPage title="帳戶">
-        <div>
-          <CardItemInUserPage>
-            <div>
-              <ModeEditIcon />
-              <span className="ml-2">修改個人資料</span>
-            </div>
-          </CardItemInUserPage>
-
-          <CardItemInUserPage>
-            <div>
-              <KeyIcon />
-              <span className="ml-2">重設密碼</span>
-            </div>
-          </CardItemInUserPage>
-        </div>
-      </CardInUserPage>
       <CardInUserPage title="我的專案">
         <div>
           <Link to={`/rescue/myproject/${currentUser.id}`}>
