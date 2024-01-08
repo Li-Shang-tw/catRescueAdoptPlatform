@@ -5,8 +5,11 @@ import { useContext } from "react";
 import UserCard from "../components/UserCard";
 import CardInUserPage from "../components/CardInUserPage";
 import CardItemInUserPage from "../components/CardItemInUserPage";
+//引入icon
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import KeyIcon from "@mui/icons-material/Key";
+import CastleIcon from "@mui/icons-material/Castle";
+import MedicationIcon from "@mui/icons-material/Medication";
 
 export default function UserProfile() {
   //比對id與登入者的id是否相同
@@ -33,6 +36,23 @@ export default function UserProfile() {
             <div>
               <KeyIcon />
               <span className="ml-2">重設密碼</span>
+            </div>
+          </CardItemInUserPage>
+        </div>
+      </CardInUserPage>
+      <CardInUserPage title="我的專案">
+        <div>
+          <CardItemInUserPage>
+            <div>
+              <MedicationIcon />
+              <span className="ml-2">救援專案</span>
+            </div>
+          </CardItemInUserPage>
+
+          <CardItemInUserPage>
+            <div>
+              <CastleIcon />
+              <span className="ml-2">送養專案</span>
             </div>
           </CardItemInUserPage>
         </div>
