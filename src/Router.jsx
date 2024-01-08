@@ -16,6 +16,7 @@ import RescueDetail from "./page/RescueDetail";
 import ErrorPage from "./page/ErrorPage";
 import SignUp from "./page/SignUp";
 import SignIn from "./page/SignIn";
+import UserInfoEdit from "./page/UserInfoEdit";
 
 export const Router = createBrowserRouter([
   {
@@ -31,6 +32,7 @@ export const Router = createBrowserRouter([
       { path: "adopt", element: <AdoptOverview /> },
       { path: "adopt/:id", element: <AdoptDetail /> },
       { path: "user/:id", element: <UserProfile /> },
+
       {
         path: "rescue",
         element: (
