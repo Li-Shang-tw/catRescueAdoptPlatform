@@ -30,7 +30,7 @@ export const Router = createBrowserRouter([
       { path: "", element: <Home /> },
       { path: "adopt", element: <AdoptOverview /> },
       { path: "adopt/:id", element: <AdoptDetail /> },
-      { path: "user/:pathId", element: <UserProfile /> },
+      { path: "user/:id", element: <UserProfile /> },
       {
         path: "rescue",
         element: (

@@ -6,10 +6,10 @@ export default function UserProfile() {
   const userData = useContext(CurrentUserContext);
   const { currentUser } = userData;
   console.log(currentUser);
-  const { pathId } = useParams();
+  const { id } = useParams();
   return (
     <div>
-      <h1>UserProfile{pathId}</h1>
+      <h1>UserProfile{id}</h1>
     </div>
   );
 }
