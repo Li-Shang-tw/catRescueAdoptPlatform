@@ -51,12 +51,14 @@ export default function UserProfile() {
               </div>
             </CardItemInUserPage>
           </Link>
-          <CardItemInUserPage>
-            <div>
-              <CastleIcon />
-              <span className="ml-2">送養專案</span>
-            </div>
-          </CardItemInUserPage>
+          <Link to={`/adopt/myproject/${currentUser.id}`}>
+            <CardItemInUserPage>
+              <div>
+                <CastleIcon />
+                <span className="ml-2">送養專案</span>
+              </div>
+            </CardItemInUserPage>
+          </Link>
         </div>
       </CardInUserPage>
     </div>

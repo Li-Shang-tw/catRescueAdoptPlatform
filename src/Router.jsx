@@ -30,7 +30,13 @@ export const Router = createBrowserRouter([
     children: [
       { path: "", element: <Home /> },
       { path: "adopt", element: <AdoptOverview /> },
+      {
+        path: "adopt/myproject/:userId",
+        element: <AdoptDetail />,
+      },
+
       { path: "adopt/:id", element: <AdoptDetail /> },
+
       { path: "user/:id", element: <UserProfile /> },
 
       {
@@ -41,6 +47,7 @@ export const Router = createBrowserRouter([
           </RescueLayout>
         ),
       },
+
       {
         path: "rescue/myproject/:userId",
         element: (
@@ -49,7 +56,6 @@ export const Router = createBrowserRouter([
           </RescueLayout>
         ),
       },
-
       { path: "rescue/:id", element: <RescueDetail /> },
     ],
   },
