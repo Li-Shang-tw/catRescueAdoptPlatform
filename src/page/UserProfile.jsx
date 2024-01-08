@@ -11,6 +11,7 @@ import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import KeyIcon from "@mui/icons-material/Key";
 import CastleIcon from "@mui/icons-material/Castle";
 import MedicationIcon from "@mui/icons-material/Medication";
+import PersonIcon from "@mui/icons-material/Person";
 
 export default function UserProfile() {
   //比對id與登入者的id是否相同
@@ -76,6 +77,34 @@ export default function UserProfile() {
               <div>
                 <CastleIcon />
                 <span className="ml-2">送養專案</span>
+              </div>
+            </CardItemInUserPage>
+          </Link>
+        </div>
+      </CardInUserPage>
+      <CardInUserPage title="追蹤的專案/用戶">
+        <div>
+          <Link to={`/rescue/myproject/${currentUser.id}/?q=achievement`}>
+            <CardItemInUserPage>
+              <div>
+                <MedicationIcon />
+                <span className="ml-2">救援專案</span>
+              </div>
+            </CardItemInUserPage>
+          </Link>
+          <Link to={`/adopt/myproject/${currentUser.id}/?q=achievement`}>
+            <CardItemInUserPage>
+              <div>
+                <CastleIcon />
+                <span className="ml-2">送養專案</span>
+              </div>
+            </CardItemInUserPage>
+          </Link>
+          <Link to={`/adopt/myproject/${currentUser.id}/?q=achievement`}>
+            <CardItemInUserPage>
+              <div>
+                <PersonIcon />
+                <span className="ml-2">追蹤的用戶</span>
               </div>
             </CardItemInUserPage>
           </Link>
