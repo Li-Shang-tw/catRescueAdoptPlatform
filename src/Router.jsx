@@ -41,6 +41,15 @@ export const Router = createBrowserRouter([
           </RescueLayout>
         ),
       },
+      {
+        path: "rescue/myproject/:userId",
+        element: (
+          <RescueLayout>
+            <RescueContainer />
+          </RescueLayout>
+        ),
+      },
+
       { path: "rescue/:id", element: <RescueDetail /> },
     ],
   },

@@ -1,6 +1,7 @@
 // import { useParams } from "react-router-dom";
 import { CurrentUserContext } from "../context/CurrentUserContext";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 
 import UserCard from "../components/UserCard";
 import CardInUserPage from "../components/CardInUserPage";
@@ -42,13 +43,14 @@ export default function UserProfile() {
       </CardInUserPage>
       <CardInUserPage title="我的專案">
         <div>
-          <CardItemInUserPage>
-            <div>
-              <MedicationIcon />
-              <span className="ml-2">救援專案</span>
-            </div>
-          </CardItemInUserPage>
-
+          <Link to={`/rescue/myproject/${currentUser.id}`}>
+            <CardItemInUserPage>
+              <div>
+                <MedicationIcon />
+                <span className="ml-2">救援專案</span>
+              </div>
+            </CardItemInUserPage>
+          </Link>
           <CardItemInUserPage>
             <div>
               <CastleIcon />
