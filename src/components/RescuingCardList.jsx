@@ -1,6 +1,7 @@
 import Chip from "@mui/material/Chip";
 import { Link } from "react-router-dom";
 import { getLoactionName } from "../composable/getLocationName";
+import interpretAgeCatergory from "../composable/interpretAgeCatergory";
 
 export default function Card({ currentCats }) {
   const cardsList = currentCats.map((item) => (
@@ -25,7 +26,9 @@ export default function Card({ currentCats }) {
             {item.name ? item.name : "待救援的貓貓"}
           </h3>
           <div>
-            <span className="mb-px mr-2.5">{item.ageCategory}</span>
+            <span className="mb-px mr-2.5">
+              {interpretAgeCatergory(item.ageCategory)}
+            </span>
             <span className="mb-px">{getLoactionName(item.location)}</span>
           </div>
           <div className="flex items-baseline mt-1">
