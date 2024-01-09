@@ -17,6 +17,19 @@ function getUsersAPI() {
     },
   }).then((res) => res.json());
 }
+function getUserAPI(id) {
+  return fetch(`${base}users/${id}`, {
+    method: "GET",
+    headers: {
+      "content-type": "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .catch((error) => {
+      // handle error
+      console.log(error);
+    });
+}
 function putUserAPI(id, data) {
   return fetch(`${base}users/${id}`, {
     method: "PUT", // or PATCH
@@ -34,4 +47,4 @@ function putUserAPI(id, data) {
     });
 }
 
-export { postUserAPI, getUsersAPI, putUserAPI };
+export { postUserAPI, getUsersAPI, putUserAPI, getUserAPI };

@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { CurrentUserContext } from "../context/CurrentUserContext";
 import { useContext } from "react";
 
-import { putUserAPI } from "../callAPI";
+import { putUserAPI, getUserAPI } from "../callAPI";
 
 export default function EditFormForPersonalInfo() {
   //取得userContext的user
@@ -31,7 +31,10 @@ export default function EditFormForPersonalInfo() {
   const onSubmit = async (data) => {
     //發送修改user的請求
     await putUserAPI(userId, data);
-
+    //取得更新後的user
+    const updatedUser = await getUserAPI(userId);
+    //更新userContext的user
+    setCurrentUser(updatedUser);
     alert("使用者資料已更新");
   };
 
