@@ -7,6 +7,7 @@ export default function RescueContainer() {
   //使用context
   const rescueData = useContext(RescueContext);
   const { rescueCats, setRescueCats } = rescueData;
+
   //current page
   const [currentPage, setCurrentPage] = useState(1);
 

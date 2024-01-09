@@ -47,4 +47,18 @@ function putUserAPI(id, data) {
     });
 }
 
-export { postUserAPI, getUsersAPI, putUserAPI, getUserAPI };
+function getRescuingCatsAPI() {
+  return fetch(`${base}resuingCats?state=1`, {
+    method: "GET",
+    headers: {
+      "content-type": "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .catch((error) => {
+      // handle error
+      console.log(error);
+    });
+}
+
+export { postUserAPI, getUsersAPI, putUserAPI, getUserAPI, getRescuingCatsAPI };
