@@ -1,4 +1,4 @@
-import RescueOverview from "../page/RescueOverview";
+import Overview from "./Overview";
 import { useState, useContext } from "react";
 //載入救援資料的context
 import { RescueContext } from "../context/RescueContext";
@@ -49,14 +49,21 @@ export default function RescueContainer() {
   return (
     <>
       <div className="container mx-auto px-4">
-        <RescueOverview
-          currentRescueCats={currentRescueCats}
+        <Overview
+          currentCats={currentRescueCats}
           setRescueCats={setRescueCats}
           totalPages={totalPages}
           currentPage={currentPage}
           handlePageChange={handlePageChange}
           handleSort={handleSort}
-        />
+        >
+          <div>
+            <h1 className="text-4xl font-bold text-gray-900 leading-tight mb-2">
+              貓咪救援總覽
+            </h1>
+            <p className="mb-4">可愛的貓貓需要你的幫忙</p>
+          </div>
+        </Overview>
       </div>
     </>
   );

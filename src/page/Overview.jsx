@@ -4,7 +4,8 @@ import PaginationComponent from "../components/Pagination.jsx";
 import Sort from "../components/Sort.jsx";
 
 export default function RescueOverview({
-  currentRescueCats,
+  children,
+  currentCats,
   setRescueCats,
   totalPages,
   currentPage,
@@ -13,14 +14,11 @@ export default function RescueOverview({
 }) {
   return (
     <div>
-      <div className="drop-shadow-md">
-        <h1 className="text-4xl font-bold text-gray-900 leading-tight mb-2">
-          貓咪救援總覽
-        </h1>
-        <p className="mb-4">可愛的貓貓需要你的幫忙</p>
+      <div className="drop-shadow-md flex justify-between mb-5 pb-2">
+        {children}
         <Sort sort={handleSort} />
       </div>
-      <Card currentRescueCats={currentRescueCats} />
+      <Card currentCats={currentCats} />
       <PaginationComponent
         totalPages={totalPages}
         currentPage={currentPage}
