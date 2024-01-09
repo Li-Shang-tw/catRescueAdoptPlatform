@@ -1,6 +1,6 @@
 import Chip from "@mui/material/Chip";
 import { Link } from "react-router-dom";
-
+import { getLoactionName } from "../composable/getLocationName";
 export default function Card({ currentRescueCats }) {
   const cardsList = currentRescueCats.map((item) => (
     <li
@@ -25,13 +25,13 @@ export default function Card({ currentRescueCats }) {
           </h3>
           <div>
             <span className="mb-px mr-2.5">{item.ageCategory}</span>
-            <span className="mb-px">{item.location}</span>
+            <span className="mb-px">{getLoactionName(item.location)}</span>
           </div>
           <div className="flex items-baseline mt-1">
             <div className="mr-1">
-              {item.riskLevel === 3 && <Chip label="高" color="error" />}
-              {item.riskLevel === 2 && <Chip label="中" color="warning" />}
-              {item.riskLevel === 1 && <Chip label="低" color="success" />}
+              {item.riskLevel === "3" && <Chip label="高" color="error" />}
+              {item.riskLevel === "2" && <Chip label="中" color="warning" />}
+              {item.riskLevel === "1" && <Chip label="低" color="success" />}
               {item.riskLevel === "" && <Chip label="未分類" />}
             </div>
             <p className="mb-5">{item.symptoms}</p>
