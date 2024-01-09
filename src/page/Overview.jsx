@@ -6,7 +6,6 @@ import Sort from "../components/Sort.jsx";
 export default function RescueOverview({
   children,
   currentCats,
-  setRescueCats,
   totalPages,
   currentPage,
   handlePageChange,
