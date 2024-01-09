@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { RescueContext } from "./context/RescueContext";
-import { getRescuingCatsAPI } from "./callAPI";
-import rescueData from "./assets/rescueData.json";
+import { RescueContext } from "../context/RescueContext";
+import { getRescuingCatsAPI } from "../callAPI";
+import rescueData from "../assets/rescueData.json";
 
 export default function RescueLayout({ children }) {
   //先設定rescueCat的state
