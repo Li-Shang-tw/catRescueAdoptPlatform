@@ -2,6 +2,7 @@ import Overview from "./Overview";
 import { useState, useContext } from "react";
 //載入救援資料的context
 import { RescueContext } from "../context/RescueContext";
+import RescuingCardList from "../components/RescuingCardList";
 
 export default function RescueContainer() {
   //使用context
@@ -56,6 +57,7 @@ export default function RescueContainer() {
           currentPage={currentPage}
           handlePageChange={handlePageChange}
           handleSort={handleSort}
+          Card={RescuingCardList}
         >
           <div>
             <h1 className="text-4xl font-bold text-gray-900 leading-tight mb-2">

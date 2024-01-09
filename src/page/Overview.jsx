@@ -1,5 +1,5 @@
 //導入元件
-import Card from "../components/Card.jsx";
+
 import PaginationComponent from "../components/Pagination.jsx";
 import Sort from "../components/Sort.jsx";
 
@@ -11,6 +11,7 @@ export default function RescueOverview({
   currentPage,
   handlePageChange,
   handleSort,
+  Card,
 }) {
   return (
     <div>
