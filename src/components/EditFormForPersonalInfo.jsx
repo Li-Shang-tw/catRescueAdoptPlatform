@@ -4,12 +4,21 @@ import { useForm } from "react-hook-form";
 import { CurrentUserContext } from "../context/CurrentUserContext";
 import { useContext } from "react";
 
+import { putUserAPI } from "../callAPI";
+
 export default function EditFormForPersonalInfo() {
   //取得userContext的user
   const userData = useContext(CurrentUserContext);
   const { currentUser, setCurrentUser } = userData;
-  //複製一份currentUser，當成表單的初始值
-  const temporaryUser = { ...currentUser };
+  //複製並取得能夠修改的user欄位
+  const temporaryUser = {
+    name: currentUser.name,
+    email: currentUser.email,
+    role: currentUser.role,
+    location: currentUser.location,
+  };
+  //取得user的id
+  const userId = currentUser.id;
   const defaultValues = {
     defaultValues: temporaryUser,
   };
@@ -20,7 +29,8 @@ export default function EditFormForPersonalInfo() {
   } = useForm(defaultValues);
 
   const onSubmit = async (data) => {
-    console.log(data);
+    //發送修改user的請求
+    await putUserAPI(userId, data);
 
     alert("使用者資料已更新");
   };

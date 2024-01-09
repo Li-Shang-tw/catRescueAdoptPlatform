@@ -17,5 +17,21 @@ function getUsersAPI() {
     },
   }).then((res) => res.json());
 }
+function putUserAPI(id, data) {
+  return fetch(`${base}users/${id}`, {
+    method: "PUT", // or PATCH
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(data),
+  })
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+    })
+    .catch((error) => {
+      // handle error
+      console.log(error);
+    });
+}
 
-export { postUserAPI, getUsersAPI };
+export { postUserAPI, getUsersAPI, putUserAPI };
