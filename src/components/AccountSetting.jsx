@@ -1,6 +1,7 @@
 import CardInUserPage from "../components/CardInUserPage";
 import CardItemInUserPage from "../components/CardItemInUserPage";
 import ModalSet from "./ModalSet";
+import EditFormForPersonalInfo from "../components/EditFormForPersonalInfo";
 
 //引入icon
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
@@ -22,7 +23,7 @@ export default function AccountSetting() {
             }
             form={
               <div>
-                <h1>編輯個人資料</h1>
+                <EditFormForPersonalInfo />
               </div>
             }
           />
