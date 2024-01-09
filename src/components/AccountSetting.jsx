@@ -2,6 +2,7 @@ import CardInUserPage from "../components/CardInUserPage";
 import CardItemInUserPage from "../components/CardItemInUserPage";
 import ModalSet from "./ModalSet";
 import EditFormForPersonalInfo from "../components/EditFormForPersonalInfo";
+import ResetFormForPassword from "../components/ResetFormForPassword";
 
 //引入icon
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
@@ -38,7 +39,7 @@ export default function AccountSetting() {
             }
             form={
               <div>
-                <h1>重設密碼</h1>
+                <ResetFormForPassword />
               </div>
             }
           />
