@@ -18,13 +18,16 @@ export default function ResetFormForPassword() {
   } = useForm();
 
   const onSubmit = async (data) => {
+    const newPassword = data.password;
+    //需要將密碼包裝成物件，才能發送請求
+    const newPasswordObj = { password: newPassword };
     //發送修改user的請求
-    // await putUserAPI(userId, data);
+    await putUserAPI(currentUser.id, newPasswordObj);
     //取得更新後的user
-    // const updatedUser = await getUserAPI(userId);
-    //更新userContext的user
-    // setCurrentUser(updatedUser);
-    alert("使用者資料已更新");
+    const updatedUser = await getUserAPI(currentUser.id);
+    // 更新userContext的user;
+    setCurrentUser(updatedUser);
+    alert("密碼已重設");
   };
 
   return (
