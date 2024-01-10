@@ -6,7 +6,9 @@
     "rescueProjectsId": [1, 2],
     "adoptionProjectsId": [1, 2],
     "contactEmail": "example@example.com",
-    "avatar": "src/assets/imgs/rescuerAvatar.jpg"
+    "avatar": "src/assets/imgs/rescuerAvatar.jpg",
+    "rescueCats": ["1"],
+    "adoptCats": []
   },
   {
     "name": "陳美玲",

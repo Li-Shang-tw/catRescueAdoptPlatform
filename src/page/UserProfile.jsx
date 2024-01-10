@@ -19,8 +19,10 @@ export default function UserProfile() {
   // const { id } = useParams();
   return (
     <div>
-      <div className="mb-10 ">
-        <UserCard currentUser={currentUser} />
+      <div className="mb-10 flex justify-center ">
+        <div className="w-1/2">
+          <UserCard currentUser={currentUser} />
+        </div>
       </div>
       <AccountSetting />
 
