@@ -3,14 +3,41 @@ import { useForm } from "react-hook-form";
 import { CurrentUserContext } from "../context/CurrentUserContext";
 import { useContext } from "react";
 
+import { getRescuingCatsAPI, postCatAPI, putUserAPI } from "../callAPI";
+import { useNavigate } from "react-router-dom";
+
 export default function FormforCreateRescue() {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const navigate = useNavigate();
+
+  //---取得登入者資料-----
+  //取得userContext的user
+  const userData = useContext(CurrentUserContext);
+  const { currentUser, setCurrentUser } = userData;
+
   const onSubmit = async (data) => {
-    console.log(data);
+    //幫表單資料加上state=1
+    data.state = "1";
+    //幫表單資料加上rescuerId
+    data.rescuerId = currentUser.id;
+    //呼叫API
+    postCatAPI(data);
+    alert("新增成功");
+    //呼叫API，取得新增的資料
+    const Cats = await getRescuingCatsAPI();
+    const newCat = Cats[Cats.length - 1];
+    //更新user的resuceCats
+    const newRescueCats = [...currentUser.rescueCats, newCat.id];
+    //更新userContext的user
+    setCurrentUser({ ...currentUser, rescueCats: newRescueCats });
+    //發送put請求 更新user的rescueCats
+    await putUserAPI(currentUser.id, { rescueCats: newRescueCats });
+    //轉址到新增的貓咪頁面
+    // navigate(`/rescue/${newCat.id}`);
   };
 
   return (
