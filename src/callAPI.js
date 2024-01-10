@@ -60,5 +60,24 @@ function getRescuingCatsAPI() {
       console.log(error);
     });
 }
-
-export { postUserAPI, getUsersAPI, putUserAPI, getUserAPI, getRescuingCatsAPI };
+function getAdoptingCatsAPI() {
+  return fetch(`${base}resuingCats?state=3`, {
+    method: "GET",
+    headers: {
+      "content-type": "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .catch((error) => {
+      // handle error
+      console.log(error);
+    });
+}
+export {
+  postUserAPI,
+  getUsersAPI,
+  putUserAPI,
+  getUserAPI,
+  getRescuingCatsAPI,
+  getAdoptingCatsAPI,
+};
