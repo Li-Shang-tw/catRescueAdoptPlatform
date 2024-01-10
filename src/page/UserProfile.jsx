@@ -19,7 +19,7 @@ export default function UserProfile() {
   // const { id } = useParams();
   return (
     <div>
-      <div className="mb-10">
+      <div className="mb-10 ">
         <UserCard currentUser={currentUser} />
       </div>
       <AccountSetting />

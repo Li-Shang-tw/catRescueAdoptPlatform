@@ -7,7 +7,7 @@ export default function Card({ currentCats }) {
   const cardsList = currentCats.map((item) => (
     <li
       key={item.id}
-      className=" shadow  rounded-xl duration-100 hover:scale-110  hover:shadow-lg"
+      className=" shadow  rounded-xl duration-100 hover:scale-110  hover:shadow-lg bg-white"
     >
       <Link to={`${item.id}`}>
         <div className="relative">
