@@ -7,7 +7,7 @@ export default function UserCard({ currentUser }) {
   return (
     <>
       <div className="flex justify-center font-medium ">
-        <div className="w-1/2 flex justify-around border-2 px-10 py-4 rounded-xl ">
+        <div className="w-1/2 flex justify-around border-2 px-10 py-4 rounded-xl bg-white">
           <div>
             <Avatar
               alt={currentUser.name}
