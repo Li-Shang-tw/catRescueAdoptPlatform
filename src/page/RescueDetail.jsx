@@ -5,7 +5,7 @@ import { getCatAPI } from "../callAPI";
 //載入元件
 import Carousel from "../components/Carousel";
 import CardDetail from "../components/CardDetail";
-import CardRescuer from "../components/CardRescuer";
+
 export default function RescueDetail() {
   //先設定rescueProject的state
   const [rescueProject, setRescueProject] = useState({});
@@ -20,15 +20,13 @@ export default function RescueDetail() {
     fetchData();
   }, []);
   return (
-    <div>
+    <div className="px-5">
       <Carousel />
       <div className="flex justify-between ">
         <div className="w-8/12 ">
           <CardDetail rescueProject={rescueProject} />
         </div>
-        <div className="w-3/12">
-          {/* <CardRescuer id={rescueProject.rescuerId} /> */}
-        </div>
+        <div className="w-3/12"></div>
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import Button from "@mui/material/Button";
 export default function RescueDetail({ rescueProject }) {
   console.log(rescueProject);
   return (
-    <div className="shadow  rounded-xl px-3 py-4">
+    <div className="shadow  rounded-xl px-3 py-4 bg-white">
       <h2 className="text-2xl font-bold  mb-2">
         {rescueProject.name ? rescueProject.name : "待救援的貓貓"}
       </h2>
