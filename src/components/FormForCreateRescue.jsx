@@ -15,13 +15,12 @@ export default function FormforCreateRescue() {
 
   return (
     <>
-      {" "}
-      <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <div className="flex flex-col items-center  mt-10">
+      <div className="mt-2 sm:mx-auto sm:w-full sm:max-w-sm ">
+        <div className="flex flex-col items-center  mt-4">
           <h3 className="text-2xl font-bold">新增救援專案</h3>
         </div>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
           <div>
             <div className="flex items-center justify-between">
               <label
@@ -42,53 +41,55 @@ export default function FormforCreateRescue() {
               )}
             </div>
           </div>
-          <div>
-            <div className="flex items-center justify-between">
-              <label
-                htmlFor="age"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                年齡分類
-              </label>
-            </div>
+          <div className="flex justify-between">
+            <div className="w-5/12">
+              <div className="flex items-center justify-between">
+                <label
+                  htmlFor="age"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  年齡分類
+                </label>
+              </div>
 
-            <div className="mt-2">
-              <select
-                id="age"
-                className="block w-full rounded-md border-0 p-1.5  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                {...register("age", {
-                  required: "請選擇年齡分類",
-                })}
-              >
-                <option value="0">未分類</option>
-                <option value="1">幼貓</option>
-                <option value="2">成貓</option>
-              </select>
+              <div className="mt-2">
+                <select
+                  id="age"
+                  className="block w-full rounded-md border-0 p-1.5  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  {...register("age", {
+                    required: "請選擇年齡分類",
+                  })}
+                >
+                  <option value="0">未分類</option>
+                  <option value="1">幼貓</option>
+                  <option value="2">成貓</option>
+                </select>
+              </div>
             </div>
-          </div>
-          <div>
-            <div className="flex items-center justify-between">
-              <label
-                htmlFor="riskLevel"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                危險程度
-              </label>
-            </div>
+            <div className="w-5/12">
+              <div className="flex items-center justify-between">
+                <label
+                  htmlFor="riskLevel"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  危險程度
+                </label>
+              </div>
 
-            <div className="mt-2">
-              <select
-                id="riskLevel"
-                className="block w-full rounded-md border-0 p-1.5  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                {...register("riskLevel", {
-                  required: "請選擇危險程度",
-                })}
-              >
-                <option value="0">未分類</option>
-                <option value="1">輕度</option>
-                <option value="2">中度</option>
-                <option value="3">重度</option>
-              </select>
+              <div className="mt-2">
+                <select
+                  id="riskLevel"
+                  className="block w-full rounded-md border-0 p-1.5  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  {...register("riskLevel", {
+                    required: "請選擇危險程度",
+                  })}
+                >
+                  <option value="0">未分類</option>
+                  <option value="1">輕度</option>
+                  <option value="2">中度</option>
+                  <option value="3">重度</option>
+                </select>
+              </div>
             </div>
           </div>
           <div>
@@ -159,6 +160,23 @@ export default function FormforCreateRescue() {
                   {errors.symptoms.message}
                 </small>
               )}
+            </div>
+          </div>
+          <div>
+            <div className="flex items-center justify-between">
+              <label
+                htmlFor="cta"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                呼籲大家的話
+              </label>
+            </div>
+            <div className="mt-2">
+              <input
+                {...register("cta")}
+                className="block w-full rounded-md border-0 p-1.5  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                id="cta"
+              />
             </div>
           </div>
 
