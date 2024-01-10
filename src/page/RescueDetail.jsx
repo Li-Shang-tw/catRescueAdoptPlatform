@@ -27,7 +27,7 @@ export default function RescueDetail() {
           <CardDetail rescueProject={rescueProject} />
         </div>
         <div className="w-3/12">
-          <CardRescuer id={id} />
+          {/* <CardRescuer id={rescueProject.rescuerId} /> */}
         </div>
       </div>
     </div>

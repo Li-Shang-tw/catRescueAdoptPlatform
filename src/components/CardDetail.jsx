@@ -15,11 +15,13 @@ export default function RescueDetail({ rescueProject }) {
       <div>
         <div className="flex items-baseline mb-3">
           <div className="mr-1">
-            {rescueProject.riskLevel === 3 && <Chip label="高" color="error" />}
-            {rescueProject.riskLevel === 2 && (
+            {rescueProject.riskLevel === "3" && (
+              <Chip label="高" color="error" />
+            )}
+            {rescueProject.riskLevel === "2" && (
               <Chip label="中" color="warning" />
             )}
-            {rescueProject.riskLevel === 1 && (
+            {rescueProject.riskLevel === "1" && (
               <Chip label="低" color="success" />
             )}
             {rescueProject.riskLevel === "" && <Chip label="未分類" />}
