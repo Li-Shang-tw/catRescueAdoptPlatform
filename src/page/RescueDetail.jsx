@@ -1,19 +1,24 @@
 import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 //先引入資料
-import rescurData from "../assets/rescueData.json";
-
+import { getCatAPI } from "../callAPI";
 //載入元件
 import Carousel from "../components/Carousel";
 import CardDetail from "../components/CardDetail";
 import CardRescuer from "../components/CardRescuer";
 export default function RescueDetail() {
-  //取得id,並轉成數字
+  //先設定rescueProject的state
+  const [rescueProject, setRescueProject] = useState({});
+  //取得id
   const { id } = useParams();
-
-  //找出符合路徑id的資料
-  //id是字串，要轉成數字
-  const rescueProject = rescurData.find((item) => item.id === parseInt(id));
-
+  //用useEffect來呼叫API
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getCatAPI(id);
+      setRescueProject(data);
+    };
+    fetchData();
+  }, []);
   return (
     <div>
       <Carousel />

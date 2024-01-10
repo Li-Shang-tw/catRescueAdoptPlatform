@@ -83,7 +83,19 @@ function postCatAPI(data) {
     },
   }).then((res) => res.json());
 }
-
+function getCatAPI(id) {
+  return fetch(`${base}resuingCats/${id}`, {
+    method: "GET",
+    headers: {
+      "content-type": "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .catch((error) => {
+      // handle error
+      console.log(error);
+    });
+}
 export {
   postUserAPI,
   getUsersAPI,
@@ -92,4 +104,5 @@ export {
   getRescuingCatsAPI,
   getAdoptingCatsAPI,
   postCatAPI,
+  getCatAPI,
 };
