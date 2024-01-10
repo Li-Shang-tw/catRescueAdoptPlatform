@@ -7,6 +7,8 @@ import { useState } from "react";
 import { CurrentUserContext } from "../context/CurrentUserContext";
 import { useContext } from "react";
 import CreateBtn from "./CreateBtn";
+import FormforCreateRescue from "./FormForCreateRescue";
+import ModalSet from "./ModalSet";
 
 export default function Navigator() {
   //---取得登入者資料-----
@@ -82,7 +84,8 @@ export default function Navigator() {
         </li>
       </ul>
       <div className="flex">
-        <CreateBtn />
+        <ModalSet btn={<CreateBtn />} form={<FormforCreateRescue />} />
+
         <div className=" hover:shadow-md cursor-pointer rounded-full ml-10">
           <NavLink to={`/user/${id}`}>
             <Avatar>{userNameLastWord}</Avatar>
