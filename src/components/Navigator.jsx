@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { CurrentUserContext } from "../context/CurrentUserContext";
 import { useContext } from "react";
+import CreateBtn from "./CreateBtn";
 
 export default function Navigator() {
   //---取得登入者資料-----
@@ -80,10 +81,13 @@ export default function Navigator() {
           </Menu>
         </li>
       </ul>
-      <div className=" hover:shadow-md cursor-pointer rounded-full">
-        <NavLink to={`/user/${id}`}>
-          <Avatar>{userNameLastWord}</Avatar>
-        </NavLink>
+      <div className="flex">
+        <CreateBtn />
+        <div className=" hover:shadow-md cursor-pointer rounded-full ml-10">
+          <NavLink to={`/user/${id}`}>
+            <Avatar>{userNameLastWord}</Avatar>
+          </NavLink>
+        </div>
       </div>
     </div>
   );
