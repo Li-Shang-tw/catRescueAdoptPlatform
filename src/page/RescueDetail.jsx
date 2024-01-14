@@ -8,6 +8,7 @@ import { CurrentUserContext } from "../context/CurrentUserContext";
 import Carousel from "../components/Carousel";
 import CardDetail from "../components/CardDetail";
 import UserCard from "../components/UserCard";
+import ProgressCard from "../components/ProgressCard";
 //先帶入假資料
 import rescuerData from "../assets/recuerData.json";
 export default function RescueDetail() {
@@ -46,6 +47,9 @@ export default function RescueDetail() {
             <UserCard currentUser={resucer} type="2" />
           </div>
         </div>
+      </div>
+      <div>
+        <ProgressCard rescueProject={rescueProject} />
       </div>
     </div>
   );

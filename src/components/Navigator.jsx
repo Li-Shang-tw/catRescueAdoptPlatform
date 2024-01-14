@@ -7,7 +7,7 @@ import { useState } from "react";
 import { CurrentUserContext } from "../context/CurrentUserContext";
 import { useContext } from "react";
 import CreateBtn from "./CreateBtn";
-import FormforCreateRescue from "./FormForCreateRescue";
+import FormForRescue from "./FormForRescue";
 import ModalSet from "./ModalSet";
 
 export default function Navigator() {
@@ -84,7 +84,7 @@ export default function Navigator() {
         </li>
       </ul>
       <div className="flex">
-        <ModalSet btn={<CreateBtn />} form={<FormforCreateRescue />} />
+        <ModalSet btn={<CreateBtn />} form={<FormForRescue />} />
 
         <div className=" hover:shadow-md cursor-pointer rounded-full ml-10">
           <NavLink to={`/user/${id}`}>
