@@ -4,13 +4,23 @@ import Button from "@mui/material/Button";
 import { getLoactionName } from "../composable/getLocationName";
 import interpretAgeCategory from "../composable/interpretAgeCatergory";
 
-export default function RescueDetail({ rescueProject }) {
-  console.log(rescueProject);
+export default function RescueDetail({ rescueProject, currentUserId }) {
+  function handleEdit(e) {
+    console.log("edit");
+    console.log(e.target);
+  }
   return (
     <div className="shadow  rounded-xl px-3 py-4 bg-white">
-      <h2 className="text-2xl font-bold  mb-2">
-        {rescueProject.name ? rescueProject.name : "待救援的貓貓"}
-      </h2>
+      <div className="flex justify-between">
+        <h2 className="text-2xl font-bold  mb-2">
+          {rescueProject.name ? rescueProject.name : "待救援的貓貓"}
+        </h2>
+        {rescueProject.rescuerId === currentUserId && (
+          <Button variant="contained" onClick={handleEdit}>
+            修改
+          </Button>
+        )}
+      </div>
       <div className="flex justify-start mb-3">
         <h4 className="mr-4">{getLoactionName(rescueProject.location)}</h4>
         <h4>{interpretAgeCategory(rescueProject.ageCategory)}</h4>

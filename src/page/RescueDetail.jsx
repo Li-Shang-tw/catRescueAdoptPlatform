@@ -1,7 +1,9 @@
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 //先引入資料
 import { getCatAPI, getUserAPI } from "../callAPI";
+//載入current user的資料
+import { CurrentUserContext } from "../context/CurrentUserContext";
 //載入元件
 import Carousel from "../components/Carousel";
 import CardDetail from "../components/CardDetail";
@@ -12,6 +14,10 @@ export default function RescueDetail() {
   //先設定rescueProject的state
   const [rescueProject, setRescueProject] = useState({});
   const [resucer, setRescuer] = useState(rescuerData[0]);
+
+  //取得current user的資料
+  const { currentUser } = useContext(CurrentUserContext);
+  const currentUserId = currentUser.id;
 
   //取得id
   const { id } = useParams();
@@ -31,7 +37,10 @@ export default function RescueDetail() {
       <div className="flex justify-center">
         <div className="flex justify-between w-9/12">
           <div className="w-5/12 ">
-            <CardDetail rescueProject={rescueProject} />
+            <CardDetail
+              rescueProject={rescueProject}
+              currentUserId={currentUserId}
+            />
           </div>
           <div className="w-5/12">
             <UserCard currentUser={resucer} type="2" />
