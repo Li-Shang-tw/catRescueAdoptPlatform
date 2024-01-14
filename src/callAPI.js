@@ -96,6 +96,25 @@ function getCatAPI(id) {
       console.log(error);
     });
 }
+function putCatAPI(id, data) {
+  return fetch(`${base}resuingCats/${id}`, {
+    method: "PUT", // or PATCH
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(data),
+  })
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      // handle error
+    })
+
+    .catch((error) => {
+      // handle error
+      console.log(error);
+    });
+}
+
 export {
   postUserAPI,
   getUsersAPI,
@@ -105,4 +124,5 @@ export {
   getAdoptingCatsAPI,
   postCatAPI,
   getCatAPI,
+  putCatAPI,
 };

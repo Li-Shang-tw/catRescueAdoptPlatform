@@ -5,7 +5,7 @@ import { getLoactionName } from "../composable/getLocationName";
 import interpretAgeCategory from "../composable/interpretAgeCatergory";
 //引用元件
 import ModalSet from "./ModalSet";
-import FormforCreateRescue from "./FormForCreateRescue";
+import FormForRescue from "./FormForRescue";
 import EditBtn from "./EditBtn";
 
 export default function RescueDetail({ rescueProject, currentUserId }) {
@@ -16,7 +16,10 @@ export default function RescueDetail({ rescueProject, currentUserId }) {
           {rescueProject.name ? rescueProject.name : "待救援的貓貓"}
         </h2>
         {rescueProject.rescuerId === currentUserId && (
-          <ModalSet btn={<EditBtn />} form={<FormforCreateRescue />} />
+          <ModalSet
+            btn={<EditBtn />}
+            form={<FormForRescue type="edit" rescueProject={rescueProject} />}
+          />
         )}
       </div>
       <div className="flex justify-start mb-3">
