@@ -1,14 +1,14 @@
 import Chip from "@mui/material/Chip";
-import Button from "@mui/material/Button";
+
 //引用composable
 import { getLoactionName } from "../composable/getLocationName";
 import interpretAgeCategory from "../composable/interpretAgeCatergory";
+//引用元件
+import ModalSet from "./ModalSet";
+import FormforCreateRescue from "./FormForCreateRescue";
+import EditBtn from "./EditBtn";
 
 export default function RescueDetail({ rescueProject, currentUserId }) {
-  function handleEdit(e) {
-    console.log("edit");
-    console.log(e.target);
-  }
   return (
     <div className="shadow  rounded-xl px-3 py-4 bg-white">
       <div className="flex justify-between">
@@ -16,9 +16,7 @@ export default function RescueDetail({ rescueProject, currentUserId }) {
           {rescueProject.name ? rescueProject.name : "待救援的貓貓"}
         </h2>
         {rescueProject.rescuerId === currentUserId && (
-          <Button variant="contained" onClick={handleEdit}>
-            修改
-          </Button>
+          <ModalSet btn={<EditBtn />} form={<FormforCreateRescue />} />
         )}
       </div>
       <div className="flex justify-start mb-3">
