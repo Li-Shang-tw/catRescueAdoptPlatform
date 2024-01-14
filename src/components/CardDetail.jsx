@@ -32,7 +32,7 @@ export default function RescueDetail({ rescueProject }) {
           <p className="mb-5">{rescueProject.symptoms}</p>
         </div>
         <div className="flex justify-between">
-          <p>{rescueProject.ctaRescue}</p>
+          <p>{rescueProject.cta}</p>
         </div>
       </div>
     </div>
