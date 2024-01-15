@@ -21,6 +21,7 @@ export default function FormforCreateRescue({ type, rescueProject }) {
     location: rescueProject ? rescueProject.location : "",
     symptoms: rescueProject ? rescueProject.symptoms : "",
     cta: rescueProject ? rescueProject.cta : "",
+    targetAmount: rescueProject ? rescueProject.targetAmount : 0,
   };
 
   const {
@@ -45,6 +46,8 @@ export default function FormforCreateRescue({ type, rescueProject }) {
       data.state = "1";
       //幫表單資料加上rescuerId
       data.rescuerId = currentUser.id;
+      //幫表單資料預設currentAmount=0
+      data.currentAmount = 0;
       //呼叫API
       await postCatAPI(data);
       alert("新增成功");
@@ -228,6 +231,25 @@ export default function FormforCreateRescue({ type, rescueProject }) {
               />
             </div>
           </div>
+          {type !== "edit" && (
+            <div>
+              <div className="flex items-center justify-between">
+                <label
+                  htmlFor="cta"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  目標金額
+                </label>
+              </div>
+              <div className="mt-2">
+                <input
+                  {...register("targetAmount")}
+                  className="block w-full rounded-md border-0 p-1.5  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  id="cta"
+                />
+              </div>
+            </div>
+          )}
 
           <input
             type="submit"
