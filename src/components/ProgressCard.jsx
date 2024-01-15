@@ -2,6 +2,7 @@ import ProgressBar from "./ProgressBar";
 import { useState } from "react";
 import ModalSet from "./ModalSet";
 import EditBtn from "./EditBtn";
+import FormForUpdateProgress from "./FormForUpdateProgress";
 export default function ProgressCard({ rescueProject }) {
   //取得目前金額與目標金額與計算進度
   const currentAmount = rescueProject.currentAmount;
@@ -16,7 +17,10 @@ export default function ProgressCard({ rescueProject }) {
           <p className="text-xl font-bold"> NT$ {currentAmount}</p>
         </div>
         <div>
-          <ModalSet btn={<EditBtn>更新進度</EditBtn>} />
+          <ModalSet
+            btn={<EditBtn>更新進度</EditBtn>}
+            form={<FormForUpdateProgress rescueProject={rescueProject} />}
+          />
         </div>
       </div>
       <ProgressBar progress={progress} />
