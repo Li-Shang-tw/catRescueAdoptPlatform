@@ -35,7 +35,7 @@ export default function RescueDetail() {
   return (
     <div className="px-5">
       <Carousel />
-      <div className="flex justify-center">
+      <div className="flex justify-center mb-4">
         <div className="flex justify-between w-9/12">
           <div className="w-5/12 ">
             <CardDetail
@@ -48,7 +48,7 @@ export default function RescueDetail() {
           </div>
         </div>
       </div>
-      <div>
+      <div className="w-9/12 mx-auto">
         <ProgressCard rescueProject={rescueProject} />
       </div>
     </div>

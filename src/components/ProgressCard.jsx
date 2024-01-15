@@ -7,7 +7,7 @@ export default function ProgressCard({ rescueProject }) {
   const progress = (currentAmount / targetAmount) * 100;
 
   return (
-    <div className="bg-white">
+    <div className="bg-white p-4">
       <div>
         <p className="">目標 NT$ {targetAmount}</p>
         <p className="text-xl font-bold"> NT$ {currentAmount}</p>
