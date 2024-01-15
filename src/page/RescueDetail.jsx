@@ -9,6 +9,7 @@ import Carousel from "../components/Carousel";
 import CardDetail from "../components/CardDetail";
 import UserCard from "../components/UserCard";
 import ProgressCard from "../components/ProgressCard";
+import ListOfDonater from "../components/ListOfDonater";
 //先帶入假資料
 import rescuerData from "../assets/recuerData.json";
 export default function RescueDetail() {
@@ -50,6 +51,9 @@ export default function RescueDetail() {
       </div>
       <div className="w-9/12 mx-auto">
         <ProgressCard rescueProject={rescueProject} />
+      </div>
+      <div className="my-4 w-9/12 mx-auto">
+        <ListOfDonater rescueProject={rescueProject} />
       </div>
     </div>
   );
