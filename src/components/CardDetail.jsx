@@ -17,7 +17,7 @@ export default function RescueDetail({ rescueProject, currentUserId }) {
         </h2>
         {rescueProject.rescuerId === currentUserId && (
           <ModalSet
-            btn={<EditBtn />}
+            btn={<EditBtn>編輯</EditBtn>}
             form={<FormForRescue type="edit" rescueProject={rescueProject} />}
           />
         )}

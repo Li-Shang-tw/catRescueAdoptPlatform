@@ -8,9 +8,11 @@ export default function ProgressCard({ rescueProject }) {
 
   return (
     <div className="bg-white p-4">
-      <div>
-        <p className="">目標 NT$ {targetAmount}</p>
-        <p className="text-xl font-bold"> NT$ {currentAmount}</p>
+      <div className="flex justify-between">
+        <div>
+          <p className="">目標 NT$ {targetAmount}</p>
+          <p className="text-xl font-bold"> NT$ {currentAmount}</p>
+        </div>
       </div>
       <ProgressBar progress={progress} />
     </div>
