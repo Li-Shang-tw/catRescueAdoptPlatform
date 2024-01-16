@@ -61,7 +61,10 @@ function getRescuingCatsAPI() {
     });
 }
 function getAdoptingCatsAPI() {
-  return fetch(`${base}resuingCats?state=3`, {
+  const url = new URL(`${base}resuingCats`);
+  url.searchParams.append("state", "3");
+
+  return fetch(url, {
     method: "GET",
     headers: {
       "content-type": "application/json",

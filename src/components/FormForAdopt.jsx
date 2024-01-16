@@ -32,7 +32,7 @@ export default function FormforCreateRescue({ type }) {
       console.log("eidt");
     } else {
       //幫表單資料加上state=1
-      data.state = "1";
+      data.state = "3";
       //幫表單資料加上rescuerId
       data.rescuerId = currentUser.id;
       //發送新增api

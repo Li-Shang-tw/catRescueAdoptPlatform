@@ -1,12 +1,20 @@
-import { useState, useContext } from "react";
+import { useState, useEffect } from "react";
+import { getAdoptingCatsAPI } from "../callAPI";
 import Overview from "./Overview";
-//載入救援資料的context
-import { AdoptContext } from "../context/AdoptContext";
+
 import AdoptingCardList from "../components/AdoptingCardList";
 export default function AdoptContainer() {
-  //使用context
-  const adoptData = useContext(AdoptContext);
-  const { adoptCats } = adoptData;
+  const [adoptCats, setAdoptCats] = useState(null);
+
+  //用useEffect來呼叫API
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getAdoptingCatsAPI();
+      console.log(data);
+      setAdoptCats(data);
+    };
+    fetchData();
+  }, []);
 
   //current page
   const [currentPage, setCurrentPage] = useState(1);
@@ -15,8 +23,13 @@ export default function AdoptContainer() {
   function handlePageChange(event, page) {
     setCurrentPage(page);
   }
+  //處理沒資料時的狀況
+  if (!adoptCats) {
+    return <div>loading</div>;
+  }
 
   //顯示當前頁面的資料
+
   const currentRescueCats = adoptCats.slice(
     (currentPage - 1) * 8,
     currentPage * 8
@@ -32,7 +45,7 @@ export default function AdoptContainer() {
     <>
       <div className="container mx-auto px-4">
         <Overview
-          currentCats={currentRescueCats}
+          currentCats={adoptCats}
           totalPages={totalPages}
           currentPage={currentPage}
           handlePageChange={handlePageChange}
