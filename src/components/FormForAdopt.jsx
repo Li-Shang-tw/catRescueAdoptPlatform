@@ -11,21 +11,9 @@ import {
 } from "../callAPI";
 import { useNavigate } from "react-router-dom";
 
-export default function FormforCreateRescue({
-  type,
-  rescueProject,
-  handleUpdatRescueCat,
-}) {
+export default function FormforCreateRescue({ type }) {
   //預設值---如果有傳入值，就是編輯，沒有就是新增
-  const defaultValue = {
-    name: rescueProject ? rescueProject.name : "",
-    ageCategory: rescueProject ? rescueProject.ageCategory : "",
-    riskLevel: rescueProject ? rescueProject.riskLevel : "",
-    location: rescueProject ? rescueProject.location : "",
-    symptoms: rescueProject ? rescueProject.symptoms : "",
-    cta: rescueProject ? rescueProject.cta : "",
-    targetAmount: rescueProject ? rescueProject.targetAmount : 0,
-  };
+  const defaultValue = {};
 
   const {
     register,
@@ -41,33 +29,9 @@ export default function FormforCreateRescue({
 
   const onSubmit = async (data) => {
     if (type === "edit") {
-      //發送put請求
-      await putCatAPI(rescueProject.id, data);
-      //更新rescueProject的state
-
-      handleUpdatRescueCat(data);
-      alert("更新成功");
     } else {
-      //幫表單資料加上state=1
-      data.state = "1";
-      //幫表單資料加上rescuerId
-      data.rescuerId = currentUser.id;
-      //幫表單資料預設currentAmount=0
-      data.currentAmount = 0;
-      //呼叫API
-      await postCatAPI(data);
+      console.log(data);
       alert("新增成功");
-      //呼叫API，取得新增的資料
-      const Cats = await getRescuingCatsAPI();
-      const newCat = Cats[Cats.length - 1];
-      //更新user的resuceCats
-      const newRescueCats = [...currentUser.rescueCats, newCat.id];
-      //更新userContext的user
-      setCurrentUser({ ...currentUser, rescueCats: newRescueCats });
-      //發送put請求 更新user的rescueCats
-      await putUserAPI(currentUser.id, { rescueCats: newRescueCats });
-      //轉址到新增的貓咪頁面
-      navigate(`/rescue/${newCat.id}`);
     }
   };
 
@@ -127,27 +91,66 @@ export default function FormforCreateRescue({
             <div className="w-5/12">
               <div className="flex items-center justify-between">
                 <label
-                  htmlFor="riskLevel"
+                  htmlFor="sex"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
-                  危險程度
+                  性別
                 </label>
               </div>
 
               <div className="mt-2">
                 <select
-                  id="riskLevel"
+                  id="sex"
                   className="block w-full rounded-md border-0 p-1.5  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  {...register("riskLevel", {
-                    required: "請選擇危險程度",
+                  {...register("sex", {
+                    required: "請選擇性別",
                   })}
                 >
                   <option value="0">未分類</option>
-                  <option value="1">輕度</option>
-                  <option value="2">中度</option>
-                  <option value="3">重度</option>
+                  <option value="1">男性</option>
+                  <option value="2">女性</option>
                 </select>
               </div>
+            </div>
+          </div>
+          <div>
+            <div className="flex items-center justify-between">
+              <label
+                htmlFor="breed"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                品種
+              </label>
+            </div>
+            <div className="mt-2">
+              <input
+                {...register("breed", { required: "品種是必填" })}
+                className="block w-full rounded-md border-0 p-1.5  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                id="breed"
+              />
+              {errors.breed?.message && (
+                <small className="text-red-500">{errors.breed.message}</small>
+              )}
+            </div>
+          </div>
+          <div>
+            <div className="flex items-center justify-between">
+              <label
+                htmlFor="health"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                健康狀況
+              </label>
+            </div>
+            <div className="mt-2">
+              <input
+                {...register("health", { required: "健康狀況是必填" })}
+                className="block w-full rounded-md border-0 p-1.5  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                id="breed"
+              />
+              {errors.health?.message && (
+                <small className="text-red-500">{errors.health.message}</small>
+              )}
             </div>
           </div>
           <div>
@@ -201,28 +204,6 @@ export default function FormforCreateRescue({
           <div>
             <div className="flex items-center justify-between">
               <label
-                htmlFor="symptoms"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                症狀
-              </label>
-            </div>
-            <div className="mt-2">
-              <input
-                {...register("symptoms", { required: "症狀是必填" })}
-                className="block w-full rounded-md border-0 p-1.5  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                id="symptoms"
-              />
-              {errors.symptoms?.message && (
-                <small className="text-red-500">
-                  {errors.symptoms.message}
-                </small>
-              )}
-            </div>
-          </div>
-          <div>
-            <div className="flex items-center justify-between">
-              <label
                 htmlFor="cta"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
@@ -237,25 +218,6 @@ export default function FormforCreateRescue({
               />
             </div>
           </div>
-          {type !== "edit" && (
-            <div>
-              <div className="flex items-center justify-between">
-                <label
-                  htmlFor="cta"
-                  className="block text-sm font-medium leading-6 text-gray-900"
-                >
-                  目標金額
-                </label>
-              </div>
-              <div className="mt-2">
-                <input
-                  {...register("targetAmount")}
-                  className="block w-full rounded-md border-0 p-1.5  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  id="cta"
-                />
-              </div>
-            </div>
-          )}
 
           <input
             type="submit"
