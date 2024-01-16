@@ -8,7 +8,9 @@ import { CurrentUserContext } from "../context/CurrentUserContext";
 import { useContext } from "react";
 import CreateBtn from "./CreateBtn";
 import FormForRescue from "./FormForRescue";
+import FormForAdopt from "./FormForAdopt";
 import ModalSet from "./ModalSet";
+import EditBtn from "./EditBtn";
 
 export default function Navigator() {
   //---取得登入者資料-----
@@ -84,8 +86,10 @@ export default function Navigator() {
         </li>
       </ul>
       <div className="flex">
-        <ModalSet btn={<CreateBtn />} form={<FormForRescue />} />
-
+        <div className="flex">
+          <ModalSet btn={<CreateBtn />} form={<FormForRescue />} />
+          <ModalSet btn={<EditBtn>新增收養</EditBtn>} form={<FormForAdopt />} />
+        </div>
         <div className=" hover:shadow-md cursor-pointer rounded-full ml-10">
           <NavLink to={`/user/${id}`}>
             <Avatar>{userNameLastWord}</Avatar>
