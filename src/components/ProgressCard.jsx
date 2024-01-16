@@ -4,6 +4,7 @@ import ModalSet from "./ModalSet";
 import EditBtn from "./EditBtn";
 import FormForUpdateProgress from "./FormForUpdateProgress";
 import FormTransterToAdopt from "./FormTransterToAdopt";
+import Chip from "@mui/material/Chip";
 export default function ProgressCard({ rescueProject, handleUpdatRescueCat }) {
   //取得目前金額與目標金額與計算進度
   const currentAmount = rescueProject.currentAmount;
@@ -14,7 +15,16 @@ export default function ProgressCard({ rescueProject, handleUpdatRescueCat }) {
     <div className="bg-white p-4">
       <div className="flex justify-between">
         <div>
-          <p className="">目標 NT$ {targetAmount}</p>
+          <div className="flex items-center mb-2">
+            {rescueProject.state === "2" && (
+              <div className="mr-2">
+                <Chip label="達標" color="success" />
+              </div>
+            )}
+
+            <p>目標 NT$ {targetAmount}</p>
+          </div>
+
           <p className="text-xl font-bold"> NT$ {currentAmount}</p>
         </div>
         <div>
