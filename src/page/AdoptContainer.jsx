@@ -10,7 +10,6 @@ export default function AdoptContainer() {
   useEffect(() => {
     const fetchData = async () => {
       const data = await getAdoptingCatsAPI();
-      console.log(data);
       setAdoptCats(data);
     };
     fetchData();
