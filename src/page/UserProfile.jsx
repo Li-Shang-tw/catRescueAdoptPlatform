@@ -48,7 +48,7 @@ export default function UserProfile() {
       </CardInUserPage>
       <CardInUserPage title="我的成就">
         <div>
-          <Link to={`/rescue/myproject/${currentUser.id}/?q=achievement`}>
+          <Link to={`/myAchievement/${currentUser.id}/?q=rescue`}>
             <CardItemInUserPage>
               <div>
                 <MedicationIcon />
@@ -56,7 +56,7 @@ export default function UserProfile() {
               </div>
             </CardItemInUserPage>
           </Link>
-          <Link to={`/adopt/myproject/${currentUser.id}/?q=achievement`}>
+          <Link to={`/myAchievement/${currentUser.id}/?q=adopt`}>
             <CardItemInUserPage>
               <div>
                 <CastleIcon />
