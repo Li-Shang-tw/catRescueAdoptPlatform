@@ -3,6 +3,7 @@ import { useState } from "react";
 import ModalSet from "./ModalSet";
 import EditBtn from "./EditBtn";
 import FormForUpdateProgress from "./FormForUpdateProgress";
+import FormTransterToAdopt from "./FormTransterToAdopt";
 export default function ProgressCard({ rescueProject, handleUpdatRescueCat }) {
   //取得目前金額與目標金額與計算進度
   const currentAmount = rescueProject.currentAmount;
@@ -17,15 +18,30 @@ export default function ProgressCard({ rescueProject, handleUpdatRescueCat }) {
           <p className="text-xl font-bold"> NT$ {currentAmount}</p>
         </div>
         <div>
-          <ModalSet
-            btn={<EditBtn>更新進度</EditBtn>}
-            form={
-              <FormForUpdateProgress
-                rescueProject={rescueProject}
-                handleUpdatRescueCat={handleUpdatRescueCat}
+          {rescueProject.state === "1" && (
+            <div className="flex justify-end">
+              <ModalSet
+                btn={<EditBtn>更新進度</EditBtn>}
+                form={
+                  <FormForUpdateProgress
+                    rescueProject={rescueProject}
+                    handleUpdatRescueCat={handleUpdatRescueCat}
+                  />
+                }
               />
-            }
-          />
+            </div>
+          )}
+          {rescueProject.state === "2" && (
+            <ModalSet
+              btn={<EditBtn>轉成收養專站</EditBtn>}
+              form={
+                <FormTransterToAdopt
+                  rescueProject={rescueProject}
+                  handleUpdatRescueCat={handleUpdatRescueCat}
+                />
+              }
+            />
+          )}
         </div>
       </div>
       <ProgressBar progress={progress} />
