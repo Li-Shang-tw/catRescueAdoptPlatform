@@ -29,9 +29,26 @@ export default function FormforCreateRescue({ type }) {
 
   const onSubmit = async (data) => {
     if (type === "edit") {
+      console.log("eidt");
     } else {
-      console.log(data);
+      //幫表單資料加上state=1
+      data.state = "1";
+      //幫表單資料加上rescuerId
+      data.rescuerId = currentUser.id;
+      //發送新增api
+      await postCatAPI(data);
       alert("新增成功");
+      //呼叫API，取得新增的資料
+      const Cats = await getRescuingCatsAPI();
+      const newCat = Cats[Cats.length - 1];
+      //更新user的resuceCats
+      const newRescueCats = [...currentUser.rescueCats, newCat.id];
+      //更新userContext的user
+      setCurrentUser({ ...currentUser, rescueCats: newRescueCats });
+      //發送put請求 更新user的rescueCats
+      await putUserAPI(currentUser.id, { rescueCats: newRescueCats });
+      //轉址到新增的貓咪頁面
+      navigate(`/adopt/${newCat.id}`);
     }
   };
 
@@ -91,7 +108,7 @@ export default function FormforCreateRescue({ type }) {
             <div className="w-5/12">
               <div className="flex items-center justify-between">
                 <label
-                  htmlFor="sex"
+                  htmlFor="gender"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
                   性別
@@ -100,9 +117,9 @@ export default function FormforCreateRescue({ type }) {
 
               <div className="mt-2">
                 <select
-                  id="sex"
+                  id="gender"
                   className="block w-full rounded-md border-0 p-1.5  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  {...register("sex", {
+                  {...register("gender", {
                     required: "請選擇性別",
                   })}
                 >
