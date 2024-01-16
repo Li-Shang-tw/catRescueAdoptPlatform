@@ -34,6 +34,11 @@ export default function RescueDetail() {
     };
     fetchData();
   }, []);
+
+  function handleUpdatRescueCat(feature) {
+    //取得原本的rescueProject，整合更新的feature成新的rescueProject
+    setRescueProject({ ...rescueProject, ...feature });
+  }
   return (
     <div className="px-5">
       <Carousel />
@@ -42,6 +47,7 @@ export default function RescueDetail() {
           <div className="w-5/12 ">
             <CardDetail
               rescueProject={rescueProject}
+              handleUpdatRescueCat={handleUpdatRescueCat}
               currentUserId={currentUserId}
             />
           </div>

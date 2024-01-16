@@ -8,7 +8,11 @@ import ModalSet from "./ModalSet";
 import FormForRescue from "./FormForRescue";
 import EditBtn from "./EditBtn";
 
-export default function RescueDetail({ rescueProject, currentUserId }) {
+export default function RescueDetail({
+  rescueProject,
+  handleUpdatRescueCat,
+  currentUserId,
+}) {
   return (
     <div className="shadow  rounded-xl px-3 py-4 bg-white">
       <div className="flex justify-between">
@@ -18,7 +22,13 @@ export default function RescueDetail({ rescueProject, currentUserId }) {
         {rescueProject.rescuerId === currentUserId && (
           <ModalSet
             btn={<EditBtn>編輯</EditBtn>}
-            form={<FormForRescue type="edit" rescueProject={rescueProject} />}
+            form={
+              <FormForRescue
+                type="edit"
+                rescueProject={rescueProject}
+                handleUpdatRescueCat={handleUpdatRescueCat}
+              />
+            }
           />
         )}
       </div>

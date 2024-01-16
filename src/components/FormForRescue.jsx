@@ -12,7 +12,11 @@ import {
 } from "../callAPI";
 import { useNavigate } from "react-router-dom";
 
-export default function FormforCreateRescue({ type, rescueProject }) {
+export default function FormforCreateRescue({
+  type,
+  rescueProject,
+  handleUpdatRescueCat,
+}) {
   //預設值---如果有傳入值，就是編輯，沒有就是新增
   const defaultValue = {
     name: rescueProject ? rescueProject.name : "",
@@ -39,6 +43,9 @@ export default function FormforCreateRescue({ type, rescueProject }) {
     if (type === "edit") {
       //發送put請求
       await putCatAPI(rescueProject.id, data);
+      //更新rescueProject的state
+
+      handleUpdatRescueCat(data);
       alert("更新成功");
     } else {
       //幫表單資料加上state=1
