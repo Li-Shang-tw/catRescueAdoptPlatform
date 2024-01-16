@@ -3,7 +3,7 @@ import { useState } from "react";
 import ModalSet from "./ModalSet";
 import EditBtn from "./EditBtn";
 import FormForUpdateProgress from "./FormForUpdateProgress";
-export default function ProgressCard({ rescueProject }) {
+export default function ProgressCard({ rescueProject, handleUpdatRescueCat }) {
   //取得目前金額與目標金額與計算進度
   const currentAmount = rescueProject.currentAmount;
   const targetAmount = rescueProject.targetAmount;
@@ -19,7 +19,12 @@ export default function ProgressCard({ rescueProject }) {
         <div>
           <ModalSet
             btn={<EditBtn>更新進度</EditBtn>}
-            form={<FormForUpdateProgress rescueProject={rescueProject} />}
+            form={
+              <FormForUpdateProgress
+                rescueProject={rescueProject}
+                handleUpdatRescueCat={handleUpdatRescueCat}
+              />
+            }
           />
         </div>
       </div>

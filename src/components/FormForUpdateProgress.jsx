@@ -1,6 +1,9 @@
 import { useForm } from "react-hook-form";
 import { putCatAPI } from "../callAPI";
-export default function FormForUpdateProgress({ rescueProject }) {
+export default function FormForUpdateProgress({
+  rescueProject,
+  handleUpdatRescueCat,
+}) {
   const {
     register,
     handleSubmit,
@@ -13,6 +16,11 @@ export default function FormForUpdateProgress({ rescueProject }) {
     currentAmount += parseInt(data.amount);
     //更新進度
     await putCatAPI(rescueProject.id, {
+      currentAmount: currentAmount,
+      DonateRecord: [...rescueProject.DonateRecord, data],
+    });
+    //更新rescueProject的狀態-currentAmount與DonateRecord
+    handleUpdatRescueCat({
       currentAmount: currentAmount,
       DonateRecord: [...rescueProject.DonateRecord, data],
     });

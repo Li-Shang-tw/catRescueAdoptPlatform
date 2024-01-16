@@ -57,7 +57,10 @@ export default function RescueDetail() {
         </div>
       </div>
       <div className="w-9/12 mx-auto">
-        <ProgressCard rescueProject={rescueProject} />
+        <ProgressCard
+          rescueProject={rescueProject}
+          handleUpdatRescueCat={handleUpdatRescueCat}
+        />
       </div>
       <div className="my-4 w-9/12 mx-auto">
         <ListOfDonater rescueProject={rescueProject} />
