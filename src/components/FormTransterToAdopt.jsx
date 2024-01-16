@@ -3,23 +3,15 @@ import { useForm } from "react-hook-form";
 import { CurrentUserContext } from "../context/CurrentUserContext";
 import { useContext } from "react";
 
-import {
-  getRescuingCatsAPI,
-  postCatAPI,
-  putUserAPI,
-  putCatAPI,
-} from "../callAPI";
+import { getRescuingCatsAPI, putUserAPI, putCatAPI } from "../callAPI";
 import { useNavigate } from "react-router-dom";
 
-export default function FormforTransterToAdopt() {
-  //預設值---如果有傳入值，就是編輯，沒有就是新增
-  const defaultValue = {};
-
+export default function FormforTransterToAdopt({ projectId }) {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ defaultValues: defaultValue });
+  } = useForm();
   const navigate = useNavigate();
 
   //---取得登入者資料-----
@@ -28,24 +20,20 @@ export default function FormforTransterToAdopt() {
   const { currentUser, setCurrentUser } = userData;
 
   const onSubmit = async (data) => {
-    //幫表單資料加上state=1
+    //將state改成3
     data.state = "3";
-    //幫表單資料加上rescuerId
-    data.rescuerId = currentUser.id;
     //發送新增api
-    await postCatAPI(data);
-    alert("新增成功");
-    //呼叫API，取得新增的資料
-    const Cats = await getRescuingCatsAPI();
-    const newCat = Cats[Cats.length - 1];
+    await putCatAPI(projectId, data);
+    alert("轉換成功");
+
     //更新user的resuceCats
-    const newRescueCats = [...currentUser.rescueCats, newCat.id];
+    const newAdoptCats = [...currentUser.adoptCats, projectId];
     //更新userContext的user
-    setCurrentUser({ ...currentUser, rescueCats: newRescueCats });
+    setCurrentUser({ ...currentUser, adoptCats: newAdoptCats });
     //發送put請求 更新user的rescueCats
-    await putUserAPI(currentUser.id, { rescueCats: newRescueCats });
+    await putUserAPI(currentUser.id, { adoptCats: newAdoptCats });
     //轉址到新增的貓咪頁面
-    navigate(`/adopt/${newCat.id}`);
+    navigate(`/adopt/${projectId}`);
   };
 
   return (
