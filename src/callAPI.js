@@ -114,7 +114,26 @@ function putCatAPI(id, data) {
       console.log(error);
     });
 }
+function getCatsOfCurrentUserAPI(rescuerId, state) {
+  const url = new URL(`${base}resuingCats`);
+  url.searchParams.append("state", state);
+  url.searchParams.append("rescuerId", rescuerId);
+  return fetch(url, {
+    method: "GET",
+    headers: { "content-type": "application/json" },
+  })
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      // handle error
+    })
 
+    .catch((error) => {
+      // handle error
+      console.log(error);
+    });
+}
 export {
   postUserAPI,
   getUsersAPI,
@@ -125,4 +144,5 @@ export {
   postCatAPI,
   getCatAPI,
   putCatAPI,
+  getCatsOfCurrentUserAPI,
 };

@@ -9,7 +9,7 @@ export default function Card({ currentCats }) {
       key={item.id}
       className=" shadow  rounded-xl duration-100 hover:scale-110  hover:shadow-lg bg-white"
     >
-      <Link to={`${item.id}`}>
+      <Link to={`/rescue/${item.id}`}>
         <div className="relative">
           <img
             className="rounded-md rounded-b-3xl mb-2.5 "
