@@ -14,20 +14,33 @@ export default function FormForUpdateProgress({
     let currentAmount = rescueProject.currentAmount;
     //再加上捐款金額
     currentAmount += parseInt(data.amount);
-    //更新進度
-    await putCatAPI(rescueProject.id, {
-      currentAmount: currentAmount,
-      DonateRecord: [...rescueProject.DonateRecord, data],
-    });
-    //更新狀態
-    handleUpdatRescueCat({
-      currentAmount: currentAmount,
-      DonateRecord: [...rescueProject.DonateRecord, data],
-    });
-    //當募款成功時，跳出alert
+    //當目標金額達標，將專案轉成state 2(已完成)
     if (currentAmount >= rescueProject.targetAmount) {
-      alert("募款成功");
+      //更新進度
+      await putCatAPI(rescueProject.id, {
+        currentAmount: currentAmount,
+        DonateRecord: [...rescueProject.DonateRecord, data],
+        state: "2",
+      });
+      //更新狀態
+      handleUpdatRescueCat({
+        currentAmount: currentAmount,
+        DonateRecord: [...rescueProject.DonateRecord, data],
+        state: "2",
+      });
+
+      alert("更新成功");
     } else {
+      //更新進度
+      await putCatAPI(rescueProject.id, {
+        currentAmount: currentAmount,
+        DonateRecord: [...rescueProject.DonateRecord, data],
+      });
+      //更新狀態
+      handleUpdatRescueCat({
+        currentAmount: currentAmount,
+        DonateRecord: [...rescueProject.DonateRecord, data],
+      });
       alert("更新成功");
     }
   };
