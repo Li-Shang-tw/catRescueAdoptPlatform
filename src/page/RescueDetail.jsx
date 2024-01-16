@@ -12,6 +12,7 @@ import ProgressCard from "../components/ProgressCard";
 import ListOfDonater from "../components/ListOfDonater";
 //先帶入假資料
 import rescuerData from "../assets/recuerData.json";
+
 export default function RescueDetail() {
   //先設定rescueProject的state
   const [rescueProject, setRescueProject] = useState({});
@@ -33,6 +34,11 @@ export default function RescueDetail() {
     };
     fetchData();
   }, []);
+
+  function handleUpdatRescueCat(feature) {
+    //取得原本的rescueProject，整合更新的feature成新的rescueProject
+    setRescueProject({ ...rescueProject, ...feature });
+  }
   return (
     <div className="px-5">
       <Carousel />
@@ -41,6 +47,7 @@ export default function RescueDetail() {
           <div className="w-5/12 ">
             <CardDetail
               rescueProject={rescueProject}
+              handleUpdatRescueCat={handleUpdatRescueCat}
               currentUserId={currentUserId}
             />
           </div>
@@ -50,7 +57,10 @@ export default function RescueDetail() {
         </div>
       </div>
       <div className="w-9/12 mx-auto">
-        <ProgressCard rescueProject={rescueProject} />
+        <ProgressCard
+          rescueProject={rescueProject}
+          handleUpdatRescueCat={handleUpdatRescueCat}
+        />
       </div>
       <div className="my-4 w-9/12 mx-auto">
         <ListOfDonater rescueProject={rescueProject} />

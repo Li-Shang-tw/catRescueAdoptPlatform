@@ -1,6 +1,9 @@
 import { useForm } from "react-hook-form";
 import { putCatAPI } from "../callAPI";
-export default function FormForUpdateProgress({ rescueProject }) {
+export default function FormForUpdateProgress({
+  rescueProject,
+  handleUpdatRescueCat,
+}) {
   const {
     register,
     handleSubmit,
@@ -16,6 +19,11 @@ export default function FormForUpdateProgress({ rescueProject }) {
       currentAmount: currentAmount,
       DonateRecord: [...rescueProject.DonateRecord, data],
     });
+    //更新狀態
+    handleUpdatRescueCat({
+      currentAmount: currentAmount,
+      DonateRecord: [...rescueProject.DonateRecord, data],
+    });
     //當募款成功時，跳出alert
     if (currentAmount >= rescueProject.targetAmount) {
       alert("募款成功");
@@ -23,7 +31,6 @@ export default function FormForUpdateProgress({ rescueProject }) {
       alert("更新成功");
     }
   };
-
   return (
     <>
       <div className="mt-2 sm:mx-auto sm:w-full sm:max-w-sm ">
