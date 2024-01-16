@@ -18,7 +18,6 @@ export default function AdoptDetail() {
 
   //取得current user的資料
   const { currentUser } = useContext(CurrentUserContext);
-  const currentUserId = currentUser.id;
 
   //取得id
   const { id } = useParams();
@@ -46,7 +45,7 @@ export default function AdoptDetail() {
             <AdoptCardDetail
               adoptProject={adoptProject}
               updateAdoptProject={updateAdoptProject}
-              currentUserId={currentUserId}
+              currentUser={currentUser}
             />
           </div>
           <div className="w-5/12">

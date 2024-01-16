@@ -11,7 +11,7 @@ import EditBtn from "./EditBtn";
 export default function AdoptCardDetail({
   adoptProject,
   updateAdoptProject,
-  currentUserId,
+  currentUser,
 }) {
   return (
     <div className="shadow  rounded-xl px-3 py-4 bg-white">
@@ -19,9 +19,11 @@ export default function AdoptCardDetail({
         <h2 className="text-2xl font-bold  mb-2">
           {adoptProject.name ? adoptProject.name : "待救援的貓貓"}
         </h2>
-        {adoptProject.rescuerId === currentUserId && (
+        {adoptProject.rescuerId === currentUser.id && (
           <ModalSet btn={<EditBtn>編輯</EditBtn>} />
         )}
+        {adoptProject.rescuerId !== currentUser.id &&
+          currentUser.role === "adopter" && <EditBtn>認養</EditBtn>}
       </div>
       <div className="flex justify-start mb-3">
         <h4 className="mr-4">{getLoactionName(adoptProject.location)}</h4>
