@@ -1,13 +1,20 @@
 import Overview from "./Overview";
-import { useState, useContext } from "react";
-//載入救援資料的context
-import { RescueContext } from "../context/RescueContext";
+import { useState, useEffect } from "react";
+import rescueData from "../assets/rescueData.json";
+import { getRescuingCatsAPI } from "../callAPI";
 import RescuingCardList from "../components/RescuingCardList";
 
 export default function RescueContainer() {
-  //使用context
-  const rescueData = useContext(RescueContext);
-  const { rescueCats, setRescueCats } = rescueData;
+  //先設定rescueCat的state
+  const [rescueCats, setRescueCats] = useState(rescueData);
+  //用useEffect來呼叫API
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getRescuingCatsAPI();
+      setRescueCats(data);
+    };
+    fetchData();
+  }, []);
 
   //current page
   const [currentPage, setCurrentPage] = useState(1);

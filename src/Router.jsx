@@ -4,8 +4,6 @@ import { createBrowserRouter } from "react-router-dom";
 import Root from "./page/RootTRoute";
 
 //載入Layout
-import RescueLayout from "./layout/RescueLayout";
-import AdoptLayout from "./layout/AdoptLayout";
 import CurrentUserLayout from "./layout/CurrentUserLayout";
 //載入頁面
 import Home from "./page/Home";
@@ -31,48 +29,28 @@ export const Router = createBrowserRouter([
       { path: "", element: <Home /> },
       {
         path: "adopt",
-        element: (
-          <AdoptLayout>
-            <AdoptContainer />
-          </AdoptLayout>
-        ),
+        element: <AdoptContainer />,
       },
       {
         path: "adopt/myproject/:userId",
-        element: (
-          <AdoptLayout>
-            <AdoptDetail />
-          </AdoptLayout>
-        ),
+        element: <AdoptDetail />,
       },
 
       {
         path: "adopt/:id",
-        element: (
-          <AdoptLayout>
-            <AdoptDetail />
-          </AdoptLayout>
-        ),
+        element: <AdoptDetail />,
       },
 
       { path: "user/:id", element: <UserProfile /> },
 
       {
         path: "rescue",
-        element: (
-          <RescueLayout>
-            <RescueContainer />
-          </RescueLayout>
-        ),
+        element: <RescueContainer />,
       },
 
       {
         path: "rescue/myproject/:userId",
-        element: (
-          <RescueLayout>
-            <RescueContainer />
-          </RescueLayout>
-        ),
+        element: <RescueContainer />,
       },
       { path: "rescue/:id", element: <RescueDetail /> },
     ],

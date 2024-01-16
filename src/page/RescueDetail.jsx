@@ -12,6 +12,7 @@ import ProgressCard from "../components/ProgressCard";
 import ListOfDonater from "../components/ListOfDonater";
 //先帶入假資料
 import rescuerData from "../assets/recuerData.json";
+
 export default function RescueDetail() {
   //先設定rescueProject的state
   const [rescueProject, setRescueProject] = useState({});
