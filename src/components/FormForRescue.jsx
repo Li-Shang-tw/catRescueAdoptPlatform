@@ -8,7 +8,6 @@ import {
   postCatAPI,
   putUserAPI,
   putCatAPI,
-  getCatAPI,
 } from "../callAPI";
 import { useNavigate } from "react-router-dom";
 

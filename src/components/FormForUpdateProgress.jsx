@@ -16,8 +16,12 @@ export default function FormForUpdateProgress({ rescueProject }) {
       currentAmount: currentAmount,
       DonateRecord: [...rescueProject.DonateRecord, data],
     });
-
-    alert("更新成功");
+    //當募款成功時，跳出alert
+    if (currentAmount >= rescueProject.targetAmount) {
+      alert("募款成功");
+    } else {
+      alert("更新成功");
+    }
   };
 
   return (
