@@ -12,9 +12,10 @@ export default function RescueDetail({
   rescueProject,
   handleUpdatRescueCat,
   currentUserId,
+  style,
 }) {
   return (
-    <div className="shadow  rounded-xl px-3 py-4 bg-white">
+    <div className={`shadow  rounded-xl px-3 py-4 bg-white ${style}`}>
       <div className="flex justify-between">
         <h2 className="text-2xl font-bold  mb-2">
           {rescueProject.name ? rescueProject.name : "待救援的貓貓"}

@@ -21,7 +21,7 @@ export default function UserProfile() {
     <div>
       <div className="mb-10 flex justify-center ">
         <div className="w-1/2">
-          <UserCard currentUser={currentUser} />
+          <UserCard currentUser={currentUser} style="justify-around" />
         </div>
       </div>
       <AccountSetting />

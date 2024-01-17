@@ -40,23 +40,24 @@ export default function RescueDetail() {
     setRescueProject({ ...rescueProject, ...feature });
   }
   return (
-    <div className="px-5">
+    <div className="px-5 ">
       <Carousel />
-      <div className="flex justify-center mb-4">
-        <div className="flex justify-between w-9/12">
-          <div className="w-5/12 ">
-            <CardDetail
-              rescueProject={rescueProject}
-              handleUpdatRescueCat={handleUpdatRescueCat}
-              currentUserId={currentUserId}
-            />
-          </div>
-          <div className="w-5/12">
-            <UserCard currentUser={resucer} type="2" />
-          </div>
-        </div>
+
+      <div className="flex  justify-between  mx-auto md:9/12  lg:w-10/12 mb-5">
+        <CardDetail
+          rescueProject={rescueProject}
+          handleUpdatRescueCat={handleUpdatRescueCat}
+          currentUserId={currentUserId}
+          style="w-5/12"
+        />
+
+        <UserCard
+          currentUser={resucer}
+          type="2"
+          style="w-6/12 justify-between"
+        />
       </div>
-      <div className="w-9/12 mx-auto">
+      <div className="lg:w-10/12  md:9/12 mx-auto">
         <ProgressCard
           rescueProject={rescueProject}
           handleUpdatRescueCat={handleUpdatRescueCat}
