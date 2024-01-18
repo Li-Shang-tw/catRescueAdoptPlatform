@@ -41,7 +41,7 @@ export default function RescueDetail() {
   }
   return (
     <div className="px-5 ">
-      <Carousel />
+      <Carousel image={rescueProject.image} />
 
       <div className="flex  justify-between  mx-auto md:9/12  lg:w-10/12 mb-5">
         <CardDetail

@@ -1,7 +1,7 @@
-export default function Carousel() {
+export default function Carousel({ image }) {
   return (
-    <div>
-      <h2>Carousel</h2>
+    <div className="bg-black mb-5">
+      <img src={image} alt="image" className="w-2/5 mx-auto rounded" />
     </div>
   );
 }
