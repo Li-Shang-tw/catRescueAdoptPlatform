@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import { getLoactionName } from "../composable/getLocationName";
 import interpretAgeCatergory from "../composable/interpretAgeCatergory";
+import Loading from "./Loading";
 
 export default function AdoptingCardList({ currentCats }) {
   let cardsList;
   //如果尚未有資料的話
   if (currentCats === "Not found") {
     cardsList = <p className="text-lg font-semibold"> 暫無要領養的貓貓</p>;
-  } else {
+  } else if (currentCats) {
     cardsList = currentCats.map((item) => (
       <li
         key={item.id}
@@ -39,6 +40,8 @@ export default function AdoptingCardList({ currentCats }) {
         </Link>
       </li>
     ));
+  } else {
+    return <Loading />;
   }
 
   return (

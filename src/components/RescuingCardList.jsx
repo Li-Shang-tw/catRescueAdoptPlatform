@@ -2,8 +2,13 @@ import Chip from "@mui/material/Chip";
 import { Link } from "react-router-dom";
 import { getLoactionName } from "../composable/getLocationName";
 import interpretAgeCatergory from "../composable/interpretAgeCatergory";
+import Loading from "./Loading";
 
 export default function Card({ currentCats }) {
+  if (!currentCats) {
+    return <Loading />;
+  }
+
   const cardsList = currentCats.map((item) => (
     <li
       key={item.id}

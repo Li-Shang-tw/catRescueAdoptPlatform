@@ -1,12 +1,12 @@
 import Overview from "./Overview";
 import { useState, useEffect } from "react";
-import rescueData from "../assets/rescueData.json";
+
 import { getRescuingCatsAPI } from "../callAPI";
 import RescuingCardList from "../components/RescuingCardList";
 
 export default function RescueContainer() {
   //先設定rescueCat的state
-  const [rescueCats, setRescueCats] = useState(rescueData);
+  const [rescueCats, setRescueCats] = useState(null);
   //用useEffect來呼叫API
   useEffect(() => {
     const fetchData = async () => {
@@ -23,14 +23,17 @@ export default function RescueContainer() {
   function handlePageChange(event, page) {
     setCurrentPage(page);
   }
-
+  let currentRescueCats;
+  let totalPages;
   //顯示當前頁面的資料
-  const currentRescueCats = rescueCats.slice(
-    (currentPage - 1) * 8,
-    currentPage * 8
-  );
-  //所有頁數
-  const totalPages = Math.ceil(rescueCats.length / 8);
+  if (rescueCats) {
+    currentRescueCats = rescueCats.slice(
+      (currentPage - 1) * 8,
+      currentPage * 8
+    );
+    //所有頁數
+    totalPages = Math.ceil(rescueCats.length / 8);
+  }
 
   //=========sort=========
   function handleSort(order) {

@@ -22,19 +22,15 @@ export default function AdoptContainer() {
   function handlePageChange(event, page) {
     setCurrentPage(page);
   }
-  //處理沒資料時的狀況
-  if (!adoptCats) {
-    return <div>loading</div>;
-  }
 
   //顯示當前頁面的資料
-
-  const currentRescueCats = adoptCats.slice(
-    (currentPage - 1) * 8,
-    currentPage * 8
-  );
-  //所有頁數
-  const totalPages = Math.ceil(adoptCats.length / 8);
+  let currentRescueCats;
+  let totalPages;
+  if (adoptCats) {
+    currentRescueCats = adoptCats.slice((currentPage - 1) * 8, currentPage * 8);
+    //所有頁數
+    totalPages = Math.ceil(adoptCats.length / 8);
+  }
 
   //======sort=======
   function handleSort() {
