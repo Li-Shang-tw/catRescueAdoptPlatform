@@ -17,11 +17,7 @@ export default function AdoptingCardList({ currentCats }) {
           <div className="relative">
             <img
               className="rounded-md rounded-b-3xl mb-2.5 "
-              src={
-                item.images[0]
-                  ? item.images[0]
-                  : "src/assets/imgs/rescuephoto2.jpg"
-              }
+              src={item.image ? item.image : "src/assets/imgs/rescuephoto2.jpg"}
               alt="rescueImg"
             />
           </div>
