@@ -10,6 +10,7 @@ import {
   putCatAPI,
 } from "../callAPI";
 import { useNavigate } from "react-router-dom";
+import { ContactSupportOutlined } from "@mui/icons-material";
 
 export default function FormforCreateRescue({
   type,
@@ -40,7 +41,8 @@ export default function FormforCreateRescue({
   const userData = useContext(CurrentUserContext);
   const { currentUser, setCurrentUser } = userData;
   //處理圖片
-  const imageField = watch("img");
+  const imageField = watch("image");
+  console.log(imageField);
   const [previewImage, setPreviewImage] = useState(null);
   useEffect(() => {
     if (imageField && imageField.length > 0) {
@@ -63,7 +65,10 @@ export default function FormforCreateRescue({
       data.rescuerId = currentUser.id;
       //幫表單資料預設currentAmount=0
       data.currentAmount = 0;
+      //將data的image重新賦予創造的url
+      data.image = previewImage;
       //呼叫API
+      console.log(data);
       await postCatAPI(data);
       alert("新增成功");
       //呼叫API，取得新增的資料
@@ -288,7 +293,7 @@ export default function FormforCreateRescue({
               <div>
                 <div className="flex items-center justify-between">
                   <label
-                    htmlFor="img"
+                    htmlFor="image"
                     className="block text-sm font-medium leading-6 text-gray-900"
                   >
                     貓咪的照片
@@ -297,12 +302,14 @@ export default function FormforCreateRescue({
                 <div className="mt-2">
                   <input
                     type="file"
-                    {...register("img", { required: "圖片是必填" })}
+                    {...register("image", { required: "圖片是必填" })}
                     className="block w-full rounded-md border-0 p-1.5  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    id="img"
+                    id="image"
                   />
-                  {errors.img?.message && (
-                    <small className="text-red-500">{errors.img.message}</small>
+                  {errors.image?.message && (
+                    <small className="text-red-500">
+                      {errors.image.message}
+                    </small>
                   )}
                 </div>
               </div>
