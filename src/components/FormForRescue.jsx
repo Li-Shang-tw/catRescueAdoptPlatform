@@ -10,8 +10,6 @@ import {
   putCatAPI,
 } from "../callAPI";
 import { useNavigate } from "react-router-dom";
-import { ContactSupportOutlined } from "@mui/icons-material";
-
 export default function FormforCreateRescue({
   type,
   rescueProject,
@@ -68,18 +66,17 @@ export default function FormforCreateRescue({
       //將data的image重新賦予創造的url
       data.image = previewImage;
       //呼叫API
-      console.log(data);
       await postCatAPI(data);
       alert("新增成功");
       //呼叫API，取得新增的資料
       const Cats = await getRescuingCatsAPI();
       const newCat = Cats[Cats.length - 1];
       //更新user的resuceCats
-      const newRescueCats = [...currentUser.rescueCats, newCat.id];
+      const newRescueProject = [...currentUser.rescueProject, newCat.id];
       //更新userContext的user
-      setCurrentUser({ ...currentUser, rescueCats: newRescueCats });
+      setCurrentUser({ ...currentUser, rescueProject: newRescueProject });
       //發送put請求 更新user的rescueCats
-      await putUserAPI(currentUser.id, { rescueCats: newRescueCats });
+      await putUserAPI(currentUser.id, { rescueProject: newRescueProject });
       //轉址到新增的貓咪頁面
       navigate(`/rescue/${newCat.id}`);
     }
