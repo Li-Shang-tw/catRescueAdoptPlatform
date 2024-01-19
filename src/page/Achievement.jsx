@@ -18,7 +18,16 @@ export default function Achievement() {
   //用useEffect來呼叫API
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getCatsOfCurrentUserAPI(currentUser.id, "2");
+      //當查詢救援時
+      let state;
+      switch (q) {
+        case "rescue":
+          state = "2";
+          break;
+        case "adopt":
+          state = "4";
+      }
+      const data = await getCatsOfCurrentUserAPI(currentUser.id, state);
       setCats(data);
     };
     fetchData();
