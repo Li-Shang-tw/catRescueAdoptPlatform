@@ -8,6 +8,7 @@ import CardInUserPage from "../components/CardInUserPage";
 import CardItemInUserPage from "../components/CardItemInUserPage";
 import AccountSetting from "../components/AccountSetting";
 import CastleIcon from "@mui/icons-material/Castle";
+import CastleOutlinedIcon from "@mui/icons-material/CastleOutlined";
 import MedicationIcon from "@mui/icons-material/Medication";
 import PersonIcon from "@mui/icons-material/Person";
 
@@ -15,8 +16,7 @@ export default function UserProfile() {
   //比對id與登入者的id是否相同
   const userData = useContext(CurrentUserContext);
   const { currentUser } = userData;
-  console.log(currentUser);
-  // const { id } = useParams();
+
   return (
     <div>
       <div className="mb-10 flex justify-center ">
@@ -25,47 +25,69 @@ export default function UserProfile() {
         </div>
       </div>
       <AccountSetting />
+      {currentUser.role === "rescuer" ? (
+        <>
+          <CardInUserPage title="我的專案">
+            <div>
+              <Link to={`/rescue/myproject/${currentUser.id}`}>
+                <CardItemInUserPage>
+                  <div>
+                    <MedicationIcon />
+                    <span className="ml-2">救援專案</span>
+                  </div>
+                </CardItemInUserPage>
+              </Link>
+              <Link to={`/adopt/myproject/${currentUser.id}`}>
+                <CardItemInUserPage>
+                  <div>
+                    <CastleIcon />
+                    <span className="ml-2">送養專案</span>
+                  </div>
+                </CardItemInUserPage>
+              </Link>
+            </div>
+          </CardInUserPage>
+          <CardInUserPage title="我的成就">
+            <div>
+              <Link to={`/myAchievement/${currentUser.id}/?q=rescue`}>
+                <CardItemInUserPage>
+                  <div>
+                    <MedicationIcon />
+                    <span className="ml-2">救援專案</span>
+                  </div>
+                </CardItemInUserPage>
+              </Link>
+              <Link to={`/myAchievement/${currentUser.id}/?q=adopt`}>
+                <CardItemInUserPage>
+                  <div>
+                    <CastleIcon />
+                    <span className="ml-2">送養專案</span>
+                  </div>
+                </CardItemInUserPage>
+              </Link>
+            </div>
+          </CardInUserPage>
+        </>
+      ) : (
+        <CardInUserPage title="我的專案與成就">
+          <div>
+            <CardItemInUserPage>
+              <div>
+                <CastleOutlinedIcon />
+                <span className="ml-2">請求中的專案</span>
+              </div>
+            </CardItemInUserPage>
 
-      <CardInUserPage title="我的專案">
-        <div>
-          <Link to={`/rescue/myproject/${currentUser.id}`}>
-            <CardItemInUserPage>
-              <div>
-                <MedicationIcon />
-                <span className="ml-2">救援專案</span>
-              </div>
-            </CardItemInUserPage>
-          </Link>
-          <Link to={`/adopt/myproject/${currentUser.id}`}>
             <CardItemInUserPage>
               <div>
                 <CastleIcon />
-                <span className="ml-2">送養專案</span>
+                <span className="ml-2">已認養專案</span>
               </div>
             </CardItemInUserPage>
-          </Link>
-        </div>
-      </CardInUserPage>
-      <CardInUserPage title="我的成就">
-        <div>
-          <Link to={`/myAchievement/${currentUser.id}/?q=rescue`}>
-            <CardItemInUserPage>
-              <div>
-                <MedicationIcon />
-                <span className="ml-2">救援專案</span>
-              </div>
-            </CardItemInUserPage>
-          </Link>
-          <Link to={`/myAchievement/${currentUser.id}/?q=adopt`}>
-            <CardItemInUserPage>
-              <div>
-                <CastleIcon />
-                <span className="ml-2">送養專案</span>
-              </div>
-            </CardItemInUserPage>
-          </Link>
-        </div>
-      </CardInUserPage>
+          </div>
+        </CardInUserPage>
+      )}
+
       <CardInUserPage title="追蹤的專案/用戶">
         <div>
           <Link to={`/rescue/myproject/${currentUser.id}/?q=achievement`}>
