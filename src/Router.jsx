@@ -16,6 +16,7 @@ import ErrorPage from "./page/ErrorPage";
 import SignUp from "./page/SignUp";
 import SignIn from "./page/SignIn";
 import Achievement from "./page/Achievement";
+import MyAdoptProjects from "./page/MyAdoptProjects";
 export const Router = createBrowserRouter([
   {
     path: "/",
@@ -33,7 +34,7 @@ export const Router = createBrowserRouter([
       },
       {
         path: "adopt/myproject/:userId",
-        element: <AdoptDetail />,
+        element: <MyAdoptProjects />,
       },
 
       {
