@@ -5,7 +5,9 @@ import interpretAgeCatergory from "../composable/interpretAgeCatergory";
 import Loading from "./Loading";
 
 export default function Card({ currentCats }) {
-  if (!currentCats) {
+  if (currentCats === null) {
+    return <p>暫時沒有送養成功的貓貓</p>;
+  } else if (!currentCats) {
     return <Loading />;
   }
 

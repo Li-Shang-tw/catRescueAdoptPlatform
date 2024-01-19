@@ -9,7 +9,7 @@ import { getCatsOfCurrentUserAPI } from "../callAPI";
 import RescuingCardList from "../components/RescuingCardList";
 export default function Achievement() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [cats, setCats] = useState([]);
+  const [cats, setCats] = useState(null);
   const q = searchParams.get("q");
 
   //取得當前登入者資料
@@ -28,7 +28,10 @@ export default function Achievement() {
           state = "4";
       }
       const data = await getCatsOfCurrentUserAPI(currentUser.id, state);
-      setCats(data);
+      //如果有順利取得資料
+      if (data) {
+        setCats(data);
+      }
     };
     fetchData();
   }, []);
