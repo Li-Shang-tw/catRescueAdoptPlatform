@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import Overview from "./Overview";
-import Pagination from "../components/Pagination.jsx";
+
 import AdoptingCardList from "../components/AdoptingCardList";
 import Sort from "../components/Sort.jsx";
 import { getCatsOfCurrentUserAPI } from "../callAPI";
