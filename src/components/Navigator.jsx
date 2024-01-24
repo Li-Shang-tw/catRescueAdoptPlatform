@@ -79,7 +79,18 @@ export default function Navigator() {
               "aria-labelledby": "basic-button",
             }}
           >
-            <MenuItem>救援者</MenuItem>
+            <MenuItem>
+              <NavLink
+                to="/otherUsers"
+                style={({ isActive }) => {
+                  return {
+                    fontWeight: isActive ? "bold" : "",
+                  };
+                }}
+              >
+                救援者
+              </NavLink>
+            </MenuItem>
             <MenuItem>認養者</MenuItem>
             <MenuItem>贊助者</MenuItem>
           </Menu>
