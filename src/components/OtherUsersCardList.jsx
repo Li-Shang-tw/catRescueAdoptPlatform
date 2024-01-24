@@ -4,7 +4,6 @@ import Loading from "./Loading";
 import UserCard from "./UserCard";
 
 export default function OtherUsersCardList({ currentCats }) {
-  console.log(currentCats);
   let cardsList;
   //如果尚未有資料的話
   if (currentCats === null) {

@@ -1,17 +1,31 @@
 import { useSearchParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { getOtherUsersAPI } from "../callAPI.js";
 import OtherUsersCardList from "../components/OtherUsersCardList.jsx";
+import { CurrentUserContext } from "../context/CurrentUserContext.js";
 
 import Overview from "./Overview.jsx";
 export default function OtherUsers() {
   const [otherUsers, setOtherUsers] = useState(null);
   const [searchParams] = useSearchParams();
   const role = searchParams.get("role");
+
+  //取得current user的資料
+  const { currentUser } = useContext(CurrentUserContext);
+  const currentUserId = currentUser.id;
+
   useEffect(() => {
     const fetchData = async () => {
       const data = await getOtherUsersAPI(role);
-      setOtherUsers(data);
+      let otherUsers;
+      //先移除掉自己
+      if (data) {
+        otherUsers = data.filter((item) => item.id !== currentUserId);
+      } else {
+        otherUsers = data;
+      }
+
+      setOtherUsers(otherUsers);
     };
     fetchData();
   }, []);
