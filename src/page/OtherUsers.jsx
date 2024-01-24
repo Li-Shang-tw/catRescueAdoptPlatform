@@ -1,7 +1,17 @@
 import { useSearchParams } from "react-router-dom";
-export default function otherUsers() {
+import { useState, useEffect } from "react";
+import { getOtherUsersAPI } from "../callAPI.js";
+export default function OtherUsers() {
+  const [otherUsers, setOtherUsers] = useState(null);
   const [searchParams] = useSearchParams();
   const role = searchParams.get("role");
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getOtherUsersAPI(role);
+      setOtherUsers(data);
+    };
+    fetchData();
+  }, []);
 
   return (
     <div>

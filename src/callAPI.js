@@ -46,6 +46,16 @@ function putUserAPI(id, data) {
       console.log(error);
     });
 }
+function getOtherUsersAPI(role) {
+  const url = new URL(`${base}users`);
+  url.searchParams.append("role", role);
+  return fetch(url, {
+    method: "GET",
+    headers: {
+      "content-type": "application/json",
+    },
+  }).then((res) => res.json());
+}
 
 function getRescuingCatsAPI() {
   return fetch(`${base}resuingCats?state=1`, {
@@ -149,4 +159,5 @@ export {
   getCatAPI,
   putCatAPI,
   getCatsOfCurrentUserAPI,
+  getOtherUsersAPI,
 };
