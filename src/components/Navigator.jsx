@@ -80,19 +80,11 @@ export default function Navigator() {
             }}
           >
             <MenuItem>
-              <NavLink
-                to="/otherUsers"
-                style={({ isActive }) => {
-                  return {
-                    fontWeight: isActive ? "bold" : "",
-                  };
-                }}
-              >
-                救援者
-              </NavLink>
+              <NavLink to="/otherUsers?role=rescuer">救援者</NavLink>
             </MenuItem>
-            <MenuItem>認養者</MenuItem>
-            <MenuItem>贊助者</MenuItem>
+            <MenuItem>
+              <NavLink to="/otherUsers?role=adopter">認養者</NavLink>
+            </MenuItem>
           </Menu>
         </li>
       </ul>
