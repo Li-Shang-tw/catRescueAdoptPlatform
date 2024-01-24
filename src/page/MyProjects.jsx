@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import Overview from "./Overview.jsx";
 
 import AdoptingCardList from "../components/AdoptingCardList.jsx";
+import RescuingCardList from "../components/RescuingCardList.jsx";
 import Sort from "../components/Sort.jsx";
 import { getCatsOfCurrentUserAPI } from "../callAPI.js";
 //載入current user的資料
@@ -62,11 +63,15 @@ export default function MyAdoptProjects() {
         currentPage={currentPage}
         handlePageChange={handlePageChange}
         handleSort={handleSort}
-        Card={AdoptingCardList}
+        Card={
+          (type === "rescue" && RescuingCardList) ||
+          (type === "adopt" && AdoptingCardList)
+        }
       >
         <div>
           <h1 className="text-4xl font-bold text-gray-900 leading-tight mb-2">
-            你的送養專案
+            {(type === "rescue" && "你的救援專案") ||
+              (type === "adopt" && "你的送養專案")}
           </h1>
         </div>
       </Overview>
