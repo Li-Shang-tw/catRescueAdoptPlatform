@@ -29,7 +29,7 @@ export default function UserProfile() {
         <>
           <CardInUserPage title="我的專案">
             <div>
-              <Link to={`/rescue/myproject/${currentUser.id}`}>
+              <Link to={`/myproject/${currentUser.id}?type=rescue`}>
                 <CardItemInUserPage>
                   <div>
                     <MedicationIcon />
@@ -37,7 +37,7 @@ export default function UserProfile() {
                   </div>
                 </CardItemInUserPage>
               </Link>
-              <Link to={`/adopt/myproject/${currentUser.id}`}>
+              <Link to={`/myproject/${currentUser.id}?type=adopt`}>
                 <CardItemInUserPage>
                   <div>
                     <CastleIcon />

@@ -1,23 +1,34 @@
 import { useState, useEffect, useContext } from "react";
-import Overview from "./Overview";
+import { useSearchParams } from "react-router-dom";
+import Overview from "./Overview.jsx";
 
-import AdoptingCardList from "../components/AdoptingCardList";
+import AdoptingCardList from "../components/AdoptingCardList.jsx";
 import Sort from "../components/Sort.jsx";
-import { getCatsOfCurrentUserAPI } from "../callAPI";
+import { getCatsOfCurrentUserAPI } from "../callAPI.js";
 //載入current user的資料
 import { CurrentUserContext } from "../context/CurrentUserContext.js";
 
 export default function MyAdoptProjects() {
-  const [adoptCats, setAdoptCats] = useState(null);
+  const [myCats, setyCats] = useState(null);
   //取得current user的資料
   const { currentUser } = useContext(CurrentUserContext);
   const currentUserId = currentUser.id;
 
+  //取得query string>>type
+  const [searchParams] = useSearchParams();
+  const type = searchParams.get("type");
+
   //用useEffect來呼叫API
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getCatsOfCurrentUserAPI(currentUserId, "3");
-      setAdoptCats(data);
+      //當type為rescue時，statw為3
+      if (type === "rescue") {
+        const data = await getCatsOfCurrentUserAPI(currentUserId, "1");
+        setyCats(data);
+      } else if (type === "adopt") {
+        const data = await getCatsOfCurrentUserAPI(currentUserId, "3");
+        setyCats(data);
+      }
     };
     fetchData();
   }, []);
@@ -33,10 +44,10 @@ export default function MyAdoptProjects() {
   //顯示當前頁面的資料
   let currentRescueCats;
   let totalPages;
-  if (adoptCats) {
-    currentRescueCats = adoptCats.slice((currentPage - 1) * 8, currentPage * 8);
+  if (myCats) {
+    currentRescueCats = myCats.slice((currentPage - 1) * 8, currentPage * 8);
     //所有頁數
-    totalPages = Math.ceil(adoptCats.length / 8);
+    totalPages = Math.ceil(myCats.length / 8);
   }
 
   //======sort=======
@@ -46,7 +57,7 @@ export default function MyAdoptProjects() {
   return (
     <div>
       <Overview
-        currentCats={adoptCats}
+        currentCats={myCats}
         totalPages={totalPages}
         currentPage={currentPage}
         handlePageChange={handlePageChange}
