@@ -7,6 +7,7 @@ import { getCatsOfCurrentUserAPI } from "../callAPI";
 
 //導入元件
 import RescuingCardList from "../components/RescuingCardList";
+import AdoptingCardList from "../components/AdoptingCardList";
 export default function Achievement() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [cats, setCats] = useState(null);
@@ -28,18 +29,26 @@ export default function Achievement() {
           state = "4";
       }
       const data = await getCatsOfCurrentUserAPI(currentUser.id, state);
-      //如果有順利取得資料
-      if (data) {
-        setCats(data);
-      }
+
+      setCats(data);
     };
     fetchData();
   }, []);
 
   return (
     <div>
-      <h2>成就</h2>
-      <RescuingCardList currentCats={cats} />
+      {q === "rescue" && (
+        <>
+          <h2>救援成就</h2>
+          <RescuingCardList currentCats={cats} />
+        </>
+      )}
+      {q === "adopt" && (
+        <>
+          <h2>送養成就</h2>
+          <AdoptingCardList currentCats={cats} />
+        </>
+      )}
     </div>
   );
 }

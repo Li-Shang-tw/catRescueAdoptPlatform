@@ -6,9 +6,9 @@ import Loading from "./Loading";
 
 export default function Card({ currentCats }) {
   if (currentCats === null) {
-    return <p>暫時沒有送養成功的貓貓</p>;
-  } else if (!currentCats) {
     return <Loading />;
+  } else if (!currentCats) {
+    return <p>暫時沒有救援貓貓的專案</p>;
   }
 
   const cardsList = currentCats.map((item) => (

@@ -134,6 +134,7 @@ function getCatsOfCurrentUserAPI(rescuerId, state) {
 
     .catch((error) => {
       // handle error
+
       return error;
     });
 }

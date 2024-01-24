@@ -25,9 +25,11 @@ export default function MyAdoptProjects() {
       //當type為rescue時，statw為3
       if (type === "rescue") {
         const data = await getCatsOfCurrentUserAPI(currentUserId, "1");
+        console.log(data);
         setyCats(data);
       } else if (type === "adopt") {
         const data = await getCatsOfCurrentUserAPI(currentUserId, "3");
+        console.log(data);
         setyCats(data);
       }
     };
