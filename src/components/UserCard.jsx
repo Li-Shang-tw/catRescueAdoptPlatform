@@ -3,8 +3,15 @@ import CastleIcon from "@mui/icons-material/Castle";
 import MedicationIcon from "@mui/icons-material/Medication";
 import { getLoactionName } from "../composable/getLocationName";
 import Button from "@mui/material/Button";
+import Loading from "./Loading";
 
 export default function UserCard({ currentUser, type, style }) {
+  //如果尚未有資料的話
+  if (currentUser === null) {
+    return <Loading />;
+  } else if (!currentUser) {
+    return <p>暫時沒有用戶資料</p>;
+  }
   return (
     <>
       <div

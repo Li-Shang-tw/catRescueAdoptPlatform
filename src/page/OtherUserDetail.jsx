@@ -1,13 +1,13 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getUserAPI } from "../callAPI.js";
+import UserCard from "../components/UserCard";
 export default function OtherUserDetail() {
   const { id } = useParams();
   const [otherUser, setOtherUser] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
       const data = await getUserAPI(id);
-      console.log(data);
       setOtherUser(data);
     };
     fetchData();
@@ -15,8 +15,10 @@ export default function OtherUserDetail() {
 
   return (
     <>
-      <h2>其他用戶細節{id}</h2>
-      <p>{otherUser && otherUser.name}</p>
+      <h2>其他用戶細節</h2>
+      <div className="w-1/2 mx-auto">
+        <UserCard currentUser={otherUser} style="justify-around" />
+      </div>
     </>
   );
 }
