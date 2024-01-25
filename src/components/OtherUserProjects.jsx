@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { getCatAPI } from "../callAPI";
+import OverView from "../page/Overview";
+import RescuingCardList from "./RescuingCardList";
+import AdoptingCardList from "./AdoptingCardList";
 export default function OtherUserProjects({ projectList, type }) {
   //設定初始狀態
   const [projects, setProjects] = useState([]);
@@ -13,7 +16,6 @@ export default function OtherUserProjects({ projectList, type }) {
         })
       );
       //按照type來篩選資料
-
       let filterCats = [];
       switch (type) {
         case "rescuing":
@@ -29,7 +31,7 @@ export default function OtherUserProjects({ projectList, type }) {
           filterCats = data.filter((item) => item.state === "4");
           break;
       }
-      console.log(filterCats);
+
       setProjects(filterCats);
     };
     fetchData();
@@ -39,5 +41,41 @@ export default function OtherUserProjects({ projectList, type }) {
   if (projectList && projectList.length === 0) {
     return <p>暫無資料</p>;
   }
-  return <>有資料</>;
+
+  //current page
+  const [currentPage, setCurrentPage] = useState(1);
+
+  //=========pagination=========
+  function handlePageChange(event, page) {
+    setCurrentPage(page);
+  }
+
+  //顯示當前頁面的資料
+  let currentRescueCats;
+  let totalPages;
+  if (projects) {
+    currentRescueCats = projects.slice((currentPage - 1) * 8, currentPage * 8);
+    //所有頁數
+    totalPages = Math.ceil(projects.length / 8);
+  }
+
+  //======sort=======
+  function handleSort() {
+    console.log("sort");
+  }
+  return (
+    <>
+      <OverView
+        currentCats={projects}
+        totalPages={totalPages}
+        currentPage={currentPage}
+        handlePageChange={handlePageChange}
+        handleSort={handleSort}
+        Card={
+          ((type === "rescuing" || type === "rescued") && RescuingCardList) ||
+          ((type === "adopting" || type === "adopted") && AdoptingCardList)
+        }
+      />
+    </>
+  );
 }
