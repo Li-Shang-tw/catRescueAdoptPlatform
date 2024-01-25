@@ -20,7 +20,10 @@ export default function OtherUserDetail() {
       <div className="w-1/2 mx-auto">
         <UserCard currentUser={otherUser} style="justify-around" />
       </div>
-      <Tabs />
+      <Tabs
+        rescueList={otherUser && otherUser.rescueProject}
+        adoptList={otherUser && otherUser.adoptProject}
+      />
     </>
   );
 }
