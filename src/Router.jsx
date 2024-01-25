@@ -18,6 +18,7 @@ import SignIn from "./page/SignIn";
 import Achievement from "./page/Achievement";
 import MyProjects from "./page/MyProjects";
 import OtherUsers from "./page/OtherUsers";
+import OtherUserDetail from "./page/OtherUserDetail";
 export const Router = createBrowserRouter([
   {
     path: "/",
@@ -56,6 +57,7 @@ export const Router = createBrowserRouter([
       },
       { path: "rescue/:id", element: <RescueDetail /> },
       { path: "otherUsers", element: <OtherUsers /> },
+      { path: "otherUser/:id", element: <OtherUserDetail /> },
     ],
   },
   {
