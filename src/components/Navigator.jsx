@@ -16,19 +16,18 @@ export default function Navigator() {
   //---取得登入者資料-----
   const userData = useContext(CurrentUserContext);
   const { currentUser } = userData;
-  //下拉選單的狀態
-  const [anchorEl, setAnchorEl] = useState(null);
-  //當currentUser為空值時，不執行下面的程式碼
-  if (!currentUser) {
-    return <></>;
-  }
-  //取得用戶名稱與路徑id
 
-  const id = currentUser.id;
-  const userName = currentUser.name;
-  //用戶名稱只取最後一個字
-  const userNameLastWord = userName.substr(userName.length - 1);
+  //取得用戶名稱與路徑id
+  function getUserNameLastWord() {
+    if (currentUser) {
+      const userName = currentUser.name;
+      //用戶名稱只取最後一個字
+      const userNameLastWord = userName.substr(userName.length - 1);
+      return userNameLastWord;
+    }
+  }
   //-----處理下拉選單---------
+  const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -96,13 +95,24 @@ export default function Navigator() {
       </ul>
       <div className="flex">
         <div className="flex">
-          <ModalSet btn={<CreateBtn />} form={<FormForRescue />} />
-          <ModalSet btn={<EditBtn>新增收養</EditBtn>} form={<FormForAdopt />} />
+          {currentUser && currentUser.role === "rescuer" && (
+            <>
+              <ModalSet btn={<CreateBtn />} form={<FormForRescue />} />
+              <ModalSet
+                btn={<EditBtn>新增收養</EditBtn>}
+                form={<FormForAdopt />}
+              />
+            </>
+          )}
         </div>
         <div className=" hover:shadow-md cursor-pointer rounded-full ml-10">
-          <NavLink to={`/user/${id}`}>
-            <Avatar>{userNameLastWord}</Avatar>
-          </NavLink>
+          {currentUser ? (
+            <NavLink to={`/user/${currentUser.id}`}>
+              <Avatar>{getUserNameLastWord}</Avatar>
+            </NavLink>
+          ) : (
+            <div>登入</div>
+          )}
         </div>
       </div>
     </div>
