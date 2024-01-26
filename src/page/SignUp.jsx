@@ -26,6 +26,10 @@ export default function SignUp() {
     const users = await getUsersAPI();
     const currentUser = users[users.length - 1];
     setCurrentUser(currentUser);
+    //將id存入cookie，期限為7天
+    document.cookie = `id=${currentUser.id}; expires=${new Date(
+      Date.now() + 7 * 24 * 60 * 60 * 1000
+    )}; path=/`;
     //alert註冊成功
     alert("註冊成功");
     //導向user
