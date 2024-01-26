@@ -1,29 +1,70 @@
 import { useParams } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
 //先引入資料
-import rescurData from "../assets/rescueData.json";
-
+import { getCatAPI, getUserAPI } from "../callAPI";
+//載入current user的資料
+import { CurrentUserContext } from "../context/CurrentUserContext";
 //載入元件
 import Carousel from "../components/Carousel";
 import CardDetail from "../components/CardDetail";
-import CardRescuer from "../components/CardRescuer";
+import UserCard from "../components/UserCard";
+import ProgressCard from "../components/ProgressCard";
+import ListOfDonater from "../components/ListOfDonater";
+//先帶入假資料
+import rescuerData from "../assets/recuerData.json";
+
 export default function RescueDetail() {
-  //取得id,並轉成數字
+  //先設定rescueProject的state
+  const [rescueProject, setRescueProject] = useState({});
+  const [resucer, setRescuer] = useState(rescuerData[0]);
+
+  //取得current user的資料
+  const { currentUser } = useContext(CurrentUserContext);
+  const currentUserId = currentUser.id;
+
+  //取得id
   const { id } = useParams();
+  //用useEffect來呼叫API
+  useEffect(() => {
+    const fetchData = async () => {
+      const catData = await getCatAPI(id);
+      setRescueProject(catData);
+      const userData = await getUserAPI(catData.rescuerId);
+      setRescuer(userData);
+    };
+    fetchData();
+  }, []);
 
-  //找出符合路徑id的資料
-  //id是字串，要轉成數字
-  const rescueProject = rescurData.find((item) => item.id === parseInt(id));
-
+  function handleUpdatRescueCat(feature) {
+    //取得原本的rescueProject，整合更新的feature成新的rescueProject
+    setRescueProject({ ...rescueProject, ...feature });
+  }
   return (
-    <div>
-      <Carousel />
-      <div className="flex justify-between ">
-        <div className="w-8/12 ">
-          <CardDetail rescueProject={rescueProject} />
-        </div>
-        <div className="w-3/12">
-          <CardRescuer id={id} />
-        </div>
+    <div className="px-5 ">
+      <Carousel image={rescueProject.image} />
+
+      <div className="flex  justify-between  mx-auto md:9/12  lg:w-10/12 mb-5">
+        <CardDetail
+          rescueProject={rescueProject}
+          handleUpdatRescueCat={handleUpdatRescueCat}
+          currentUserId={currentUserId}
+          style="w-5/12"
+        />
+
+        <UserCard
+          currentUser={resucer}
+          type="2"
+          style="w-6/12 justify-between"
+        />
+      </div>
+      <div className="lg:w-10/12  md:9/12 mx-auto">
+        <ProgressCard
+          rescueProject={rescueProject}
+          handleUpdatRescueCat={handleUpdatRescueCat}
+        />
+      </div>
+      <div className="my-4 w-9/12 mx-auto">
+        <ListOfDonater rescueProject={rescueProject} />
       </div>
     </div>
   );

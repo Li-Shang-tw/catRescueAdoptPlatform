@@ -1,12 +1,21 @@
-import RescueOverview from "../page/RescueOverview";
-import { useState, useContext } from "react";
-//載入救援資料的context
-import { RescueContext } from "../context/RescueContext";
+import Overview from "./Overview";
+import { useState, useEffect } from "react";
+
+import { getRescuingCatsAPI } from "../callAPI";
+import RescuingCardList from "../components/RescuingCardList";
 
 export default function RescueContainer() {
-  //使用context
-  const rescueData = useContext(RescueContext);
-  const { rescueCats, setRescueCats } = rescueData;
+  //先設定rescueCat的state
+  const [rescueCats, setRescueCats] = useState(null);
+  //用useEffect來呼叫API
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getRescuingCatsAPI();
+      setRescueCats(data);
+    };
+    fetchData();
+  }, []);
+
   //current page
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -14,14 +23,17 @@ export default function RescueContainer() {
   function handlePageChange(event, page) {
     setCurrentPage(page);
   }
-
+  let currentRescueCats;
+  let totalPages;
   //顯示當前頁面的資料
-  const currentRescueCats = rescueCats.slice(
-    (currentPage - 1) * 8,
-    currentPage * 8
-  );
-  //所有頁數
-  const totalPages = Math.ceil(rescueCats.length / 8);
+  if (rescueCats) {
+    currentRescueCats = rescueCats.slice(
+      (currentPage - 1) * 8,
+      currentPage * 8
+    );
+    //所有頁數
+    totalPages = Math.ceil(rescueCats.length / 8);
+  }
 
   //=========sort=========
   function handleSort(order) {
@@ -48,14 +60,22 @@ export default function RescueContainer() {
   return (
     <>
       <div className="container mx-auto px-4">
-        <RescueOverview
-          currentRescueCats={currentRescueCats}
+        <Overview
+          currentCats={currentRescueCats}
           setRescueCats={setRescueCats}
           totalPages={totalPages}
           currentPage={currentPage}
           handlePageChange={handlePageChange}
           handleSort={handleSort}
-        />
+          Card={RescuingCardList}
+        >
+          <div>
+            <h1 className="text-4xl font-bold text-gray-900 leading-tight mb-2">
+              貓咪救援總覽
+            </h1>
+            <p className="mb-4">可愛的貓貓需要你的幫忙</p>
+          </div>
+        </Overview>
       </div>
     </>
   );

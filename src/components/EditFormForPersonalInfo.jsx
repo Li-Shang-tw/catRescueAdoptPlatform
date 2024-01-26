@@ -1,49 +1,47 @@
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { postUserAPI, getUsersAPI } from "../callAPI";
+
+// import { getUsersAPI } from "../callAPI";
 import { CurrentUserContext } from "../context/CurrentUserContext";
 import { useContext } from "react";
 
-export default function SignUp() {
+import { putUserAPI, getUserAPI } from "../callAPI";
+
+export default function EditFormForPersonalInfo() {
+  //取得userContext的user
+  const userData = useContext(CurrentUserContext);
+  const { currentUser, setCurrentUser } = userData;
+  //複製並取得能夠修改的user欄位
+  const temporaryUser = {
+    name: currentUser.name,
+    email: currentUser.email,
+    role: currentUser.role,
+    location: currentUser.location,
+  };
+  //取得user的id
+  const userId = currentUser.id;
+  const defaultValues = {
+    defaultValues: temporaryUser,
+  };
   const {
     register,
     handleSubmit,
     formState: { errors },
-    watch,
-  } = useForm();
-
-  //取得userContext的user
-  const userData = useContext(CurrentUserContext);
-  const { setCurrentUser } = userData;
-  const setPassword = watch("password");
-  //使用useNavigate
-  const navigate = useNavigate();
+  } = useForm(defaultValues);
 
   const onSubmit = async (data) => {
-    //將註冊資料傳送到api
-    await postUserAPI(data);
-    //從api中取得剛剛建立的資料，存入userContext
-    const users = await getUsersAPI();
-    const currentUser = users[users.length - 1];
-    setCurrentUser(currentUser);
-    //alert註冊成功
-    alert("註冊成功");
-    //導向user
-    navigate(`/user/${currentUser.id}}`);
-    // //導向其他頁面
-    // if (window.history.length === 0) {
-    //   //1.沒有歷史紀錄，導向userProfile
-    //   navigate("/user/1");
-    // } else {
-    //   //2.有歷史紀錄，回到上一頁
-    //   navigate(-1);
-    // }
+    //發送修改user的請求
+    await putUserAPI(userId, data);
+    //取得更新後的user
+    const updatedUser = await getUserAPI(userId);
+    //更新userContext的user
+    setCurrentUser(updatedUser);
+    alert("使用者資料已更新");
   };
+
   return (
     <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
       <div className="flex flex-col items-center  mt-10">
-        <h1 className="text-4xl font-bold mb-3.5 ">貓咪救援認養平台</h1>
-        <h3 className="text-2xl font-bold">請註冊</h3>
+        <h3 className="text-2xl font-bold">修改個人資訊</h3>
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
@@ -163,8 +161,7 @@ export default function SignUp() {
               <option value="taitung">台東</option>
               <option value="penghu">澎湖</option>
               <option value="kinmen">金門</option>
-              <option value="lienchiang">連江</option>
-              <option value="overseas">海外</option>
+              <option value="lienchiang">連江</option>p
             </select>
 
             {errors.location?.message && (
@@ -172,53 +169,7 @@ export default function SignUp() {
             )}
           </div>
         </div>
-        <div>
-          <div className="flex items-center justify-between">
-            <label
-              htmlFor="password"
-              className="block text-sm font-medium leading-6 text-gray-900"
-            >
-              創建你的密碼
-            </label>
-          </div>
-          <div className="mt-2">
-            <input
-              {...register("password", { required: "密碼是必填" })}
-              className="block w-full rounded-md border-0 p-1.5  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              id="password"
-            />
-            {errors.password?.message && (
-              <small className="text-red-500">{errors.password.message}</small>
-            )}
-          </div>
-        </div>
-        <div>
-          <div className="flex items-center justify-between">
-            <label
-              htmlFor="confirmPassword"
-              className="block text-sm font-medium leading-6 text-gray-900"
-            >
-              再次輸入密碼
-            </label>
-          </div>
-          <div className="mt-2">
-            <input
-              {...register("confirmPassword", {
-                required: "請再次輸入密碼",
-                validate: {
-                  matchPattern: (v) => v === setPassword || "密碼不一致",
-                },
-              })}
-              className="block w-full rounded-md border-0 p-1.5  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              id="password"
-            />
-            {errors.confirmPassword?.message && (
-              <small className="text-red-500">
-                {errors.confirmPassword.message}
-              </small>
-            )}
-          </div>
-        </div>
+
         <input
           type="submit"
           className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
