@@ -8,7 +8,7 @@ export default function AdoptingCardList({ currentCats }) {
   //如果尚未有資料的話
   if (currentCats === null) {
     return <Loading />;
-  } else if (!currentCats) {
+  } else if (currentCats === "Not found" || !currentCats) {
     return <p>暫時沒有送養貓貓的資料</p>;
   }
 
