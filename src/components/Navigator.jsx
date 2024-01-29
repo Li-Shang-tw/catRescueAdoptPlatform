@@ -2,6 +2,7 @@ import Avatar from "@mui/material/Avatar";
 
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { CurrentUserContext } from "../context/CurrentUserContext";
@@ -93,7 +94,7 @@ export default function Navigator() {
           </Menu>
         </li>
       </ul>
-      <div className="flex">
+      <div className="flex h-full">
         <div className="flex">
           {currentUser && currentUser.role === "rescuer" && (
             <>
@@ -111,7 +112,12 @@ export default function Navigator() {
               <Avatar>{getUserNameLastWord}</Avatar>
             </NavLink>
           ) : (
-            <div>登入</div>
+            <div className="flex items-center">
+              <NavLink to="/signIn">
+                <AccountCircleIcon />
+                <span className="ml-3">登入</span>
+              </NavLink>
+            </div>
           )}
         </div>
       </div>
