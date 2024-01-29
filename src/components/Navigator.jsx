@@ -112,7 +112,7 @@ export default function Navigator() {
               <Avatar>{getUserNameLastWord}</Avatar>
             </NavLink>
           ) : (
-            <div className="flex items-center">
+            <div className="flex items-center p-2">
               <NavLink to="/signIn">
                 <AccountCircleIcon />
                 <span className="ml-3">登入</span>
