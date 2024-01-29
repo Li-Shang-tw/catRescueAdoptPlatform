@@ -12,15 +12,15 @@ export default function OtherUsers() {
 
   //取得current user的資料
   const { currentUser } = useContext(CurrentUserContext);
-  const currentUserId = currentUser.id;
 
   useEffect(() => {
     const fetchData = async () => {
       const data = await getOtherUsersAPI(role);
       let otherUsers;
       //先移除掉自己
-      if (data) {
-        otherUsers = data.filter((item) => item.id !== currentUserId);
+      //當有資料與有登入者時，才執行
+      if (data && currentUser) {
+        otherUsers = data.filter((item) => item.id !== currentUser.id);
       } else {
         otherUsers = data;
       }
@@ -28,7 +28,7 @@ export default function OtherUsers() {
       setOtherUsers(otherUsers);
     };
     fetchData();
-  }, []);
+  }, [role, currentUser]);
 
   //current page
   const [currentPage, setCurrentPage] = useState(1);

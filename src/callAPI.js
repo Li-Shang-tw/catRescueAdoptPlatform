@@ -54,7 +54,11 @@ function getOtherUsersAPI(role) {
     headers: {
       "content-type": "application/json",
     },
-  }).then((res) => res.json());
+  })
+    .then((res) => res.json())
+    .catch((error) => {
+      return error;
+    });
 }
 
 function getRescuingCatsAPI() {
@@ -80,7 +84,11 @@ function getAdoptingCatsAPI() {
       "content-type": "application/json",
     },
   })
-    .then((res) => res.json())
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+    })
     .catch((error) => {
       // handle error
       console.log(error);

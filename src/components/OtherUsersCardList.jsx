@@ -8,7 +8,7 @@ export default function OtherUsersCardList({ currentCats }) {
   //如果尚未有資料的話
   if (currentCats === null) {
     return <Loading />;
-  } else if (!currentCats) {
+  } else if (!currentCats || currentCats === "Not foun") {
     return <p>暫時沒有用戶資料</p>;
   }
 
