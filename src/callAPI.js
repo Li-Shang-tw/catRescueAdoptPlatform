@@ -156,6 +156,7 @@ function getCatsOfCurrentUserAPI(rescuerId, state) {
       return error;
     });
 }
+
 export {
   postUserAPI,
   getUsersAPI,
