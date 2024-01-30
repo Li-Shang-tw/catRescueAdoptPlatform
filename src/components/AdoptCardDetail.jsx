@@ -19,10 +19,11 @@ export default function AdoptCardDetail({
         <h2 className="text-2xl font-bold  mb-2">
           {adoptProject.name ? adoptProject.name : "待救援的貓貓"}
         </h2>
-        {adoptProject.rescuerId === currentUser.id && (
+        {currentUser && adoptProject.rescuerId === currentUser.id && (
           <ModalSet btn={<EditBtn>編輯</EditBtn>} />
         )}
-        {adoptProject.rescuerId !== currentUser.id &&
+        {currentUser &&
+          adoptProject.rescuerId !== currentUser.id &&
           currentUser.role === "adopter" && <EditBtn>認養</EditBtn>}
       </div>
       <div className="flex justify-start mb-3">

@@ -10,17 +10,14 @@ import CardDetail from "../components/CardDetail";
 import UserCard from "../components/UserCard";
 import ProgressCard from "../components/ProgressCard";
 import ListOfDonater from "../components/ListOfDonater";
-//先帶入假資料
-import rescuerData from "../assets/recuerData.json";
 
 export default function RescueDetail() {
   //先設定rescueProject的state
   const [rescueProject, setRescueProject] = useState({});
-  const [resucer, setRescuer] = useState(rescuerData[0]);
+  const [resucer, setRescuer] = useState({});
 
   //取得current user的資料
   const { currentUser } = useContext(CurrentUserContext);
-  const currentUserId = currentUser.id;
 
   //取得id
   const { id } = useParams();
@@ -33,7 +30,7 @@ export default function RescueDetail() {
       setRescuer(userData);
     };
     fetchData();
-  }, []);
+  }, [id]);
 
   function handleUpdatRescueCat(feature) {
     //取得原本的rescueProject，整合更新的feature成新的rescueProject
@@ -47,7 +44,7 @@ export default function RescueDetail() {
         <CardDetail
           rescueProject={rescueProject}
           handleUpdatRescueCat={handleUpdatRescueCat}
-          currentUserId={currentUserId}
+          currentUserId={currentUser && currentUser.id}
           style="w-5/12"
         />
 
