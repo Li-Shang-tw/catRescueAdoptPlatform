@@ -48,11 +48,7 @@ export default function RescueDetail() {
           style="w-5/12"
         />
 
-        <UserCard
-          currentUser={resucer}
-          type="2"
-          style="w-6/12 justify-between"
-        />
+        <UserCard user={resucer} type="2" style="w-6/12 justify-between" />
       </div>
       <div className="lg:w-10/12  md:9/12 mx-auto">
         <ProgressCard

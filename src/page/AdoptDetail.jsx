@@ -50,7 +50,7 @@ export default function AdoptDetail() {
             />
           </div>
           <div className="w-5/12">
-            <UserCard currentUser={resucer} type="2" />
+            <UserCard user={resucer} type="2" />
           </div>
         </div>
       </div>
