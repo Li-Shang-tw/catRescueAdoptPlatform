@@ -22,6 +22,7 @@ import Achievement from "./page/Achievement";
 import MyProjects from "./page/MyProjects";
 import OtherUsers from "./page/OtherUsers";
 import OtherUserDetail from "./page/OtherUserDetail";
+import RequestAdopts from "./page/RequestAdopts";
 export const Router = createBrowserRouter([
   {
     path: "/",
@@ -63,6 +64,7 @@ export const Router = createBrowserRouter([
       { path: "rescue/:id", element: <RescueDetail /> },
       { path: "otherUsers", element: <OtherUsers /> },
       { path: "otherUser/:id", element: <OtherUserDetail /> },
+      { path: "requestProject/:id", element: <RequestAdopts /> },
     ],
   },
   {
