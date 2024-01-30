@@ -56,6 +56,14 @@ export default function UserProfile() {
                   </div>
                 </CardItemInUserPage>
               </Link>
+              <Link to={`/requestProject/${currentUser.id}`}>
+                <CardItemInUserPage>
+                  <div>
+                    <CastleIcon />
+                    <span className="ml-2">被請求的送養專案</span>
+                  </div>
+                </CardItemInUserPage>
+              </Link>
             </div>
           </CardInUserPage>
           <CardInUserPage title="我的成就">
