@@ -8,6 +8,7 @@ import { CurrentUserContext } from "../context/CurrentUserContext";
 import Carousel from "../components/Carousel";
 import AdoptCardDetail from "../components/AdoptCardDetail";
 import UserCard from "../components/UserCard";
+import RequestUsersList from "../components/RequestUsersList";
 //先帶入假資料
 import rescuerData from "../assets/recuerData.json";
 
@@ -39,7 +40,7 @@ export default function AdoptDetail() {
   return (
     <div className="px-5">
       <Carousel />
-      <div className="flex justify-center mb-4">
+      <div className="flex  flex-col items-center mb-4">
         <div className="flex justify-between w-9/12">
           <div className="w-5/12 ">
             <AdoptCardDetail
@@ -53,6 +54,9 @@ export default function AdoptDetail() {
           </div>
         </div>
       </div>
+      {adoptProject.requestingUsers && (
+        <RequestUsersList userList={adoptProject.requestingUsers} />
+      )}
     </div>
   );
 }

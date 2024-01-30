@@ -38,7 +38,7 @@ export default function UserCard({ currentUser, type, style }) {
 
           <p className="mb-1">{getLoactionName(currentUser.location)}</p>
           <p className="mb-1">{currentUser.email}</p>
-          <div className="flex">
+          {/* <div className="flex">
             <p className="mr-3">
               救援數:
               {currentUser.rescueProject ? currentUser.rescueProject.length : 0}
@@ -48,7 +48,7 @@ export default function UserCard({ currentUser, type, style }) {
               認養數:
               {currentUser.adoptProject ? currentUser.adoptProject.length : 0}
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
