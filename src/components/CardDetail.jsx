@@ -20,7 +20,7 @@ export default function RescueDetail({
         <h2 className="text-2xl font-bold  mb-2">
           {rescueProject.name ? rescueProject.name : "待救援的貓貓"}
         </h2>
-        {rescueProject.rescuerId === currentUserId && (
+        {currentUserId && rescueProject.rescuerId === currentUserId && (
           <ModalSet
             btn={<EditBtn>編輯</EditBtn>}
             form={

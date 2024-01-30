@@ -32,7 +32,8 @@ export default function ProgressCard({ rescueProject, handleUpdatRescueCat }) {
           <p className="text-xl font-bold"> NT$ {currentAmount}</p>
         </div>
         <div>
-          {rescueProject.state === "1" &&
+          {currentUser &&
+            rescueProject.state === "1" &&
             rescueProject.rescuerId === currentUser.id && (
               <div className="flex justify-end">
                 <ModalSet
