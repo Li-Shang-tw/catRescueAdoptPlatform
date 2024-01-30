@@ -1,4 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
+//載入Mui主題
+import { ThemeProvider } from "@mui/material/styles";
+import { theme } from "./theme/ThemeMui";
 
 //載入Root
 import Root from "./page/RootTRoute";
@@ -23,9 +26,11 @@ export const Router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <CurrentUserLayout>
-        <Root />
-      </CurrentUserLayout>
+      <ThemeProvider theme={theme}>
+        <CurrentUserLayout>
+          <Root />
+        </CurrentUserLayout>
+      </ThemeProvider>
     ),
     errorElement: <ErrorPage />,
     children: [
@@ -63,17 +68,21 @@ export const Router = createBrowserRouter([
   {
     path: "/signUp",
     element: (
-      <CurrentUserLayout>
-        <SignUp />
-      </CurrentUserLayout>
+      <ThemeProvider theme={theme}>
+        <CurrentUserLayout>
+          <SignUp />
+        </CurrentUserLayout>
+      </ThemeProvider>
     ),
   },
   {
     path: "/signIn",
     element: (
-      <CurrentUserLayout>
-        <SignIn />
-      </CurrentUserLayout>
+      <ThemeProvider theme={theme}>
+        <CurrentUserLayout>
+          <SignIn />
+        </CurrentUserLayout>
+      </ThemeProvider>
     ),
   },
 ]);
