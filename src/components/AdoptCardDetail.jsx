@@ -11,7 +11,6 @@ import { CurrentUserContext } from "../context/CurrentUserContext";
 
 //引用元件
 import ModalSet from "./ModalSet";
-
 import EditBtn from "./EditBtn";
 
 export default function AdoptCardDetail({ adoptProject, updateAdoptProject }) {

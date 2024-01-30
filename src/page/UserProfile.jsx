@@ -12,6 +12,8 @@ import CastleOutlinedIcon from "@mui/icons-material/CastleOutlined";
 import MedicationIcon from "@mui/icons-material/Medication";
 import PersonIcon from "@mui/icons-material/Person";
 import CheckUserLogin from "../components/CheckUserLogin";
+import ModalSet from "../components/ModalSet";
+import RequestingAdoptsModal from "../components/RequestingAdoptsModal";
 
 export default function UserProfile() {
   //比對id與登入者的id是否相同
@@ -80,12 +82,17 @@ export default function UserProfile() {
       ) : (
         <CardInUserPage title="我的專案與成就">
           <div>
-            <CardItemInUserPage>
-              <div>
-                <CastleOutlinedIcon />
-                <span className="ml-2">請求中的專案</span>
-              </div>
-            </CardItemInUserPage>
+            <ModalSet
+              btn={
+                <CardItemInUserPage>
+                  <div>
+                    <CastleOutlinedIcon />
+                    <span className="ml-2">請求中的專案</span>
+                  </div>
+                </CardItemInUserPage>
+              }
+              form={<RequestingAdoptsModal />}
+            />
 
             <CardItemInUserPage>
               <div>
