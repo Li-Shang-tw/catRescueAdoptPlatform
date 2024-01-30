@@ -55,7 +55,10 @@ export default function AdoptDetail() {
         </div>
       </div>
       {adoptProject.requestingUsers && (
-        <RequestUsersList userList={adoptProject.requestingUsers} />
+        <RequestUsersList
+          userList={adoptProject.requestingUsers}
+          projectId={adoptProject.id}
+        />
       )}
     </div>
   );

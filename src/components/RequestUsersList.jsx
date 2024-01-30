@@ -1,7 +1,7 @@
 import UserCard from "./UserCard";
 import { getUserAPI } from "../callAPI";
 import { useState, useEffect } from "react";
-export default function RequestCardList({ userList }) {
+export default function RequestCardList({ userList, projectId }) {
   const [users, setUsers] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
@@ -21,9 +21,10 @@ export default function RequestCardList({ userList }) {
           users.map((user) => (
             <li key={user.id}>
               <UserCard
-                currentUser={user}
+                user={user}
                 type="3"
                 style="flex-col"
+                projectId={projectId}
                 className="mr-5"
               />
             </li>
