@@ -6,16 +6,61 @@ import Button from "@mui/material/Button";
 import Loading from "./Loading";
 import { useContext } from "react";
 import { CurrentUserContext } from "../context/CurrentUserContext";
+import { putCatAPI, getUserAPI, putUserAPI } from "../callAPI";
 
 export default function UserCard({ user, type, style, projectId }) {
-  const { currentUser } = useContext(CurrentUserContext);
+  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
+  async function approveRequest() {
+    //更改project state 4，requestingUsers清空
+    await putCatAPI(projectId, { state: "4", requestingUsers: [] });
+    //將project id 加入user.petProject
+    //取得收養者的資料
+    const adopter = await getUserAPI(user.id);
+    //準備更新收養者的資料
+    const updateAdopter = {};
+    //將project id 加入user.petProject
+    const petProject = adopter.petProject.includes(projectId)
+      ? [...adopter.petProject]
+      : [...adopter.petProject, projectId];
 
+    updateAdopter.petProject = petProject;
+    //將project id 從 requestingProject移除
+    const requestingProject = adopter.requestingProject.filter(
+      (id) => id !== projectId
+    );
+    updateAdopter.requestingProject = requestingProject;
+    await putUserAPI(adopter.id, updateAdopter);
+    //準備更新擁有者的資料
+    const updateOwner = {};
+    //將project id 從adoptProject移除
+    const adoptProject = currentUser.adoptProject.filter(
+      (id) => id !== projectId
+    );
+    updateOwner.adoptProject = adoptProject;
+    //將project id 加入adoptHistory
+
+    const adoptHistory = currentUser.adoptHistory
+      ? [...currentUser.adoptHistory, projectId]
+      : [projectId];
+    updateOwner.adoptHistory = adoptHistory;
+    //更新資料庫
+    await putUserAPI(currentUser.id, updateOwner);
+    //更新context
+    setCurrentUser({
+      ...currentUser,
+      adoptProject: adoptProject,
+      adoptHistory: adoptHistory,
+    });
+    alert("已核准");
+  }
   function ApproveBtn() {
     //如果是專案的擁有者的話
-    console.log(currentUser);
-    console.log(projectId);
-    if (currentUser.adoptProject.includes(projectId)) {
-      return <Button variant="contained">核准</Button>;
+    if (currentUser && currentUser.adoptProject.includes(projectId)) {
+      return (
+        <Button variant="contained" onClick={approveRequest}>
+          核准
+        </Button>
+      );
     }
   }
   //如果尚未有資料的話
