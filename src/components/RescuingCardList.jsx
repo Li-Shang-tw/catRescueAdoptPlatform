@@ -20,7 +20,7 @@ export default function Card({ currentCats }) {
         <div className="relative">
           <img
             className="rounded-md rounded-b-3xl mb-2.5 "
-            src={item.image ? item.image : "src/assets/imgs/rescuephoto2.jpg"}
+            src={item.image ? item.image : "/src/assets/imgs/rescuephoto2.jpg"}
             alt="rescueImg"
           />
         </div>
