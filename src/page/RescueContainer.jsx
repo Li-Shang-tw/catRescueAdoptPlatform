@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 
 import { getRescuingCatsAPI } from "../callAPI";
 import RescuingCardList from "../components/RescuingCardList";
+import Banner from "../components/Banner";
 
 export default function RescueContainer() {
   //先設定rescueCat的state
@@ -59,24 +60,31 @@ export default function RescueContainer() {
   }
   return (
     <>
-      <div className="container mx-auto px-4">
-        <Overview
-          currentCats={currentRescueCats}
-          setRescueCats={setRescueCats}
-          totalPages={totalPages}
-          currentPage={currentPage}
-          handlePageChange={handlePageChange}
-          handleSort={handleSort}
-          Card={RescuingCardList}
-        >
-          <div>
-            <h1 className="text-4xl font-bold text-gray-900 leading-tight mb-2">
-              貓咪救援總覽
-            </h1>
-            <p className="mb-4">可愛的貓貓需要你的幫忙</p>
+      <Overview
+        currentCats={currentRescueCats}
+        setRescueCats={setRescueCats}
+        totalPages={totalPages}
+        currentPage={currentPage}
+        handlePageChange={handlePageChange}
+        handleSort={handleSort}
+        Card={RescuingCardList}
+      >
+        <Banner>
+          <div className="px-32 pt-12 pb-12 flex justify-between ">
+            <div>
+              <h1 className="text-8xl font-bold text-gray-900 leading-tight mb-10">
+                貓咪募款總覽
+              </h1>
+              <p className="mb-4 text-4xl">受傷貓貓需要你的募款</p>
+            </div>
+            <img
+              className="rounded-full  w-1/3"
+              src="/src/assets/imgs/貓咪募款圖.jpg"
+              alt="募款貓的圖示"
+            />
           </div>
-        </Overview>
-      </div>
+        </Banner>
+      </Overview>
     </>
   );
 }

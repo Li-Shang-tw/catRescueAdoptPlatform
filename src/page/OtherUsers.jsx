@@ -3,6 +3,7 @@ import { useState, useEffect, useContext } from "react";
 import { getOtherUsersAPI } from "../callAPI.js";
 import OtherUsersCardList from "../components/OtherUsersCardList.jsx";
 import { CurrentUserContext } from "../context/CurrentUserContext.js";
+import Banner from "../components/Banner.jsx";
 
 import Overview from "./Overview.jsx";
 export default function OtherUsers() {
@@ -57,23 +58,40 @@ export default function OtherUsers() {
 
   return (
     <>
-      <div className="container mx-auto px-4">
-        <Overview
-          currentCats={currentOtherUsers}
-          totalPages={totalPages}
-          currentPage={currentPage}
-          handlePageChange={handlePageChange}
-          handleSort={handleSort}
-          Card={OtherUsersCardList}
-        >
-          <div>
-            <h2>
-              {(role === "rescuer" && "救援者總攬") ||
-                (role === "adopter" && "收養者總覽")}
-            </h2>
+      <Overview
+        currentCats={currentOtherUsers}
+        totalPages={totalPages}
+        currentPage={currentPage}
+        handlePageChange={handlePageChange}
+        handleSort={handleSort}
+        Card={OtherUsersCardList}
+      >
+        <Banner>
+          <div className="px-32 pt-12 pb-12 flex justify-between ">
+            <div>
+              <h1 className="text-8xl font-bold text-gray-900 leading-tight mb-10">
+                {(role === "rescuer" && "救援者總攬") ||
+                  (role === "adopter" && "收養者總覽")}
+              </h1>
+              <p className="mb-4 text-4xl">讓我們認識這些英雄</p>
+            </div>
+            {(role === "rescuer" && (
+              <img
+                className="rounded-full  w-1/3"
+                src="/src/assets/imgs/救援者.jpg"
+                alt="救援者"
+              />
+            )) ||
+              (role === "adopter" && (
+                <img
+                  className="rounded-full  w-1/3"
+                  src="/src/assets/imgs/收容者.jpg"
+                  alt="收養者"
+                />
+              ))}
           </div>
-        </Overview>
-      </div>
+        </Banner>
+      </Overview>
     </>
   );
 }
