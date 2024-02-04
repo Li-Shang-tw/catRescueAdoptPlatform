@@ -41,11 +41,11 @@ export default function Navigator() {
       <h1 className="font-bold cursor-pointer">
         <NavLink to="/">
           {" "}
-          <img src="/src/assets/imgs/logo.jpg" alt="logo" className="w-3/5" />
+          <img src="/src/assets/imgs/logo.png" alt="logo" className="w-2/6" />
         </NavLink>
       </h1>
       <ul className="flex w-3/12 justify-between cursor-pointer">
-        <li className="px-4 py-3 rounded-full hover:bg-slate-100 ">
+        <li className="px-4 py-3 rounded-full  hover:bg-yellow-400 font-bold">
           <NavLink
             to="/rescue"
             style={({ isActive }) => {
@@ -57,7 +57,7 @@ export default function Navigator() {
             貓咪救援
           </NavLink>
         </li>
-        <li className="px-4 py-3  rounded-full hover:bg-slate-100">
+        <li className="px-4 py-3  rounded-full hover:bg-yellow-400 font-bold">
           <NavLink
             to="/adopt"
             style={({ isActive }) => {
@@ -69,7 +69,7 @@ export default function Navigator() {
             貓咪領養
           </NavLink>
         </li>
-        <li className="px-4 py-3 rounded-full hover:bg-slate-100">
+        <li className="px-4 py-3 rounded-full  hover:bg-yellow-400 font-bold">
           <div
             id="basic-button"
             aria-controls={open ? "basic-menu" : undefined}
