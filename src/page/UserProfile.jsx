@@ -28,7 +28,7 @@ export default function UserProfile() {
     );
   }
   return (
-    <div>
+    <div style={{ backgroundColor: "#ffe9d2" }}>
       <CheckUserLogin />
       <div className="mb-10 flex justify-center ">
         <div className="w-1/2">
