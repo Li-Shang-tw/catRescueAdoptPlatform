@@ -37,9 +37,12 @@ export default function Navigator() {
     setAnchorEl(null);
   };
   return (
-    <div className="px-3 py-5 flex justify-between items-center w-full ">
-      <h1 className="font-bold text-xl cursor-pointer">
-        <NavLink to="/"> Cats Helper</NavLink>
+    <div className="px-3  flex justify-between items-center w-full ">
+      <h1 className="font-bold cursor-pointer">
+        <NavLink to="/">
+          {" "}
+          <img src="/src/assets/imgs/logo.jpg" alt="logo" className="w-3/5" />
+        </NavLink>
       </h1>
       <ul className="flex w-3/12 justify-between cursor-pointer">
         <li className="px-4 py-3 rounded-full hover:bg-slate-100 ">
