@@ -19,9 +19,18 @@ export default function UserCard({
   const projectId = project && project.id;
   async function approveRequest() {
     //更改project state 4，requestingUsers清空
-    await putCatAPI(projectId, { state: "4", requestingUsers: [] });
+    await putCatAPI(projectId, {
+      state: "4",
+      requestingUsers: [],
+      adoptId: user.id,
+    });
     //更新project的狀態
-    const newProject = { ...project, state: "4", requestingUsers: [] };
+    const newProject = {
+      ...project,
+      state: "4",
+      requestingUsers: [],
+      adoptId: user.id,
+    };
     setAdoptProject(newProject);
     //將project id 加入user.petProject
     //取得收養者的資料
