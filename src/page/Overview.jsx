@@ -13,7 +13,7 @@ export default function RescueOverview({
 }) {
   return (
     <div>
-      <div className="drop-shadow-md flex justify-between mb-5 pb-2">
+      <div className="drop-shadow ">
         {children}
         <Sort sort={handleSort} />
       </div>

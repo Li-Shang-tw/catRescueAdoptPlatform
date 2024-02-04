@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { getAdoptingCatsAPI } from "../callAPI";
 import Overview from "./Overview";
-
+import Banner from "../components/Banner";
 import AdoptingCardList from "../components/AdoptingCardList";
 export default function AdoptContainer() {
   const [adoptCats, setAdoptCats] = useState(null);
@@ -38,23 +38,30 @@ export default function AdoptContainer() {
   }
   return (
     <>
-      <div className="container mx-auto px-4">
-        <Overview
-          currentCats={adoptCats}
-          totalPages={totalPages}
-          currentPage={currentPage}
-          handlePageChange={handlePageChange}
-          handleSort={handleSort}
-          Card={AdoptingCardList}
-        >
-          <div>
-            <h1 className="text-4xl font-bold text-gray-900 leading-tight mb-2">
-              貓咪領養總覽
-            </h1>
-            <p className="mb-4">快帶可愛的貓貓回家</p>
+      <Overview
+        currentCats={adoptCats}
+        totalPages={totalPages}
+        currentPage={currentPage}
+        handlePageChange={handlePageChange}
+        handleSort={handleSort}
+        Card={AdoptingCardList}
+      >
+        <Banner>
+          <div className="px-32 pt-12 pb-12 flex justify-between ">
+            <div>
+              <h1 className="text-8xl font-bold text-gray-900 leading-tight mb-10">
+                貓咪領養總覽
+              </h1>
+              <p className="mb-4 text-4xl">快帶可愛的貓貓回家</p>
+            </div>
+            <img
+              className="rounded-full  w-1/3"
+              src="/src/assets/imgs/收養貓的圖示.jpg"
+              alt="收養貓的圖示"
+            />
           </div>
-        </Overview>
-      </div>
+        </Banner>
+      </Overview>
     </>
   );
 }
