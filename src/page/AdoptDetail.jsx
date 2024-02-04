@@ -31,7 +31,7 @@ export default function AdoptDetail() {
       setRescuer(userData);
     };
     fetchData();
-  }, []);
+  }, [id]);
 
   function updateAdoptProject(feature) {
     //取得原本的rescueProject，整合更新的feature成新的rescueProject
@@ -57,7 +57,8 @@ export default function AdoptDetail() {
       {adoptProject.requestingUsers && (
         <RequestUsersList
           userList={adoptProject.requestingUsers}
-          projectId={adoptProject.id}
+          project={adoptProject}
+          setAdoptProject={setAdoptProject}
         />
       )}
     </div>

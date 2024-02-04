@@ -8,11 +8,21 @@ import { useContext } from "react";
 import { CurrentUserContext } from "../context/CurrentUserContext";
 import { putCatAPI, getUserAPI, putUserAPI } from "../callAPI";
 
-export default function UserCard({ user, type, style, projectId }) {
+export default function UserCard({
+  user,
+  type,
+  style,
+  project,
+  setAdoptProject,
+}) {
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
+  const projectId = project && project.id;
   async function approveRequest() {
     //更改project state 4，requestingUsers清空
     await putCatAPI(projectId, { state: "4", requestingUsers: [] });
+    //更新project的狀態
+    const newProject = { ...project, state: "4", requestingUsers: [] };
+    setAdoptProject(newProject);
     //將project id 加入user.petProject
     //取得收養者的資料
     const adopter = await getUserAPI(user.id);
@@ -42,7 +52,7 @@ export default function UserCard({ user, type, style, projectId }) {
     const adoptHistory = currentUser.adoptHistory
       ? [...currentUser.adoptHistory, projectId]
       : [projectId];
-    updateOwner.adoptHistory = adoptHistory;
+    updateOwner.adoptedHistory = adoptHistory;
     //更新資料庫
     await putUserAPI(currentUser.id, updateOwner);
     //更新context
