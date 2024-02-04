@@ -5,12 +5,12 @@ import interpretAgeCatergory from "../composable/interpretAgeCatergory";
 import Loading from "./Loading";
 
 export default function Card({ currentCats }) {
-  if (currentCats === null) {
+  if (!currentCats) {
     return <Loading />;
-  } else if (!currentCats) {
+  } else if (currentCats === "Not foun") {
     return <p>暫時沒有救援貓貓的專案</p>;
   }
-
+  console.log(currentCats);
   const cardsList = currentCats.map((item) => (
     <li
       key={item.id}
