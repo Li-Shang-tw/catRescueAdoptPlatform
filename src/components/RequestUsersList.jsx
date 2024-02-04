@@ -1,7 +1,11 @@
 import UserCard from "./UserCard";
 import { getUserAPI } from "../callAPI";
 import { useState, useEffect } from "react";
-export default function RequestCardList({ userList, projectId }) {
+export default function RequestCardList({
+  userList,
+  project,
+  setAdoptProject,
+}) {
   const [users, setUsers] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
@@ -24,7 +28,8 @@ export default function RequestCardList({ userList, projectId }) {
                 user={user}
                 type="3"
                 style="flex-col"
-                projectId={projectId}
+                project={project}
+                setAdoptProject={setAdoptProject}
                 className="mr-5"
               />
             </li>

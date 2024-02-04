@@ -16,10 +16,11 @@ export default function AdoptDetail() {
   //先設定rescueProject的state
   const [adoptProject, setAdoptProject] = useState({});
   const [resucer, setRescuer] = useState(rescuerData[0]);
+  const [adopter, setAdopter] = useState(null);
 
   //取得current user的資料
   const { currentUser } = useContext(CurrentUserContext);
-
+  console.log("render");
   //取得id
   const { id } = useParams();
   //用useEffect來呼叫API
@@ -29,10 +30,17 @@ export default function AdoptDetail() {
       setAdoptProject(catData);
       const userData = await getUserAPI(catData.rescuerId);
       setRescuer(userData);
+      //取得收養者的資料
+
+      if (catData.state === "4") {
+        const adopter = await getUserAPI(catData.adoptId);
+        console.log(adopter);
+        setAdopter(adopter);
+      }
     };
     fetchData();
-  }, []);
-
+  }, [id, adoptProject.state]);
+  // console.log(adoptProject);
   function updateAdoptProject(feature) {
     //取得原本的rescueProject，整合更新的feature成新的rescueProject
     setAdoptProject({ ...adoptProject, ...feature });
@@ -54,11 +62,20 @@ export default function AdoptDetail() {
           </div>
         </div>
       </div>
-      {adoptProject.requestingUsers && (
-        <RequestUsersList
-          userList={adoptProject.requestingUsers}
-          projectId={adoptProject.id}
-        />
+      {adoptProject.requestingUsers &&
+        adoptProject.requestingUsers.length !== 0 && (
+          <RequestUsersList
+            userList={adoptProject.requestingUsers}
+            project={adoptProject}
+            setAdoptProject={setAdoptProject}
+          />
+        )}
+      {adoptProject.state === "4" && adopter && (
+        <div className="flex justify-center">
+          <div className="w-1/2">
+            <UserCard user={adopter} type="3" project={adoptProject} />
+          </div>
+        </div>
       )}
     </div>
   );
