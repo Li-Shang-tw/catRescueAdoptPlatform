@@ -37,7 +37,7 @@ export default function RescueDetail() {
     setRescueProject({ ...rescueProject, ...feature });
   }
   return (
-    <div className="px-5 ">
+    <div className="px-5" style={{ backgroundColor: "#ffe9d2" }}>
       <Carousel image={rescueProject.image} />
 
       <div className="flex  justify-between  mx-auto md:9/12  lg:w-10/12 mb-5">

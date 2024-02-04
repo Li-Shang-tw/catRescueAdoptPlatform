@@ -46,7 +46,7 @@ export default function AdoptDetail() {
     setAdoptProject({ ...adoptProject, ...feature });
   }
   return (
-    <div className="px-5">
+    <div className="px-5" style={{ backgroundColor: "#ffe9d2" }}>
       <Carousel />
       <div className="flex  flex-col items-center mb-4">
         <div className="flex justify-between w-9/12">

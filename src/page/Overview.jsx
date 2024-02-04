@@ -13,16 +13,16 @@ export default function RescueOverview({
 }) {
   return (
     <div>
-      <div className="drop-shadow ">
-        {children}
+      <div className="drop-shadow ">{children}</div>
+      <div style={{ backgroundColor: "#ffdb7d" }}>
         <Sort sort={handleSort} />
+        <Card currentCats={currentCats} />
+        <PaginationComponent
+          totalPages={totalPages}
+          currentPage={currentPage}
+          handlePageChange={handlePageChange}
+        />
       </div>
-      <Card currentCats={currentCats} />
-      <PaginationComponent
-        totalPages={totalPages}
-        currentPage={currentPage}
-        handlePageChange={handlePageChange}
-      />
     </div>
   );
 }
