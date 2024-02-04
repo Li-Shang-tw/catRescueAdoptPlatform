@@ -32,7 +32,7 @@ export default function AdoptDetail() {
     };
     fetchData();
   }, [id]);
-
+  console.log(adoptProject);
   function updateAdoptProject(feature) {
     //取得原本的rescueProject，整合更新的feature成新的rescueProject
     setAdoptProject({ ...adoptProject, ...feature });
@@ -54,13 +54,14 @@ export default function AdoptDetail() {
           </div>
         </div>
       </div>
-      {adoptProject.requestingUsers && (
-        <RequestUsersList
-          userList={adoptProject.requestingUsers}
-          project={adoptProject}
-          setAdoptProject={setAdoptProject}
-        />
-      )}
+      {adoptProject.requestingUsers &&
+        adoptProject.requestingUsers.length !== 0 && (
+          <RequestUsersList
+            userList={adoptProject.requestingUsers}
+            project={adoptProject}
+            setAdoptProject={setAdoptProject}
+          />
+        )}
     </div>
   );
 }
