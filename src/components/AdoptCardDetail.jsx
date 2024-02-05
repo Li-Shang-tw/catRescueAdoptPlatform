@@ -12,6 +12,7 @@ import { CurrentUserContext } from "../context/CurrentUserContext";
 //引用元件
 import ModalSet from "./ModalSet";
 import EditBtn from "./EditBtn";
+import Loading from "./Loading";
 
 export default function AdoptCardDetail({ adoptProject, updateAdoptProject }) {
   //取得當前用戶
@@ -35,25 +36,27 @@ export default function AdoptCardDetail({ adoptProject, updateAdoptProject }) {
     }
   }
   async function requestAdopt(id) {
-    //在cat資料上的requestAdopt加入currentUser的id
-    await putCatAPI(id, {
-      requestingUsers: [...adoptProject.requestingUsers, currentUser.id],
-    });
-    //更新adoptProject
-    updateAdoptProject({
-      requestingUsers: [...adoptProject.requestingUsers, currentUser.id],
-    });
-    //在user資料上的requestAdopt加入cat的id
-    await putUserAPI(currentUser.id, {
-      requestingProject: [...currentUser.requestingProject, id],
-    });
-    //更新currentUser
-    setCurrentUser({
-      ...currentUser,
-      requestingProject: [...currentUser.requestingProject, id],
-    });
+    if (adoptProject.requestingUsers) {
+      //在cat資料上的requestAdopt加入currentUser的id
+      await putCatAPI(id, {
+        requestingUsers: [...adoptProject.requestingUsers, currentUser.id],
+      });
+      //更新adoptProject
+      updateAdoptProject({
+        requestingUsers: [...adoptProject.requestingUsers, currentUser.id],
+      });
+      //在user資料上的requestAdopt加入cat的id
+      await putUserAPI(currentUser.id, {
+        requestingProject: [...currentUser.requestingProject, id],
+      });
+      //更新currentUser
+      setCurrentUser({
+        ...currentUser,
+        requestingProject: [...currentUser.requestingProject, id],
+      });
 
-    alert("已送出認養申請");
+      alert("已送出認養申請");
+    }
   }
   return (
     <div className="shadow  rounded-xl px-3 py-4 bg-white">

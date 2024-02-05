@@ -22,8 +22,6 @@ export default function CheckUserLogin() {
       }
     };
     //如果目前沒有登入者資料
-
-    console.log(currentUser);
     if (!currentUser) {
       getUser();
     }

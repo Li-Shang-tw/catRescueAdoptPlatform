@@ -22,8 +22,9 @@ export default function RequestCardList({
       <h3>申請中的認養者</h3>
       <ul className="flex">
         {users &&
+          users.length !== 0 &&
           users.map((user) => (
-            <li key={user.id}>
+            <li key={user && user.id}>
               <UserCard
                 user={user}
                 type="3"
