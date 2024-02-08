@@ -1,4 +1,5 @@
 import Chip from "@mui/material/Chip";
+import FaceIcon from "@mui/icons-material/Face";
 
 //引用composable
 import { getLoactionName } from "../composable/getLocationName";
@@ -68,12 +69,22 @@ export default function AdoptCardDetail({
         <h2 className="text-2xl font-bold  mb-2">
           {adoptProject.name ? adoptProject.name : "待救援的貓貓"}
         </h2>
-        {currentUser && adoptProject.rescuerId === currentUser.id && (
-          <ModalSet btn={<EditBtn>編輯</EditBtn>} />
-        )}
+        {currentUser &&
+          adoptProject.rescuerId === currentUser.id &&
+          adoptProject.state === "3" && (
+            <ModalSet btn={<EditBtn>編輯</EditBtn>} />
+          )}
         {currentUser &&
           adoptProject.rescuerId !== currentUser.id &&
           currentUser.role === "adopter" && <AdoptBtn id={adoptProject.id} />}
+        {adoptProject.state === "4" && (
+          <Chip
+            label="家貓 "
+            variant="filled"
+            color="primary"
+            icon={<FaceIcon />}
+          />
+        )}
       </div>
       <div className="flex justify-start mb-3">
         <h4 className="mr-4">{getLoactionName(adoptProject.location)}</h4>

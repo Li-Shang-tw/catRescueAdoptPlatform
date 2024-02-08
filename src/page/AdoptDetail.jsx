@@ -24,7 +24,6 @@ export default function AdoptDetail() {
   }
   //取得current user的資料
   const { currentUser } = useContext(CurrentUserContext);
-  console.log("render");
   //取得id
   const { id } = useParams();
   //用useEffect來呼叫API
@@ -38,7 +37,6 @@ export default function AdoptDetail() {
 
       if (catData.state === "4" || isApproved) {
         const adopter = await getUserAPI(catData.adoptId);
-        console.log("GET");
         setAdopter(adopter);
       }
     };
