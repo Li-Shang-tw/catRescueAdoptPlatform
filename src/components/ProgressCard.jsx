@@ -5,6 +5,7 @@ import EditBtn from "./EditBtn";
 import FormForUpdateProgress from "./FormForUpdateProgress";
 import FormTransterToAdopt from "./FormTransterToAdopt";
 import Chip from "@mui/material/Chip";
+import CardOutline from "./CardOutline";
 
 import { CurrentUserContext } from "../context/CurrentUserContext";
 export default function ProgressCard({ rescueProject, handleUpdatRescueCat }) {
@@ -16,7 +17,7 @@ export default function ProgressCard({ rescueProject, handleUpdatRescueCat }) {
   const { currentUser } = useContext(CurrentUserContext);
 
   return (
-    <div className="bg-white p-4">
+    <CardOutline style="px-7 py-6">
       <div className="flex justify-between">
         <div>
           <div className="flex items-center mb-2">
@@ -56,6 +57,6 @@ export default function ProgressCard({ rescueProject, handleUpdatRescueCat }) {
         </div>
       </div>
       <ProgressBar progress={progress} />
-    </div>
+    </CardOutline>
   );
 }
