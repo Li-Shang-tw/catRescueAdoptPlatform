@@ -12,7 +12,7 @@ import { CurrentUserContext } from "../context/CurrentUserContext";
 //引用元件
 import ModalSet from "./ModalSet";
 import EditBtn from "./EditBtn";
-import Loading from "./Loading";
+import CardOutline from "./CardOutline";
 
 export default function AdoptCardDetail({ adoptProject, updateAdoptProject }) {
   //取得當前用戶
@@ -59,7 +59,7 @@ export default function AdoptCardDetail({ adoptProject, updateAdoptProject }) {
     }
   }
   return (
-    <div className="shadow  rounded-xl px-3 py-4 bg-white">
+    <CardOutline style="px-5 py-4">
       <div className="flex justify-between">
         <h2 className="text-2xl font-bold  mb-2">
           {adoptProject.name ? adoptProject.name : "待救援的貓貓"}
@@ -85,6 +85,6 @@ export default function AdoptCardDetail({ adoptProject, updateAdoptProject }) {
           <p>{adoptProject.cta}</p>
         </div>
       </div>
-    </div>
+    </CardOutline>
   );
 }

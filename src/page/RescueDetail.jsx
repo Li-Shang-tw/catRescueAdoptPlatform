@@ -45,7 +45,7 @@ export default function RescueDetail() {
           rescueProject={rescueProject}
           handleUpdatRescueCat={handleUpdatRescueCat}
           currentUserId={currentUser && currentUser.id}
-          style="w-5/12"
+          style="w-5/12 px-5 py-4"
         />
 
         <UserCard user={resucer} type="2" style="w-6/12 justify-between" />

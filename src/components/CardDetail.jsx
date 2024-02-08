@@ -7,6 +7,7 @@ import interpretAgeCategory from "../composable/interpretAgeCatergory";
 import ModalSet from "./ModalSet";
 import FormForRescue from "./FormForRescue";
 import EditBtn from "./EditBtn";
+import CardOutline from "./CardOutline";
 
 export default function RescueDetail({
   rescueProject,
@@ -15,7 +16,7 @@ export default function RescueDetail({
   style,
 }) {
   return (
-    <div className={`shadow  rounded-xl px-3 py-4 bg-white ${style}`}>
+    <CardOutline style={style}>
       <div className="flex justify-between">
         <h2 className="text-2xl font-bold  mb-2">
           {rescueProject.name ? rescueProject.name : "待救援的貓貓"}
@@ -57,6 +58,6 @@ export default function RescueDetail({
           <p>{rescueProject.cta}</p>
         </div>
       </div>
-    </div>
+    </CardOutline>
   );
 }
