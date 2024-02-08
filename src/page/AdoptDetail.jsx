@@ -50,20 +50,18 @@ export default function AdoptDetail() {
       <Carousel />
       <div className="flex  flex-col items-center mb-4">
         <div className="flex justify-between w-9/12">
-          <div className="w-5/12 ">
-            <AdoptCardDetail
-              adoptProject={adoptProject}
-              updateAdoptProject={updateAdoptProject}
-              currentUser={currentUser}
-            />
-          </div>
-          <div className="w-5/12">
-            <UserCard
-              user={resucer}
-              type="2"
-              style="flex p-4 items-center justify-between"
-            />
-          </div>
+          <AdoptCardDetail
+            adoptProject={adoptProject}
+            updateAdoptProject={updateAdoptProject}
+            currentUser={currentUser}
+            style="w-5/12"
+          />
+
+          <UserCard
+            user={resucer}
+            type="2"
+            style=" w-5/12 flex p-4 items-center justify-between"
+          />
         </div>
       </div>
 

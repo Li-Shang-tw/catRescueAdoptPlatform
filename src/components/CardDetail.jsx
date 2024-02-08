@@ -16,7 +16,7 @@ export default function RescueDetail({
   style,
 }) {
   return (
-    <CardOutline style={style}>
+    <CardOutline style={`px-5 py-4 ${style}`}>
       <div className="flex justify-between">
         <h2 className="text-2xl font-bold  mb-2">
           {rescueProject.name ? rescueProject.name : "待救援的貓貓"}

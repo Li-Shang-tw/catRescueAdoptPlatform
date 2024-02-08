@@ -14,7 +14,11 @@ import ModalSet from "./ModalSet";
 import EditBtn from "./EditBtn";
 import CardOutline from "./CardOutline";
 
-export default function AdoptCardDetail({ adoptProject, updateAdoptProject }) {
+export default function AdoptCardDetail({
+  adoptProject,
+  updateAdoptProject,
+  style,
+}) {
   //取得當前用戶
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
   function AdoptBtn(id) {
@@ -59,7 +63,7 @@ export default function AdoptCardDetail({ adoptProject, updateAdoptProject }) {
     }
   }
   return (
-    <CardOutline style="px-5 py-4">
+    <CardOutline style={`px-5 py-4 ${style}`}>
       <div className="flex justify-between">
         <h2 className="text-2xl font-bold  mb-2">
           {adoptProject.name ? adoptProject.name : "待救援的貓貓"}

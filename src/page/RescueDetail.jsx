@@ -39,17 +39,23 @@ export default function RescueDetail() {
   return (
     <div className="px-5" style={{ backgroundColor: "#ffe9d2" }}>
       <Carousel image={rescueProject.image} />
+      <div className="flex  flex-col items-center mb-4">
+        <div className="flex justify-between w-9/12">
+          <CardDetail
+            rescueProject={rescueProject}
+            handleUpdatRescueCat={handleUpdatRescueCat}
+            currentUserId={currentUser && currentUser.id}
+            style="w-5/12"
+          />
 
-      <div className="flex  justify-between  mx-auto md:9/12  lg:w-10/12 mb-5">
-        <CardDetail
-          rescueProject={rescueProject}
-          handleUpdatRescueCat={handleUpdatRescueCat}
-          currentUserId={currentUser && currentUser.id}
-          style="w-5/12 px-5 py-4"
-        />
-
-        <UserCard user={resucer} type="2" style="w-6/12 justify-between" />
+          <UserCard
+            user={resucer}
+            type="2"
+            style="w-5/12  flex p-4 items-center justify-between"
+          />
+        </div>
       </div>
+
       <div className="lg:w-10/12  md:9/12 mx-auto">
         <ProgressCard
           rescueProject={rescueProject}
