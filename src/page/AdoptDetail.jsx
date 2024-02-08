@@ -58,7 +58,11 @@ export default function AdoptDetail() {
             />
           </div>
           <div className="w-5/12">
-            <UserCard user={resucer} type="2" />
+            <UserCard
+              user={resucer}
+              type="2"
+              style="flex p-4 items-center justify-between"
+            />
           </div>
         </div>
       </div>

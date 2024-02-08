@@ -102,13 +102,14 @@ export default function UserCard({
           </div>
         )}
       </div>
-      <div className="text-center">
+      <div className="text-center flex flex-col">
         <p className="mb-2 text-2xl font-bold">{user.name}</p>
-        <span className="mr-2 mb-1">
-          {user.role === "rescuer" ? "救援者" : "認養者"}
-        </span>
-        {user.role === "rescuer" ? <MedicationIcon /> : <CastleIcon />}
-
+        <div>
+          <span className="mr-2 mb-1">
+            {user.role === "rescuer" ? "救援者" : "認養者"}
+          </span>
+          {user.role === "rescuer" ? <MedicationIcon /> : <CastleIcon />}
+        </div>
         <p className="mb-1">{getLoactionName(user.location)}</p>
         <p className="mb-1">{user.email}</p>
 
