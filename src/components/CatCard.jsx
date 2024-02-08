@@ -5,7 +5,7 @@ import CardOutline from "./CardOutline";
 import Chip from "@mui/material/Chip";
 export default function Card({ item, type }) {
   return (
-    <CardOutline>
+    <CardOutline style="duration-500 hover:scale-110">
       <Link to={`/${type}/${item.id}`}>
         <div className="flex flex-col items-center ">
           <img
