@@ -59,7 +59,7 @@ export default function OtherUsers() {
   return (
     <>
       <Overview
-        currentCats={currentOtherUsers}
+        currentCats={otherUsers}
         totalPages={totalPages}
         currentPage={currentPage}
         handlePageChange={handlePageChange}

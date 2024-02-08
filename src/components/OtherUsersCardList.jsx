@@ -18,7 +18,7 @@ export default function OtherUsersCardList({ currentCats }) {
       className=" shadow  rounded-xl duration-100 hover:scale-110  hover:shadow-lg bg-white"
     >
       <Link to={`/otherUser/${item.id}`}>
-        <UserCard currentUser={item} style="flex-col" />
+        <UserCard user={item} style="flex-col" />
       </Link>
     </li>
   ));
