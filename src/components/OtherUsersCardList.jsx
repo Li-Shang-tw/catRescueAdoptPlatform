@@ -13,12 +13,9 @@ export default function OtherUsersCardList({ currentCats }) {
   }
 
   cardsList = currentCats.map((item) => (
-    <li
-      key={item.id}
-      className=" shadow  rounded-xl duration-100 hover:scale-110  hover:shadow-lg bg-white"
-    >
+    <li key={item.id}>
       <Link to={`/otherUser/${item.id}`}>
-        <UserCard user={item} style="flex-col" />
+        <UserCard user={item} style="flex-col py-4" />
       </Link>
     </li>
   ));

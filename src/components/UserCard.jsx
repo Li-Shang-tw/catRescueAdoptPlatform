@@ -86,35 +86,34 @@ export default function UserCard({
   if (user === null) {
     return <Loading />;
   } else if (!user) {
-    return <p>暫時沒有用戶資料</p>;
+    return <></>;
   }
   return (
-    <>
-      <CardOutline style={style}>
-        <div className="flex flex-col items-center">
-          <Avatar
-            alt={user.name}
-            src={user.avatar}
-            sx={{ width: 150, height: 150 }}
-          />
-          {type === "2" && (
-            <div className="mt-5">
-              <Button variant="contained">About</Button>
-            </div>
-          )}
-        </div>
-        <div>
-          <p className="mb-2 text-xl">{user.name}</p>
-          <span className="mr-2 mb-1">
-            {user.role === "rescuer" ? "救援者" : "認養者"}
-          </span>
-          {user.role === "rescuer" ? <MedicationIcon /> : <CastleIcon />}
+    <CardOutline style={style}>
+      <div className="flex flex-col items-center">
+        <Avatar
+          alt={user.name}
+          src={user.avatar}
+          sx={{ width: 150, height: 150 }}
+        />
+        {type === "2" && (
+          <div className="mt-5">
+            <Button variant="contained">About</Button>
+          </div>
+        )}
+      </div>
+      <div className="text-center">
+        <p className="mb-2 text-2xl font-bold">{user.name}</p>
+        <span className="mr-2 mb-1">
+          {user.role === "rescuer" ? "救援者" : "認養者"}
+        </span>
+        {user.role === "rescuer" ? <MedicationIcon /> : <CastleIcon />}
 
-          <p className="mb-1">{getLoactionName(user.location)}</p>
-          <p className="mb-1">{user.email}</p>
-        </div>
+        <p className="mb-1">{getLoactionName(user.location)}</p>
+        <p className="mb-1">{user.email}</p>
+
         {type === "3" && ApproveBtn()}
-      </CardOutline>
-    </>
+      </div>
+    </CardOutline>
   );
 }

@@ -32,7 +32,7 @@ export default function UserProfile() {
       <CheckUserLogin />
       <div className="mb-10 flex justify-center ">
         <div className="w-1/2">
-          <UserCard user={currentUser} style="justify-around" />
+          <UserCard user={currentUser} style="flex justify-around py-4" />
         </div>
       </div>
       <AccountSetting />
