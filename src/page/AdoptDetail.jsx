@@ -78,10 +78,13 @@ export default function AdoptDetail() {
             />
           )}
         {adoptProject.state === "4" && adopter && (
-          <div className="flex justify-center">
-            <div className="w-1/2">
-              <UserCard user={adopter} type="3" project={adoptProject} />
-            </div>
+          <div className="flex justify-end">
+            <UserCard
+              user={adopter}
+              type="2"
+              project={adoptProject}
+              style=" w-5/12 flex p-4 items-center justify-between"
+            />
           </div>
         )}
       </div>
