@@ -5,6 +5,7 @@ export default function RequestCardList({
   userList,
   project,
   setAdoptProject,
+  handleApprove,
 }) {
   const [users, setUsers] = useState(null);
   useEffect(() => {
@@ -32,6 +33,7 @@ export default function RequestCardList({
                 project={project}
                 setAdoptProject={setAdoptProject}
                 className="mr-5"
+                handleApprove={handleApprove}
               />
             </li>
           ))}

@@ -17,7 +17,11 @@ export default function AdoptDetail() {
   const [adoptProject, setAdoptProject] = useState({});
   const [resucer, setRescuer] = useState(rescuerData[0]);
   const [adopter, setAdopter] = useState(null);
+  const [isApproved, setIsApproved] = useState(false);
 
+  function handleApprove() {
+    setIsApproved(true);
+  }
   //取得current user的資料
   const { currentUser } = useContext(CurrentUserContext);
   console.log("render");
@@ -32,14 +36,14 @@ export default function AdoptDetail() {
       setRescuer(userData);
       //取得收養者的資料
 
-      if (catData.state === "4") {
+      if (catData.state === "4" || isApproved) {
         const adopter = await getUserAPI(catData.adoptId);
-        console.log(adopter);
+        console.log("GET");
         setAdopter(adopter);
       }
     };
     fetchData();
-  }, [id]);
+  }, [id, isApproved]);
   // console.log(adoptProject);
   function updateAdoptProject(feature) {
     //取得原本的rescueProject，整合更新的feature成新的rescueProject
@@ -70,6 +74,7 @@ export default function AdoptDetail() {
               userList={adoptProject.requestingUsers}
               project={adoptProject}
               setAdoptProject={setAdoptProject}
+              handleApprove={handleApprove}
             />
           )}
         {adoptProject.state === "4" && adopter && (

@@ -14,6 +14,7 @@ export default function UserCard({
   style,
   project,
   setAdoptProject,
+  handleApprove,
 }) {
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
   const projectId = project && project.id;
@@ -70,6 +71,7 @@ export default function UserCard({
       adoptProject: adoptProject,
       adoptHistory: adoptHistory,
     });
+    handleApprove();
     alert("已核准");
   }
   function ApproveBtn() {
