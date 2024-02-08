@@ -19,7 +19,7 @@ export default function RequestCardList({
 
   return (
     <>
-      <h3>申請中的認養者</h3>
+      <h3 className="font-bold text-2xl mb-7">申請中的認養者</h3>
       <ul className="flex">
         {users &&
           users.length !== 0 &&
@@ -28,7 +28,7 @@ export default function RequestCardList({
               <UserCard
                 user={user}
                 type="3"
-                style="flex-col"
+                style="flex-col px-7 py-6"
                 project={project}
                 setAdoptProject={setAdoptProject}
                 className="mr-5"
