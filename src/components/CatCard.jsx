@@ -1,13 +1,11 @@
 import { Link } from "react-router-dom";
 import { getLoactionName } from "../composable/getLocationName";
 import interpretAgeCatergory from "../composable/interpretAgeCatergory";
+import CardOutline from "./CardOutline";
 import Chip from "@mui/material/Chip";
 export default function Card({ item, type }) {
   return (
-    <div
-      key={item.id}
-      className=" border-4 border-black rounded-xl duration-100 hover:scale-110   bg-white"
-    >
+    <CardOutline>
       <Link to={`/${type}/${item.id}`}>
         <div className="flex flex-col items-center ">
           <img
@@ -54,6 +52,6 @@ export default function Card({ item, type }) {
           </div>
         </div>
       </Link>
-    </div>
+    </CardOutline>
   );
 }
