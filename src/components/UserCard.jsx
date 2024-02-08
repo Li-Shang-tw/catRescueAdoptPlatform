@@ -7,7 +7,7 @@ import Loading from "./Loading";
 import { useContext } from "react";
 import { CurrentUserContext } from "../context/CurrentUserContext";
 import { putCatAPI, getUserAPI, putUserAPI } from "../callAPI";
-
+import CardOutline from "./CardOutline";
 export default function UserCard({
   user,
   type,
@@ -90,9 +90,7 @@ export default function UserCard({
   }
   return (
     <>
-      <div
-        className={`border-2 px-10 py-4 rounded-xl bg-white font-medium flex ${style}`}
-      >
+      <CardOutline style={style}>
         <div className="flex flex-col items-center">
           <Avatar
             alt={user.name}
@@ -116,7 +114,7 @@ export default function UserCard({
           <p className="mb-1">{user.email}</p>
         </div>
         {type === "3" && ApproveBtn()}
-      </div>
+      </CardOutline>
     </>
   );
 }
