@@ -1,7 +1,8 @@
 import { useForm } from "react-hook-form";
 
 import { CurrentUserContext } from "../context/CurrentUserContext";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
+import ImageUpload from "./ImageUpload";
 
 import {
   getRescuingCatsAPI,
@@ -33,20 +34,12 @@ export default function FormforCreateRescue({
     formState: { errors },
   } = useForm({ defaultValues: defaultValue });
   const navigate = useNavigate();
+  const [previewImage, setPreviewImage] = useState(null);
 
   //---取得登入者資料-----
   //取得userContext的user
   const userData = useContext(CurrentUserContext);
   const { currentUser, setCurrentUser } = userData;
-  //處理圖片
-  const imageField = watch("image");
-
-  const [previewImage, setPreviewImage] = useState(null);
-  useEffect(() => {
-    if (imageField && imageField.length > 0) {
-      setPreviewImage(URL.createObjectURL(imageField[0]));
-    }
-  }, [imageField]);
 
   const onSubmit = async (data) => {
     if (type === "edit") {
@@ -273,43 +266,13 @@ export default function FormforCreateRescue({
               )}
             </div>
             <div className="flex flex-col w-1/2">
-              {previewImage ? (
-                <img
-                  className="max-w-full rounded-lg"
-                  src={previewImage}
-                  alt="previewImage"
-                />
-              ) : (
-                <img
-                  className="max-w-full rounded-lg"
-                  src="/src/assets/imgs/未知貓.jpg"
-                  alt="fakeImage"
-                />
-              )}
-
-              <div>
-                <div className="flex items-center justify-between">
-                  <label
-                    htmlFor="image"
-                    className="block text-sm font-medium leading-6 text-gray-900"
-                  >
-                    貓咪的照片
-                  </label>
-                </div>
-                <div className="mt-2">
-                  <input
-                    type="file"
-                    {...register("image")}
-                    className="block w-full rounded-md border-0 p-1.5  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    id="image"
-                  />
-                  {errors.image?.message && (
-                    <small className="text-red-500">
-                      {errors.image.message}
-                    </small>
-                  )}
-                </div>
-              </div>
+              <ImageUpload
+                register={register}
+                watch={watch}
+                errors={errors}
+                previewImage={previewImage}
+                setPreviewImage={setPreviewImage}
+              />
             </div>
           </div>
           <input
