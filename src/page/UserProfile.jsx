@@ -11,7 +11,6 @@ import CastleIcon from "@mui/icons-material/Castle";
 import CastleOutlinedIcon from "@mui/icons-material/CastleOutlined";
 import MedicationIcon from "@mui/icons-material/Medication";
 import PersonIcon from "@mui/icons-material/Person";
-import CheckUserLogin from "../components/CheckUserLogin";
 import ModalSet from "../components/ModalSet";
 import RequestingAdoptsModal from "../components/RequestingAdoptsModal";
 
@@ -21,15 +20,10 @@ export default function UserProfile() {
   const { currentUser } = userData;
   //當currentUser為空值時，不執行下面的程式碼
   if (!currentUser) {
-    return (
-      <>
-        <CheckUserLogin />
-      </>
-    );
+    return <></>;
   }
   return (
     <div style={{ backgroundColor: "#ffe9d2" }} className="pt-7">
-      <CheckUserLogin />
       <div className="mb-10 flex justify-center ">
         <div className="w-1/2">
           <UserCard user={currentUser} style="flex justify-around py-4" />
