@@ -1,14 +1,14 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 export default function ImageUpload({
   register,
   watch,
-  errors,
   previewImage,
   setPreviewImage,
 }) {
   const imageField = watch("image");
   useEffect(() => {
     if (imageField?.length > 0) {
+      console.log(imageField);
       setPreviewImage(URL.createObjectURL(imageField[0]));
     }
   }, [imageField]);
@@ -44,9 +44,6 @@ export default function ImageUpload({
             className="block w-full rounded-md border-0 p-1.5  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             id="image"
           />
-          {/* {errors.image?.message && (
-            <small className="text-red-500">{errors.image.message}</small>
-          )} */}
         </div>
       </div>
     </>

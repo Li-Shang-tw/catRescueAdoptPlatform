@@ -156,6 +156,25 @@ function getCatsOfCurrentUserAPI(rescuerId, state) {
       return error;
     });
 }
+function postImageAPI(data) {
+  var myHeaders = new Headers();
+  myHeaders.append("Authorization", "Client-ID 1af63c141f2b470");
+
+  var formdata = new FormData();
+  formdata.append("image", data);
+
+  var requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: formdata,
+    redirect: "follow",
+  };
+
+  fetch("https://api.imgur.com/3/image", requestOptions)
+    .then((response) => response.text())
+    .then((result) => console.log(result))
+    .catch((error) => console.log("error", error));
+}
 
 export {
   postUserAPI,
@@ -169,4 +188,5 @@ export {
   putCatAPI,
   getCatsOfCurrentUserAPI,
   getOtherUsersAPI,
+  postImageAPI,
 };

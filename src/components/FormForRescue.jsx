@@ -9,6 +9,7 @@ import {
   postCatAPI,
   putUserAPI,
   putCatAPI,
+  postImageAPI,
 } from "../callAPI";
 import { useNavigate } from "react-router-dom";
 export default function FormforCreateRescue({
@@ -58,6 +59,7 @@ export default function FormforCreateRescue({
       data.currentAmount = 0;
       //將data的image重新賦予創造的url
       data.image = previewImage;
+      postImageAPI(data.image);
       //呼叫API
       await postCatAPI(data);
       alert("新增成功");
@@ -269,7 +271,6 @@ export default function FormforCreateRescue({
               <ImageUpload
                 register={register}
                 watch={watch}
-                errors={errors}
                 previewImage={previewImage}
                 setPreviewImage={setPreviewImage}
               />
