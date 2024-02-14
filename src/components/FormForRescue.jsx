@@ -9,7 +9,6 @@ import {
   postCatAPI,
   putUserAPI,
   putCatAPI,
-  postImageAPI,
 } from "../callAPI";
 import { useNavigate } from "react-router-dom";
 export default function FormforCreateRescue({
@@ -26,6 +25,7 @@ export default function FormforCreateRescue({
     symptoms: rescueProject ? rescueProject.symptoms : "",
     cta: rescueProject ? rescueProject.cta : "",
     targetAmount: rescueProject ? rescueProject.targetAmount : 0,
+    image: rescueProject ? rescueProject.image : "",
   };
 
   const {
@@ -44,6 +44,8 @@ export default function FormforCreateRescue({
 
   const onSubmit = async (data) => {
     if (type === "edit") {
+      //將data的image重新賦予創造的url
+      data.image = previewImage;
       //發送put請求
       await putCatAPI(rescueProject.id, data);
       //更新rescueProject的state
@@ -59,7 +61,6 @@ export default function FormforCreateRescue({
       data.currentAmount = 0;
       //將data的image重新賦予創造的url
       data.image = previewImage;
-      postImageAPI(data.image);
       //呼叫API
       await postCatAPI(data);
       alert("新增成功");

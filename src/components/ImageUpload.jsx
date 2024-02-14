@@ -9,9 +9,15 @@ export default function ImageUpload({
   useEffect(() => {
     if (imageField?.length > 0) {
       console.log(imageField);
-      setPreviewImage(URL.createObjectURL(imageField[0]));
+      console.log(typeof imageField);
+      //當imageField有預設值，其值為String，不用再轉成URL.createObjectURL
+      if (typeof imageField === "string") {
+        setPreviewImage(imageField);
+      } else {
+        setPreviewImage(URL.createObjectURL(imageField[0]));
+      }
     }
-  }, [imageField]);
+  }, [imageField, setPreviewImage]);
   return (
     <>
       {previewImage ? (
