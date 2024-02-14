@@ -14,6 +14,7 @@ import { CurrentUserContext } from "../context/CurrentUserContext";
 import ModalSet from "./ModalSet";
 import EditBtn from "./EditBtn";
 import CardOutline from "./CardOutline";
+import FormForAdopt from "./FormForAdopt";
 
 export default function AdoptCardDetail({
   adoptProject,
@@ -72,7 +73,15 @@ export default function AdoptCardDetail({
         {currentUser &&
           adoptProject.rescuerId === currentUser.id &&
           adoptProject.state === "3" && (
-            <ModalSet btn={<EditBtn>編輯</EditBtn>} />
+            <ModalSet
+              btn={<EditBtn>編輯</EditBtn>}
+              form={
+                <FormForAdopt
+                  adoptProject={adoptProject}
+                  updateAdoptProject={updateAdoptProject}
+                />
+              }
+            />
           )}
         {currentUser &&
           adoptProject.rescuerId !== currentUser.id &&

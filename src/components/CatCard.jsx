@@ -10,7 +10,7 @@ export default function Card({ item, type }) {
         <div className="flex flex-col items-center ">
           <img
             className=" mb-2.5 rounded-b-sm"
-            src="/src/assets/imgs/rescuephoto2.jpg"
+            src={item.image ? item.image : "/src/assets/imgs/rescuephoto2.jpg"}
             alt="rescueImg"
           />
 

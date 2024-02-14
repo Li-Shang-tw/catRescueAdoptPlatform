@@ -49,7 +49,7 @@ export default function AdoptDetail() {
   }
   return (
     <div className="px-5" style={{ backgroundColor: "#ffe9d2" }}>
-      <Carousel />
+      <Carousel image={adoptProject.image} />
       <div className="w-10/12 mx-auto pb-4">
         <div className="flex justify-between mb-7">
           <AdoptCardDetail

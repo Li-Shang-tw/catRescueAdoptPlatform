@@ -61,6 +61,7 @@ export default function FormforCreateRescue({
       data.currentAmount = 0;
       //將data的image重新賦予創造的url
       data.image = previewImage;
+
       //呼叫API
       await postCatAPI(data);
       alert("新增成功");
