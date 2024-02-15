@@ -8,11 +8,6 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 //----context
 import { CurrentUserContext } from "../context/CurrentUserContext";
 //---元件---
-import CreateBtn from "./CreateBtn";
-import FormForRescue from "./FormForRescue";
-import FormForAdopt from "./FormForAdopt";
-import ModalSet from "./ModalSet";
-import EditBtn from "./EditBtn";
 import DrawerMenu from "./DrawerMenu";
 
 export default function Navigator() {
@@ -126,17 +121,6 @@ export default function Navigator() {
           </li>
         </ul>
         <div className="flex h-full hidden md:flex">
-          <div className="flex">
-            {currentUser && currentUser.role === "rescuer" && (
-              <>
-                <ModalSet btn={<CreateBtn />} form={<FormForRescue />} />
-                <ModalSet
-                  btn={<EditBtn>新增收養</EditBtn>}
-                  form={<FormForAdopt />}
-                />
-              </>
-            )}
-          </div>
           <div className=" hover:shadow-md cursor-pointer rounded-full ml-10">
             {currentUser ? (
               <NavLink to={`/user/${currentUser.id}`}>

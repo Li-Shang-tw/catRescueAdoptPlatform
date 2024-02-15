@@ -1,3 +1,7 @@
+import { useContext } from "react";
+//----context
+import { CurrentUserContext } from "../context/CurrentUserContext";
+
 import Box from "@mui/material/Box";
 import SpeedDial from "@mui/material/SpeedDial";
 import SpeedDialIcon from "@mui/material/SpeedDialIcon";
@@ -21,24 +25,29 @@ const actions = [
   },
 ];
 export default function AddWidget() {
+  //---取得登入者資料-----
+  const userData = useContext(CurrentUserContext);
+  const { currentUser } = userData;
   return (
-    <Box
-      sx={{ height: 320, transform: "translateZ(0px)", flexGrow: 1 }}
-      className="fixed bottom-4 right-4"
-    >
-      <SpeedDial
-        ariaLabel="SpeedDial basic example"
-        sx={{ position: "absolute", bottom: 16, right: 16 }}
-        icon={<SpeedDialIcon />}
+    currentUser?.role === "rescuer" && (
+      <Box
+        sx={{ height: 320, transform: "translateZ(0px)", flexGrow: 1 }}
+        className="fixed bottom-4 right-4"
       >
-        {actions.map((action) => (
-          <SpeedDialAction
-            key={action.name}
-            icon={action.icon}
-            tooltipTitle={action.name}
-          />
-        ))}
-      </SpeedDial>
-    </Box>
+        <SpeedDial
+          ariaLabel="SpeedDial basic example"
+          sx={{ position: "absolute", bottom: 16, right: 16 }}
+          icon={<SpeedDialIcon />}
+        >
+          {actions.map((action) => (
+            <SpeedDialAction
+              key={action.name}
+              icon={action.icon}
+              tooltipTitle={action.name}
+            />
+          ))}
+        </SpeedDial>
+      </Box>
+    )
   );
 }
