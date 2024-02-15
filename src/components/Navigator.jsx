@@ -12,6 +12,7 @@ import FormForRescue from "./FormForRescue";
 import FormForAdopt from "./FormForAdopt";
 import ModalSet from "./ModalSet";
 import EditBtn from "./EditBtn";
+import MenuIcon from "@mui/icons-material/Menu";
 
 export default function Navigator() {
   //---取得登入者資料-----
@@ -44,7 +45,7 @@ export default function Navigator() {
           <img src="/src/assets/imgs/logo.png" alt="logo" className="w-2/6" />
         </NavLink>
       </h1>
-      <ul className="flex w-3/12 justify-between cursor-pointer">
+      <ul className=" w-4/12 justify-between cursor-pointer hidden md:flex">
         <li className="px-4 py-3 rounded-full  hover:bg-yellow-400 font-bold">
           <NavLink
             to="/rescue"
@@ -97,7 +98,7 @@ export default function Navigator() {
           </Menu>
         </li>
       </ul>
-      <div className="flex h-full">
+      <div className="flex h-full hidden md:flex">
         <div className="flex">
           {currentUser && currentUser.role === "rescuer" && (
             <>
@@ -123,6 +124,9 @@ export default function Navigator() {
             </div>
           )}
         </div>
+      </div>
+      <div className="flex items-center md:hidden">
+        <MenuIcon />
       </div>
     </div>
   );
