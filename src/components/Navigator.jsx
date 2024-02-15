@@ -12,7 +12,8 @@ import FormForRescue from "./FormForRescue";
 import FormForAdopt from "./FormForAdopt";
 import ModalSet from "./ModalSet";
 import EditBtn from "./EditBtn";
-import MenuIcon from "@mui/icons-material/Menu";
+
+import DrawerMenu from "./DrawerMenu";
 
 export default function Navigator() {
   //---取得登入者資料-----
@@ -126,7 +127,7 @@ export default function Navigator() {
         </div>
       </div>
       <div className="flex items-center md:hidden">
-        <MenuIcon />
+        <DrawerMenu />
       </div>
     </div>
   );
