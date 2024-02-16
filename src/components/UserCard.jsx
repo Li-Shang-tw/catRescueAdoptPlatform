@@ -18,6 +18,7 @@ export default function UserCard({
 }) {
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
   const projectId = project && project.id;
+
   async function approveRequest() {
     //更改project state 4，requestingUsers清空
     await putCatAPI(projectId, {
