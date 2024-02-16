@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import Navigator from "../components/Navigator";
 import { useCheckLogin } from "../hooks/useCheckLogin";
 import AddWidget from "../components/AddWidget";
+import Footer from "../components/Footer";
 export default function Root() {
   useCheckLogin();
   return (
@@ -10,6 +11,7 @@ export default function Root() {
       <Navigator />
       <Outlet />
       <AddWidget />
+      <Footer />
     </>
   );
 }
