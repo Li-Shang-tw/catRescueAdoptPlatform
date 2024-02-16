@@ -13,13 +13,13 @@ export default function ChooseRole() {
     <div className="w-full flex  flex-col items-center pb-5">
       <h2 className="text-5xl font-bold p-8 ">Choose Your Role</h2>
       <div className="flex  justify-between w-9/12 ">
-        <CardService title="募款" image={resucerImage}>
+        <CardService title="募款" image={resucerImage} style="w-5/12">
           <p className="text-2xl p-4">成為救援者，你可以發起募款、收養專案</p>
           <Button variant="contained">
             <NavLink to="/signUp">註冊帳號</NavLink>
           </Button>
         </CardService>
-        <CardService title="募款" image={adoptImage}>
+        <CardService title="募款" image={adoptImage} style="w-5/12">
           <p className="text-2xl p-4">成為收養者，你可以收養喜歡的貓咪</p>
           <Button variant="contained">
             <NavLink to="/signUp">註冊帳號</NavLink>
