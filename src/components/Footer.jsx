@@ -3,9 +3,9 @@ export default function Footer() {
   return (
     <div
       className="flex justify-center px-10 py-5 justify-center "
-      style={{ backgroundColor: "#ffdb7d" }}
+      style={{ backgroundColor: "#4921b9" }}
     >
-      <div>
+      <div className="text-sky-50">
         <CopyrightIcon />
         2024 Cat Helper 喵星
       </div>
