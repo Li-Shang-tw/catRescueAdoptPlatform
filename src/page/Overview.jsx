@@ -14,7 +14,7 @@ export default function RescueOverview({
   return (
     <div>
       <div className="drop-shadow ">{children}</div>
-      <div style={{ backgroundColor: "#ffdb7d" }}>
+      <div style={{ backgroundColor: "#ffdb7d" }} className="px-10">
         {handleSort && <Sort sort={handleSort} />}
 
         <Card currentCats={currentCats} />

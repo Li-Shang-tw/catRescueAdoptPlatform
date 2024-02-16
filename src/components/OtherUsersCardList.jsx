@@ -12,7 +12,7 @@ export default function OtherUsersCardList({ currentCats }) {
   } else if (currentCats?.length === 0 || currentCats === "Not foun") {
     return <Nodata />;
   }
-  console.log(currentCats);
+
   cardsList = currentCats.map((item) => (
     <li key={item.id}>
       <Link to={`/otherUser/${item.id}`}>
