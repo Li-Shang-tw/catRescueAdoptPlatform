@@ -15,7 +15,8 @@ export default function RescueOverview({
     <div>
       <div className="drop-shadow ">{children}</div>
       <div style={{ backgroundColor: "#ffdb7d" }}>
-        <Sort sort={handleSort} />
+        {handleSort && <Sort sort={handleSort} />}
+
         <Card currentCats={currentCats} />
         <PaginationComponent
           totalPages={totalPages}

@@ -51,11 +51,6 @@ export default function OtherUsers() {
     totalPages = Math.ceil(otherUsers.length / 8);
   }
 
-  //======sort=======
-  function handleSort() {
-    console.log("sort");
-  }
-
   return (
     <>
       <Overview
@@ -63,7 +58,6 @@ export default function OtherUsers() {
         totalPages={totalPages}
         currentPage={currentPage}
         handlePageChange={handlePageChange}
-        handleSort={handleSort}
         Card={OtherUsersCardList}
       >
         <Banner>

@@ -2,16 +2,17 @@ import { Link } from "react-router-dom";
 
 import Loading from "./Loading";
 import UserCard from "./UserCard";
+import Nodata from "./NoData";
 
 export default function OtherUsersCardList({ currentCats }) {
   let cardsList;
   //如果尚未有資料的話
   if (currentCats === null) {
     return <Loading />;
-  } else if (!currentCats || currentCats === "Not foun") {
-    return <p>暫時沒有用戶資料</p>;
+  } else if (currentCats?.length === 0 || currentCats === "Not foun") {
+    return <Nodata />;
   }
-
+  console.log(currentCats);
   cardsList = currentCats.map((item) => (
     <li key={item.id}>
       <Link to={`/otherUser/${item.id}`}>
