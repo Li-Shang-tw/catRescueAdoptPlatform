@@ -156,7 +156,26 @@ function getCatsOfCurrentUserAPI(rescuerId, state) {
       return error;
     });
 }
+function getCatsOfOtherUserAPI(rescuerId) {
+  const url = new URL(`${base}resuingCats`);
+  url.searchParams.append("rescuerId", rescuerId);
+  return fetch(url, {
+    method: "GET",
+    headers: { "content-type": "application/json" },
+  })
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      // handle error
+    })
 
+    .catch((error) => {
+      // handle error
+
+      return error;
+    });
+}
 export {
   postUserAPI,
   getUsersAPI,
@@ -169,4 +188,5 @@ export {
   putCatAPI,
   getCatsOfCurrentUserAPI,
   getOtherUsersAPI,
+  getCatsOfOtherUserAPI,
 };

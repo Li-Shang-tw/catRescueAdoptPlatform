@@ -26,7 +26,7 @@ function a11yProps(index) {
     "aria-controls": `simple-tabpanel-${index}`,
   };
 }
-export default function BasicTabs({ rescueList, adoptList }) {
+export default function BasicTabs({ rescueList, adoptList, id }) {
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
@@ -48,16 +48,32 @@ export default function BasicTabs({ rescueList, adoptList }) {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        <OtherUserProjects projectList={rescueList} type="rescuing" />
+        <OtherUserProjects
+          projectList={rescueList}
+          type="rescuing"
+          rescuerId={id}
+        />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        <OtherUserProjects projectList={adoptList} type="adopting" />
+        <OtherUserProjects
+          projectList={adoptList}
+          type="adopting"
+          rescuerId={id}
+        />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-        <OtherUserProjects projectList={rescueList} type="rescued" />
+        <OtherUserProjects
+          projectList={rescueList}
+          type="rescued"
+          rescuerId={id}
+        />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={3}>
-        <OtherUserProjects projectList={adoptList} type="adopted" />
+        <OtherUserProjects
+          projectList={adoptList}
+          type="adopted"
+          rescuerId={id}
+        />
       </CustomTabPanel>
     </Box>
   );

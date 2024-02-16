@@ -24,13 +24,14 @@ export default function OtherUserDetail() {
           style=" flex py-5 justify-around items-center"
         />
       </div>
-      {otherUser && otherUser.role === "rescuer" && (
+      {otherUser?.role === "rescuer" && (
         <Tabs
+          id={id}
           rescueList={otherUser && otherUser.rescueProject}
           adoptList={otherUser && otherUser.adoptProject}
         />
       )}
-      {otherUser && otherUser.role === "adopter" && <p>領養者</p>}
+      {otherUser?.role === "adopter" && <p>領養者</p>}
     </>
   );
 }

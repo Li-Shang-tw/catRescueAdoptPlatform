@@ -1,20 +1,15 @@
 import { useEffect, useState } from "react";
-import { getCatAPI } from "../callAPI";
+import { getCatsOfOtherUserAPI } from "../callAPI";
 import OverView from "../page/Overview";
 import RescuingCardList from "./RescuingCardList";
 import AdoptingCardList from "./AdoptingCardList";
-export default function OtherUserProjects({ projectList, type }) {
+export default function OtherUserProjects({ projectList, type, rescuerId }) {
   //設定初始狀態
   const [projects, setProjects] = useState([]);
   //用useEffect來取得資料
   useEffect(() => {
     const fetchData = async () => {
-      const data = await Promise.all(
-        projectList.map(async (id) => {
-          const cat = await getCatAPI(id);
-          return cat;
-        })
-      );
+      const data = await getCatsOfOtherUserAPI(rescuerId);
       //按照type來篩選資料
       let filterCats = [];
       switch (type) {
@@ -35,7 +30,7 @@ export default function OtherUserProjects({ projectList, type }) {
       setProjects(filterCats);
     };
     fetchData();
-  }, []);
+  }, [projectList, type, rescuerId]);
 
   //當以載入的資料為空時，顯示暫無資料
   if (projectList && projectList.length === 0) {
