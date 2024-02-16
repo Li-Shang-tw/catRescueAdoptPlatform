@@ -19,7 +19,10 @@ export default function OtherUserDetail() {
     <>
       <h2>其他用戶細節</h2>
       <div className="w-1/2 mx-auto">
-        <UserCard user={otherUser} style="justify-around" />
+        <UserCard
+          user={otherUser}
+          style=" flex py-5 justify-around items-center"
+        />
       </div>
       {otherUser && otherUser.role === "rescuer" && (
         <Tabs
