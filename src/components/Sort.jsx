@@ -25,8 +25,12 @@ export default function Sort({ handleSort, sortType }) {
           >
             <MenuItem value={"timeDes"}>新>舊(時間)</MenuItem>
             <MenuItem value={"timeAsc"}>舊>新(時間)</MenuItem>
-            <MenuItem value={"riskDes"}>高>低(危險度)</MenuItem>
-            <MenuItem value={"riskAsc"}>低>高(危險度)</MenuItem>
+            {sortType === "rescue" && (
+              <>
+                <MenuItem value={"riskDes"}>高>低(危險度)</MenuItem>
+                <MenuItem value={"riskAsc"}>低>高(危險度)</MenuItem>
+              </>
+            )}
           </Select>
         </FormControl>
       </Box>
