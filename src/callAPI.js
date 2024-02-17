@@ -168,6 +168,28 @@ function getCatsOfOtherUserAPI(rescuerId) {
         return res.json();
       }
       // handle error
+      return res.json();
+    })
+
+    .catch((error) => {
+      // handle error
+
+      return error;
+    });
+}
+function getCatsOfAdoperAPI(adoptId) {
+  const url = new URL(`${base}resuingCats`);
+  url.searchParams.append("adoptId", adoptId);
+  return fetch(url, {
+    method: "GET",
+    headers: { "content-type": "application/json" },
+  })
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      // handle error
+      return res.json();
     })
 
     .catch((error) => {
@@ -189,4 +211,5 @@ export {
   getCatsOfCurrentUserAPI,
   getOtherUsersAPI,
   getCatsOfOtherUserAPI,
+  getCatsOfAdoperAPI,
 };

@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { getUserAPI } from "../callAPI.js";
 import UserCard from "../components/UserCard";
 import Tabs from "../components/Tabs.jsx";
+import OtherUserProjects from "../components/OtherUserProjects.jsx";
 export default function OtherUserDetail() {
   const { id } = useParams();
   const [otherUser, setOtherUser] = useState(null);
@@ -27,11 +28,20 @@ export default function OtherUserDetail() {
       {otherUser?.role === "rescuer" && (
         <Tabs
           id={id}
-          rescueList={otherUser && otherUser.rescueProject}
-          adoptList={otherUser && otherUser.adoptProject}
+          rescueList={otherUser?.rescueProject}
+          adoptList={otherUser?.adoptProject}
         />
       )}
-      {otherUser?.role === "adopter" && <p>領養者</p>}
+      {otherUser?.role === "adopter" && (
+        <div>
+          <h3>認養紀錄</h3>
+          <OtherUserProjects
+            projectList={otherUser?.petProject}
+            type="pet"
+            userId={id}
+          />
+        </div>
+      )}
     </>
   );
 }

@@ -51,29 +51,25 @@ export default function BasicTabs({ rescueList, adoptList, id }) {
         <OtherUserProjects
           projectList={rescueList}
           type="rescuing"
-          rescuerId={id}
+          userId={id}
         />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         <OtherUserProjects
           projectList={adoptList}
           type="adopting"
-          rescuerId={id}
+          userId={id}
         />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
         <OtherUserProjects
           projectList={rescueList}
           type="rescued"
-          rescuerId={id}
+          userId={id}
         />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={3}>
-        <OtherUserProjects
-          projectList={adoptList}
-          type="adopted"
-          rescuerId={id}
-        />
+        <OtherUserProjects projectList={adoptList} type="adopted" userId={id} />
       </CustomTabPanel>
     </Box>
   );
