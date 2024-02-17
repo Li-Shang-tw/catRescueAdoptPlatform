@@ -43,9 +43,9 @@ export default function RescueContainer() {
     <>
       <Overview
         data={rescueCats}
-        setRescueCats={setRescueCats}
         handleSort={handleSort}
         Card={RescuingCardList}
+        sortType="rescue"
       >
         <Banner>
           <div className="px-32 pt-12 pb-12 flex justify-between ">

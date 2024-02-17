@@ -5,10 +5,10 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-export default function Sort({ sort }) {
+export default function Sort({ handleSort, sortType }) {
   const [option, setOption] = useState("timeDes");
   function handleOptionChange(e) {
-    sort(e.target.value);
+    handleSort(e.target.value);
     setOption(e.target.value);
   }
   return (

@@ -2,7 +2,13 @@
 import PaginationComponent from "../components/Pagination.jsx";
 import Sort from "../components/Sort.jsx";
 import { useState } from "react";
-export default function RescueOverview({ children, data, handleSort, Card }) {
+export default function RescueOverview({
+  children,
+  data,
+  handleSort,
+  Card,
+  sortType,
+}) {
   //current page
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -21,7 +27,7 @@ export default function RescueOverview({ children, data, handleSort, Card }) {
     <div>
       <div className="drop-shadow ">{children}</div>
       <div style={{ backgroundColor: "#ffdb7d" }} className="px-10 py-5">
-        {handleSort && <Sort sort={handleSort} />}
+        {handleSort && <Sort handleSort={handleSort} sortType={sortType} />}
 
         <Card currentData={currentData} />
         <PaginationComponent
