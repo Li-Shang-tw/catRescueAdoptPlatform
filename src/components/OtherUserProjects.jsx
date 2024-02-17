@@ -54,10 +54,6 @@ export default function OtherUserProjects({ projectList, type, rescuerId }) {
     totalPages = Math.ceil(projects.length / 8);
   }
 
-  //======sort=======
-  function handleSort() {
-    console.log("sort");
-  }
   return (
     <>
       <OverView
@@ -65,7 +61,6 @@ export default function OtherUserProjects({ projectList, type, rescuerId }) {
         totalPages={totalPages}
         currentPage={currentPage}
         handlePageChange={handlePageChange}
-        handleSort={handleSort}
         Card={
           ((type === "rescuing" || type === "rescued") && RescuingCardList) ||
           ((type === "adopting" || type === "adopted") && AdoptingCardList)
