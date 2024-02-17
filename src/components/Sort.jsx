@@ -13,7 +13,7 @@ export default function Sort({ handleSort, sortType }) {
   }
   return (
     <div className="flex justify-end mb-2">
-      <Box sx={{ minWidth: 120 }}>
+      <Box sx={{ minWidth: 120, backgroundColor: "white" }}>
         <FormControl>
           <InputLabel id="sort-select-label"> 排序</InputLabel>
           <Select
@@ -26,10 +26,10 @@ export default function Sort({ handleSort, sortType }) {
             <MenuItem value={"timeDes"}>新>舊(時間)</MenuItem>
             <MenuItem value={"timeAsc"}>舊>新(時間)</MenuItem>
             {sortType === "rescue" && (
-              <>
-                <MenuItem value={"riskDes"}>高>低(危險度)</MenuItem>
-                <MenuItem value={"riskAsc"}>低>高(危險度)</MenuItem>
-              </>
+              <MenuItem value={"riskDes"}>高>低(危險度)</MenuItem>
+            )}
+            {sortType === "rescue" && (
+              <MenuItem value={"riskAsc"}>低>高(危險度)</MenuItem>
             )}
           </Select>
         </FormControl>

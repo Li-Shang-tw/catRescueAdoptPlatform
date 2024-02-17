@@ -24,24 +24,28 @@ export default function RescueOverview({
   const currentData = data?.slice((currentPage - 1) * 8, currentPage * 8);
   //=========sort=========
   function handleSort(order) {
-    //分開已定義與未定義危險度的陣列
-    const undefinedRisk = data.filter((item) => item.riskLevel === "");
-    const definedRisk = data.filter((item) => item.riskLevel !== "");
-    if (order === "riskDes") {
-      //排序已定義危險度的陣列
-      definedRisk.sort((a, b) => {
-        return b.riskLevel - a.riskLevel;
-      });
-      //合併陣列
-      const sortedRescueCats = [...definedRisk, ...undefinedRisk];
-      handleSetData(sortedRescueCats);
-    } else if (order === "riskAsc") {
-      definedRisk.sort((a, b) => {
-        return a.riskLevel - b.riskLevel;
-      });
-      //合併陣列
-      const sortedRescueCats = [...definedRisk, ...undefinedRisk];
-      handleSetData(sortedRescueCats);
+    //排序風險
+    //排序時間先後
+    if (order.includes("risk")) {
+      //分開已定義與未定義危險度的陣列
+      const undefinedRisk = data.filter((item) => item.riskLevel === "");
+      const definedRisk = data.filter((item) => item.riskLevel !== "");
+      if (order === "riskDes") {
+        //排序已定義危險度的陣列
+        definedRisk.sort((a, b) => {
+          return b.riskLevel - a.riskLevel;
+        });
+        //合併陣列
+        const sortedRescueCats = [...definedRisk, ...undefinedRisk];
+        handleSetData(sortedRescueCats);
+      } else if (order === "riskAsc") {
+        definedRisk.sort((a, b) => {
+          return a.riskLevel - b.riskLevel;
+        });
+        //合併陣列
+        const sortedRescueCats = [...definedRisk, ...undefinedRisk];
+        handleSetData(sortedRescueCats);
+      }
     }
   }
   return (
