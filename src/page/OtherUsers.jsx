@@ -30,10 +30,17 @@ export default function OtherUsers() {
     };
     fetchData();
   }, [role, currentUser]);
-
+  function handleSetData(newValue) {
+    setOtherUsers(newValue);
+  }
   return (
     <>
-      <Overview data={otherUsers} Card={OtherUsersCardList}>
+      <Overview
+        data={otherUsers}
+        handleSetData={handleSetData}
+        sortType="user"
+        Card={OtherUsersCardList}
+      >
         <Banner>
           <div className="px-32 pt-12 pb-12 flex justify-between ">
             <div>

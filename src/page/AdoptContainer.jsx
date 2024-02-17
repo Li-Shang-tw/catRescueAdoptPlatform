@@ -15,15 +15,16 @@ export default function AdoptContainer() {
     fetchData();
   }, []);
 
-  //======sort=======
-  function handleSort() {
-    console.log("sort");
+  function handleSetData(newValue) {
+    setAdoptCats(newValue);
   }
+
   return (
     <>
       <Overview
         data={adoptCats}
-        handleSort={handleSort}
+        handleSetData={handleSetData}
+        sortType="adopt"
         Card={AdoptingCardList}
       >
         <Banner>

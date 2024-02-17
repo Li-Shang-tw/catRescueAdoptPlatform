@@ -16,34 +16,15 @@ export default function RescueContainer() {
     };
     fetchData();
   }, []);
-
-  //=========sort=========
-  function handleSort(order) {
-    //分開已定義與未定義危險度的陣列
-    const undefinedRisk = rescueCats.filter((item) => item.riskLevel === "");
-    const definedRisk = rescueCats.filter((item) => item.riskLevel !== "");
-    if (order === "riskDes") {
-      //排序已定義危險度的陣列
-      definedRisk.sort((a, b) => {
-        return b.riskLevel - a.riskLevel;
-      });
-      //合併陣列
-      const sortedRescueCats = [...definedRisk, ...undefinedRisk];
-      setRescueCats(sortedRescueCats);
-    } else if (order === "riskAsc") {
-      definedRisk.sort((a, b) => {
-        return a.riskLevel - b.riskLevel;
-      });
-      //合併陣列
-      const sortedRescueCats = [...definedRisk, ...undefinedRisk];
-      setRescueCats(sortedRescueCats);
-    }
+  function handleSetData(newValue) {
+    setRescueCats(newValue);
   }
+
   return (
     <>
       <Overview
         data={rescueCats}
-        handleSort={handleSort}
+        handleSetData={handleSetData}
         Card={RescuingCardList}
         sortType="rescue"
       >
