@@ -23,7 +23,7 @@ export default function RescueOverview({ children, data, handleSort, Card }) {
       <div style={{ backgroundColor: "#ffdb7d" }} className="px-10 py-5">
         {handleSort && <Sort sort={handleSort} />}
 
-        <Card currentCats={currentData} />
+        <Card currentData={currentData} />
         <PaginationComponent
           totalPages={totalPages}
           currentPage={currentPage}

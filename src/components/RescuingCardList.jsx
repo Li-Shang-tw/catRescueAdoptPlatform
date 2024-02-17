@@ -3,14 +3,14 @@ import Chip from "@mui/material/Chip";
 import Loading from "./Loading";
 import CatCard from "./CatCard";
 
-export default function Card({ currentCats }) {
-  if (!currentCats) {
+export default function Card({ currentData }) {
+  if (!currentData) {
     return <Loading />;
-  } else if (currentCats === "Not foun") {
+  } else if (currentData === "Not foun") {
     return <p>暫時沒有救援貓貓的專案</p>;
   }
 
-  const cardsList = currentCats.map((item) => (
+  const cardsList = currentData?.map((item) => (
     <li key={item.id}>
       <CatCard item={item} type="rescue" />
     </li>

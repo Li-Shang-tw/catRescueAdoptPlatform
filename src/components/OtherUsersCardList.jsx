@@ -4,16 +4,15 @@ import Loading from "./Loading";
 import UserCard from "./UserCard";
 import Nodata from "./NoData";
 
-export default function OtherUsersCardList({ currentCats }) {
-  let cardsList;
+export default function OtherUsersCardList({ currentData }) {
   //如果尚未有資料的話
-  if (currentCats === null) {
+  if (currentData === null) {
     return <Loading />;
-  } else if (currentCats?.length === 0 || currentCats === "Not foun") {
+  } else if (currentData?.length === 0 || currentData === "Not foun") {
     return <Nodata />;
   }
 
-  cardsList = currentCats.map((item) => (
+  const cardsList = currentData?.map((item) => (
     <li key={item.id}>
       <Link to={`/otherUser/${item.id}`}>
         <UserCard user={item} style="flex-col py-4" />

@@ -1,16 +1,15 @@
 import Loading from "./Loading";
 import CatCard from "./CatCard";
 
-export default function AdoptingCardList({ currentCats }) {
-  let cardsList;
+export default function AdoptingCardList({ currentData }) {
   //如果尚未有資料的話
-  if (currentCats === null) {
+  if (currentData === null) {
     return <Loading />;
-  } else if (currentCats === "Not found" || !currentCats) {
+  } else if (currentData === "Not found" || !currentData) {
     return <p>暫時沒有送養貓貓的資料</p>;
   }
 
-  cardsList = currentCats.map((item) => (
+  const cardsList = currentData?.map((item) => (
     <li key={item.id}>
       <CatCard item={item} type="adopt" />
     </li>
