@@ -8,8 +8,7 @@ import AdoptingCardList from "../components/AdoptingCardList";
 export default function RequestAdopts() {
   const { id } = useParams();
   const [requestingProject, setRequestingProject] = useState(null);
-  //current page
-  const [currentPage, setCurrentPage] = useState(1);
+
   useEffect(() => {
     const fetchData = async () => {
       //取得當前用戶的所有送養專案
@@ -26,23 +25,6 @@ export default function RequestAdopts() {
     return <Loading />;
   }
 
-  //=========pagination=========
-  function handlePageChange(event, page) {
-    setCurrentPage(page);
-  }
-
-  //顯示當前頁面的資料
-  let currentRescueCats;
-  let totalPages;
-  if (requestingProject) {
-    currentRescueCats = requestingProject.slice(
-      (currentPage - 1) * 8,
-      currentPage * 8
-    );
-    //所有頁數
-    totalPages = Math.ceil(requestingProject.length / 8);
-  }
-
   //======sort=======
   function handleSort() {
     console.log("sort");
@@ -50,11 +32,8 @@ export default function RequestAdopts() {
   return (
     <div>
       <Overview
-        currentCats={requestingProject}
+        data={requestingProject}
         setRescueCats={setRequestingProject}
-        totalPages={totalPages}
-        currentPage={currentPage}
-        handlePageChange={handlePageChange}
         handleSort={handleSort}
         Card={AdoptingCardList}
       >

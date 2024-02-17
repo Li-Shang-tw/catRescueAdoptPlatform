@@ -34,24 +34,7 @@ export default function MyAdoptProjects() {
       }
     };
     fetchData();
-  }, []);
-
-  //current page
-  const [currentPage, setCurrentPage] = useState(1);
-
-  //=========pagination=========
-  function handlePageChange(event, page) {
-    setCurrentPage(page);
-  }
-
-  //顯示當前頁面的資料
-  let currentRescueCats;
-  let totalPages;
-  if (myCats) {
-    currentRescueCats = myCats.slice((currentPage - 1) * 8, currentPage * 8);
-    //所有頁數
-    totalPages = Math.ceil(myCats.length / 8);
-  }
+  }, [currentUserId, type]);
 
   //======sort=======
   function handleSort() {
@@ -60,10 +43,7 @@ export default function MyAdoptProjects() {
   return (
     <div>
       <Overview
-        currentCats={myCats}
-        totalPages={totalPages}
-        currentPage={currentPage}
-        handlePageChange={handlePageChange}
+        data={myCats}
         handleSort={handleSort}
         Card={
           (type === "rescue" && RescuingCardList) ||

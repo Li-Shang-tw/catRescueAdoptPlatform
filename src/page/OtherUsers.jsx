@@ -31,35 +31,9 @@ export default function OtherUsers() {
     fetchData();
   }, [role, currentUser]);
 
-  //current page
-  const [currentPage, setCurrentPage] = useState(1);
-
-  //=========pagination=========
-  function handlePageChange(event, page) {
-    setCurrentPage(page);
-  }
-
-  //顯示當前頁面的資料
-  let currentOtherUsers;
-  let totalPages;
-  if (otherUsers) {
-    currentOtherUsers = otherUsers.slice(
-      (currentPage - 1) * 8,
-      currentPage * 8
-    );
-    //所有頁數
-    totalPages = Math.ceil(otherUsers.length / 8);
-  }
-
   return (
     <>
-      <Overview
-        currentCats={otherUsers}
-        totalPages={totalPages}
-        currentPage={currentPage}
-        handlePageChange={handlePageChange}
-        Card={OtherUsersCardList}
-      >
+      <Overview data={otherUsers} Card={OtherUsersCardList}>
         <Banner>
           <div className="px-32 pt-12 pb-12 flex justify-between ">
             <div>

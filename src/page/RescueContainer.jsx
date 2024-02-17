@@ -17,25 +17,6 @@ export default function RescueContainer() {
     fetchData();
   }, []);
 
-  //current page
-  const [currentPage, setCurrentPage] = useState(1);
-
-  //=========pagination=========
-  function handlePageChange(event, page) {
-    setCurrentPage(page);
-  }
-  let currentRescueCats;
-  let totalPages;
-  //顯示當前頁面的資料
-  if (rescueCats) {
-    currentRescueCats = rescueCats.slice(
-      (currentPage - 1) * 8,
-      currentPage * 8
-    );
-    //所有頁數
-    totalPages = Math.ceil(rescueCats.length / 8);
-  }
-
   //=========sort=========
   function handleSort(order) {
     //分開已定義與未定義危險度的陣列
@@ -61,11 +42,8 @@ export default function RescueContainer() {
   return (
     <>
       <Overview
-        currentCats={currentRescueCats}
+        data={rescueCats}
         setRescueCats={setRescueCats}
-        totalPages={totalPages}
-        currentPage={currentPage}
-        handlePageChange={handlePageChange}
         handleSort={handleSort}
         Card={RescuingCardList}
       >
