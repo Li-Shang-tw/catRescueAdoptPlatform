@@ -18,8 +18,8 @@ export default function OtherUserDetail() {
 
   return (
     <>
-      <h2>其他用戶細節</h2>
-      <div className="w-1/2 mx-auto">
+      <h2 className="font-bold text-2xl  pt-5 px-10">其他用戶細節</h2>
+      <div className="w-2/5 mx-auto mb-5">
         <UserCard
           user={otherUser}
           style=" flex py-5 justify-around items-center"
@@ -33,8 +33,8 @@ export default function OtherUserDetail() {
         />
       )}
       {otherUser?.role === "adopter" && (
-        <div>
-          <h3>認養紀錄</h3>
+        <div style={{ backgroundColor: "#ffdb7d" }}>
+          <h3 className="font-bold text-2xl  pt-5 px-10">認養紀錄</h3>
           <OtherUserProjects
             projectList={otherUser?.petProject}
             type="pet"
