@@ -44,7 +44,27 @@ export default function RescueOverview({
         });
         //合併陣列
         const sortedRescueCats = [...definedRisk, ...undefinedRisk];
-        handleSetData(sortedRescueCats);
+      }
+    } else if (order.includes("time")) {
+      //複製一份data
+      const sortData = [...data];
+      switch (order) {
+        case "timeDes":
+          sortData.sort((a, b) => {
+            const aTime = new Date(a.createdAt);
+            const bTime = new Date(b.createdAt);
+            return bTime - aTime;
+          });
+          handleSetData(sortData);
+          break;
+        case "timeAsc":
+          sortData.sort((a, b) => {
+            const aTime = new Date(a.createdAt);
+            const bTime = new Date(b.createdAt);
+            return aTime - bTime;
+          });
+          handleSetData(sortData);
+          break;
       }
     }
   }
