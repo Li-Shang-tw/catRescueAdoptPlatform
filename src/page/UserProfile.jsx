@@ -95,13 +95,14 @@ export default function UserProfile() {
               }
               form={<RequestingAdoptsModal />}
             />
-
-            <CardItemInUserPage>
-              <div>
-                <CastleIcon />
-                <span className="ml-2">已認養專案</span>
-              </div>
-            </CardItemInUserPage>
+            <Link to={`/myPet/${currentUser.id}`}>
+              <CardItemInUserPage>
+                <div>
+                  <CastleIcon />
+                  <span className="ml-2">已認養專案</span>
+                </div>
+              </CardItemInUserPage>
+            </Link>
           </div>
         </CardInUserPage>
       )}
