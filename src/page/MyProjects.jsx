@@ -34,15 +34,16 @@ export default function MyAdoptProjects() {
     fetchData();
   }, [currentUserId, type]);
 
-  //======sort=======
-  function handleSort() {
-    console.log("sort");
+  function handleSetData(newValue) {
+    setyCats(newValue);
   }
+
   return (
     <div>
       <Overview
         data={myCats}
-        handleSort={handleSort}
+        handleSetData={handleSetData}
+        sortType={type}
         Card={
           (type === "rescue" && RescuingCardList) ||
           (type === "adopt" && AdoptingCardList)
