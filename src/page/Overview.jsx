@@ -44,6 +44,7 @@ export default function RescueOverview({
         });
         //合併陣列
         const sortedRescueCats = [...definedRisk, ...undefinedRisk];
+        handleSetData(sortedRescueCats);
       }
     } else if (order.includes("time")) {
       //複製一份data

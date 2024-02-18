@@ -6,7 +6,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
 export default function Sort({ handleSort, sortType }) {
-  const [option, setOption] = useState("timeDes");
+  const [option, setOption] = useState("timeAsc");
   function handleOptionChange(e) {
     handleSort(e.target.value);
     setOption(e.target.value);
