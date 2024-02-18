@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { getLoactionName } from "../composable/getLocationName";
 import interpretAgeCatergory from "../composable/interpretAgeCatergory";
+import formatTime from "../composable/formatTime";
 import CardOutline from "./CardOutline";
 import Chip from "@mui/material/Chip";
 export default function Card({ item, type }) {
@@ -49,6 +50,7 @@ export default function Card({ item, type }) {
                 <p className="mb-5">{item.symptoms}</p>
               </div>
             )}
+            <p>{formatTime(item.createdAt)}</p>
           </div>
         </div>
       </Link>
