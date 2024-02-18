@@ -33,11 +33,20 @@ export default function AdoptCardDetail({
           <Chip label="已送出認養申請" variant="outlined" color="success" />
         </div>
       );
-    } else {
+    } else if (adoptProject.state === "3") {
       return (
         <div onClick={() => requestAdopt(adoptProject.id)}>
           <EditBtn>認養</EditBtn>
         </div>
+      );
+    } else if (adoptProject.state === "4") {
+      return (
+        <Chip
+          label="家貓 "
+          variant="filled"
+          color="primary"
+          icon={<FaceIcon />}
+        />
       );
     }
   }
@@ -70,8 +79,7 @@ export default function AdoptCardDetail({
         <h2 className="text-2xl font-bold  mb-2">
           {adoptProject.name ? adoptProject.name : "待救援的貓貓"}
         </h2>
-        {currentUser &&
-          adoptProject.rescuerId === currentUser.id &&
+        {adoptProject.rescuerId === currentUser?.id &&
           adoptProject.state === "3" && (
             <ModalSet
               btn={<EditBtn>編輯</EditBtn>}
@@ -83,17 +91,8 @@ export default function AdoptCardDetail({
               }
             />
           )}
-        {currentUser &&
-          adoptProject.rescuerId !== currentUser.id &&
-          currentUser.role === "adopter" && <AdoptBtn id={adoptProject.id} />}
-        {adoptProject.state === "4" && (
-          <Chip
-            label="家貓 "
-            variant="filled"
-            color="primary"
-            icon={<FaceIcon />}
-          />
-        )}
+        {adoptProject.rescuerId !== currentUser?.id &&
+          currentUser?.role === "adopter" && <AdoptBtn id={adoptProject.id} />}
       </div>
       <div className="flex justify-start mb-3">
         <h4 className="mr-4">{getLoactionName(adoptProject.location)}</h4>
