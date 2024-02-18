@@ -5,6 +5,7 @@ import FaceIcon from "@mui/icons-material/Face";
 import { getLoactionName } from "../composable/getLocationName";
 import interpretAgeCategory from "../composable/interpretAgeCatergory";
 import interpretGender from "../composable/interpretGender";
+import formatTime from "../composable/formatTime";
 //引用api
 import { putCatAPI, putUserAPI } from "../callAPI";
 //取的當前使用者
@@ -22,6 +23,7 @@ export default function AdoptCardDetail({
   updateAdoptProject,
   style,
 }) {
+  console.log(adoptProject);
   //取得當前用戶
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
   function AdoptBtn(id) {
@@ -104,9 +106,13 @@ export default function AdoptCardDetail({
           <p className="mb-2">品種: {adoptProject.breed}</p>
           <p className="mb-2">性別: {interpretGender(adoptProject.gender)}</p>
           <p className="mb-2">健康狀況: {adoptProject.health}</p>
+          <p className="mb-3">{adoptProject.cta}</p>
         </div>
-        <div className="flex justify-between">
-          <p>{adoptProject.cta}</p>
+
+        <div className="flex">
+          {adoptProject.createdAt && (
+            <p className="ml-auto ">{formatTime(adoptProject.createdAt)}</p>
+          )}
         </div>
       </div>
     </CardOutline>
