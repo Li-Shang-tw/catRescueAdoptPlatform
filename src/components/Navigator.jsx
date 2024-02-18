@@ -34,12 +34,10 @@ export default function Navigator() {
 
   //取得用戶名稱與路徑id
   function getUserNameLastWord() {
-    if (currentUser) {
-      const userName = currentUser.name;
-      //用戶名稱只取最後一個字
-      const userNameLastWord = userName.substr(userName.length - 1);
-      return userNameLastWord;
-    }
+    const userName = currentUser.name;
+    //用戶名稱只取最後一個字
+    const userNameLastWord = userName.substr(userName.length - 1);
+    return userNameLastWord;
   }
   //-----處理下拉選單---------
   const [anchorEl, setAnchorEl] = useState(null);
@@ -124,7 +122,7 @@ export default function Navigator() {
           <div className=" hover:shadow-md cursor-pointer rounded-full ml-10">
             {currentUser ? (
               <NavLink to={`/user/${currentUser.id}`}>
-                <Avatar>{getUserNameLastWord}</Avatar>
+                <Avatar>{currentUser && getUserNameLastWord()}</Avatar>
               </NavLink>
             ) : (
               <div className="flex items-center p-2">
