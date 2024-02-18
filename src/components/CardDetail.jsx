@@ -3,6 +3,7 @@ import Chip from "@mui/material/Chip";
 //引用composable
 import { getLoactionName } from "../composable/getLocationName";
 import interpretAgeCategory from "../composable/interpretAgeCatergory";
+import formatTime from "../composable/formatTime";
 //引用元件
 import ModalSet from "./ModalSet";
 import FormForRescue from "./FormForRescue";
@@ -54,8 +55,11 @@ export default function RescueDetail({
           </div>
           <p className="mb-5">{rescueProject.symptoms}</p>
         </div>
-        <div className="flex justify-between">
-          <p>{rescueProject.cta}</p>
+        <p className="mb-3">{rescueProject.cta}</p>
+        <div className="flex">
+          {rescueProject.createdAt && (
+            <p className="ml-auto ">{formatTime(rescueProject.createdAt)}</p>
+          )}
         </div>
       </div>
     </CardOutline>
