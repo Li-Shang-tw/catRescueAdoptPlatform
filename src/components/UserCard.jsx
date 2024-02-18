@@ -1,13 +1,21 @@
+import { useContext } from "react";
+//composable
+import { getLoactionName } from "../composable/getLocationName";
+//context
+import { CurrentUserContext } from "../context/CurrentUserContext";
+//元件
+import Loading from "./Loading";
+import CardOutline from "./CardOutline";
+//mul
 import Avatar from "@mui/material/Avatar";
 import CastleIcon from "@mui/icons-material/Castle";
 import MedicationIcon from "@mui/icons-material/Medication";
-import { getLoactionName } from "../composable/getLocationName";
 import Button from "@mui/material/Button";
-import Loading from "./Loading";
-import { useContext } from "react";
-import { CurrentUserContext } from "../context/CurrentUserContext";
+//api
 import { putCatAPI, getUserAPI, putUserAPI } from "../callAPI";
-import CardOutline from "./CardOutline";
+//router
+import { Link } from "react-router-dom";
+
 export default function UserCard({
   user,
   type,
@@ -101,7 +109,9 @@ export default function UserCard({
         />
         {type === "2" && (
           <div className="mt-5">
-            <Button variant="contained">About</Button>
+            <Link to={`/otherUser/${user.id}`}>
+              <Button variant="contained">About</Button>
+            </Link>
           </div>
         )}
       </div>

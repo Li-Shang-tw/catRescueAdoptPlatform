@@ -8,7 +8,6 @@ export default function CardRescuer({ id }) {
   const rescuer = rescuerData.find((user) =>
     user.rescueProjectsId.includes(parseInt(id))
   );
-  console.log(rescuer.avatar);
 
   return (
     <div className=" shadow-lg  rounded-xl px-3 py-4">
