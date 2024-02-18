@@ -1,15 +1,17 @@
 import { useForm } from "react-hook-form";
 
-// import { getUsersAPI } from "../callAPI";
-import { CurrentUserContext } from "../context/CurrentUserContext";
 import { useContext } from "react";
-
+import { CurrentUserContext } from "../context/CurrentUserContext";
+import { ModalOpenContext } from "../context/ModalOpenContext";
 import { putUserAPI, getUserAPI } from "../callAPI";
 
 export default function EditFormForPersonalInfo() {
   //取得userContext的user
   const userData = useContext(CurrentUserContext);
   const { currentUser, setCurrentUser } = userData;
+
+  //取得關閉modal的function
+  const handleClose = useContext(ModalOpenContext);
   //複製並取得能夠修改的user欄位
   const temporaryUser = {
     name: currentUser.name,
@@ -36,6 +38,8 @@ export default function EditFormForPersonalInfo() {
     //更新userContext的user
     setCurrentUser(updatedUser);
     alert("使用者資料已更新");
+    //關閉modal
+    handleClose();
   };
 
   return (

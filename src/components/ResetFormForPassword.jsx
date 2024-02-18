@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 
 // import { getUsersAPI } from "../callAPI";
 import { CurrentUserContext } from "../context/CurrentUserContext";
+import { ModalOpenContext } from "../context/ModalOpenContext";
 import { useContext } from "react";
 
 import { putUserAPI, getUserAPI } from "../callAPI";
@@ -10,7 +11,8 @@ export default function ResetFormForPassword() {
   //取得userContext的user
   const userData = useContext(CurrentUserContext);
   const { currentUser, setCurrentUser } = userData;
-
+  //取得關閉modal的function
+  const handleClose = useContext(ModalOpenContext);
   const {
     register,
     handleSubmit,
@@ -28,6 +30,8 @@ export default function ResetFormForPassword() {
     // 更新userContext的user;
     setCurrentUser(updatedUser);
     alert("密碼已重設");
+    //關閉modal
+    handleClose();
   };
 
   return (

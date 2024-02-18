@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
-
-import { CurrentUserContext } from "../context/CurrentUserContext";
 import { useContext } from "react";
+import { CurrentUserContext } from "../context/CurrentUserContext";
+import { ModalOpenContext } from "../context/ModalOpenContext";
 
 import { getRescuingCatsAPI, putUserAPI, putCatAPI } from "../callAPI";
 import { useNavigate } from "react-router-dom";
@@ -18,13 +18,13 @@ export default function FormforTransterToAdopt({ projectId }) {
   //取得userContext的user
   const userData = useContext(CurrentUserContext);
   const { currentUser, setCurrentUser } = userData;
-
+  //取得關閉modal的function
+  const handleClose = useContext(ModalOpenContext);
   const onSubmit = async (data) => {
     //將state改成3
     data.state = "3";
     //發送新增api
     await putCatAPI(projectId, data);
-    alert("轉換成功");
 
     //更新user的resuceCats
     const newAdoptCats = [...currentUser.adoptCats, projectId];
@@ -32,6 +32,9 @@ export default function FormforTransterToAdopt({ projectId }) {
     setCurrentUser({ ...currentUser, adoptCats: newAdoptCats });
     //發送put請求 更新user的rescueCats
     await putUserAPI(currentUser.id, { adoptCats: newAdoptCats });
+    alert("轉換成功");
+    //關閉modal
+    handleClose();
     //轉址到新增的貓咪頁面
     navigate(`/adopt/${projectId}`);
   };

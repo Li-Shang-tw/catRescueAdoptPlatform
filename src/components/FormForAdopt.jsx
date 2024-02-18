@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 
 import { CurrentUserContext } from "../context/CurrentUserContext";
+import { ModalOpenContext } from "../context/ModalOpenContext";
 import { useContext, useState } from "react";
 import ImageUpload from "./ImageUpload";
 
@@ -37,11 +38,12 @@ export default function FormforCreateAdopt({
   } = useForm({ defaultValues: defaultValue });
   const navigate = useNavigate();
   const [previewImage, setPreviewImage] = useState(null);
-
   //---取得登入者資料-----
   //取得userContext的user
   const userData = useContext(CurrentUserContext);
   const { currentUser, setCurrentUser } = userData;
+  //取得關閉modal的function
+  const handleClose = useContext(ModalOpenContext);
 
   const onSubmit = async (data) => {
     if (type === "edit") {
@@ -50,6 +52,8 @@ export default function FormforCreateAdopt({
       //發送put請求
       await putCatAPI(adoptProject.id, data);
       //更新rescueProject的state
+      //關閉modal
+      handleClose();
     } else {
       //幫表單資料加上state=1
       data.state = "3";
@@ -71,6 +75,8 @@ export default function FormforCreateAdopt({
       await putUserAPI(currentUser.id, { adoptProject: newAdoptProject });
       //轉址到新增的貓咪頁面
       navigate(`/adopt/${newCat.id}`);
+      //關閉modal
+      handleClose();
     }
   };
 

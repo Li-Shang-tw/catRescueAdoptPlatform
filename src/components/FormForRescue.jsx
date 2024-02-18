@@ -2,6 +2,8 @@ import { useForm } from "react-hook-form";
 
 import { CurrentUserContext } from "../context/CurrentUserContext";
 import { useContext, useState } from "react";
+import { ModalOpenContext } from "../context/ModalOpenContext";
+
 import ImageUpload from "./ImageUpload";
 
 import {
@@ -41,6 +43,8 @@ export default function FormforCreateRescue({
   //取得userContext的user
   const userData = useContext(CurrentUserContext);
   const { currentUser, setCurrentUser } = userData;
+  //取得關閉modal的function
+  const handleClose = useContext(ModalOpenContext);
 
   const onSubmit = async (data) => {
     if (type === "edit") {
@@ -52,6 +56,8 @@ export default function FormforCreateRescue({
 
       handleUpdatRescueCat(data);
       alert("更新成功");
+      //關閉modal
+      handleClose();
     } else {
       //幫表單資料加上state=1
       data.state = "1";
@@ -75,6 +81,8 @@ export default function FormforCreateRescue({
       //發送put請求 更新user的rescueCats
       await putUserAPI(currentUser.id, { rescueProject: newRescueProject });
       //轉址到新增的貓咪頁面
+      //關閉modal
+      handleClose();
       navigate(`/rescue/${newCat.id}`);
     }
   };
