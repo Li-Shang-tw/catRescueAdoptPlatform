@@ -4,6 +4,7 @@ import FaceIcon from "@mui/icons-material/Face";
 //引用composable
 import { getLoactionName } from "../composable/getLocationName";
 import interpretAgeCategory from "../composable/interpretAgeCatergory";
+import interpretGender from "../composable/interpretGender";
 //引用api
 import { putCatAPI, putUserAPI } from "../callAPI";
 //取的當前使用者
@@ -101,7 +102,7 @@ export default function AdoptCardDetail({
       <div>
         <div>
           <p className="mb-2">品種: {adoptProject.breed}</p>
-          <p className="mb-2">性別: {adoptProject.gender}</p>
+          <p className="mb-2">性別: {interpretGender(adoptProject.gender)}</p>
           <p className="mb-2">健康狀況: {adoptProject.health}</p>
         </div>
         <div className="flex justify-between">
