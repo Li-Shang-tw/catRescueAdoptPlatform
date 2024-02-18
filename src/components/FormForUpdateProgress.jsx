@@ -1,5 +1,7 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { putCatAPI } from "../callAPI";
+import { ModalOpenContext } from "../context/ModalOpenContext";
 export default function FormForUpdateProgress({
   rescueProject,
   handleUpdatRescueCat,
@@ -9,6 +11,8 @@ export default function FormForUpdateProgress({
     handleSubmit,
     formState: { errors },
   } = useForm();
+  //取得關閉modal的function
+  const handleClose = useContext(ModalOpenContext);
   const onSubmit = async (data) => {
     //先取得目前金額
     let currentAmount = rescueProject.currentAmount;
@@ -28,7 +32,8 @@ export default function FormForUpdateProgress({
         DonateRecord: [...rescueProject.DonateRecord, data],
         state: "2",
       });
-
+      //關閉modal
+      handleClose();
       alert("更新成功");
     } else {
       //更新進度
@@ -41,6 +46,8 @@ export default function FormForUpdateProgress({
         currentAmount: currentAmount,
         DonateRecord: [...rescueProject.DonateRecord, data],
       });
+      //關閉modal
+      handleClose();
       alert("更新成功");
     }
   };

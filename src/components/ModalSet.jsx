@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
+import { ModalOpenContext } from "../context/ModalOpenContext";
 export default function ModalSet({ btn, form }) {
   //設定modal的開關狀態與事件
   const [open, setOpen] = useState(false);
@@ -28,7 +29,9 @@ export default function ModalSet({ btn, form }) {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>{form}</Box>
+        <ModalOpenContext.Provider value={handleClose}>
+          <Box sx={style}>{form}</Box>
+        </ModalOpenContext.Provider>
       </Modal>
     </>
   );
