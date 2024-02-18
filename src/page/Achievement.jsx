@@ -28,25 +28,28 @@ export default function Achievement() {
         case "adopt":
           state = "4";
       }
-      const data = await getCatsOfCurrentUserAPI(currentUser.id, state);
 
-      setCats(data);
+      if (currentUser) {
+        const data = await getCatsOfCurrentUserAPI(currentUser.id, state);
+        console.log(data);
+        setCats(data);
+      }
     };
     fetchData();
-  }, []);
+  }, [q, currentUser]);
 
   return (
     <div>
       {q === "rescue" && (
         <>
           <h2>救援成就</h2>
-          <RescuingCardList currentCats={cats} />
+          <RescuingCardList currentData={cats} />
         </>
       )}
       {q === "adopt" && (
         <>
           <h2>送養成就</h2>
-          <AdoptingCardList currentCats={cats} />
+          <AdoptingCardList currentData={cats} />
         </>
       )}
     </div>
