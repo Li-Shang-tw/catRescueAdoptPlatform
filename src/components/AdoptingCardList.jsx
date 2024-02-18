@@ -3,9 +3,9 @@ import CatCard from "./CatCard";
 
 export default function AdoptingCardList({ currentData }) {
   //如果尚未有資料的話
-  if (currentData === null) {
+  if (!currentData) {
     return <Loading />;
-  } else if (currentData === "Not found" || !currentData) {
+  } else if (currentData === "Not found") {
     return <p>暫時沒有送養貓貓的資料</p>;
   }
 

@@ -6,6 +6,8 @@ import { useContext, useEffect } from "react";
 import { getCatsOfCurrentUserAPI } from "../callAPI";
 
 //導入元件
+import Overview from "./Overview";
+import Banner from "../components/Banner";
 import RescuingCardList from "../components/RescuingCardList";
 import AdoptingCardList from "../components/AdoptingCardList";
 export default function Achievement() {
@@ -31,27 +33,65 @@ export default function Achievement() {
 
       if (currentUser) {
         const data = await getCatsOfCurrentUserAPI(currentUser.id, state);
-        console.log(data);
         setCats(data);
       }
     };
     fetchData();
   }, [q, currentUser]);
 
+  function handleSetData(newValue) {
+    setCats(newValue);
+  }
   return (
-    <div>
+    <>
       {q === "rescue" && (
-        <>
-          <h2>救援成就</h2>
-          <RescuingCardList currentData={cats} />
-        </>
+        <Overview
+          data={cats}
+          handleSetData={handleSetData}
+          sortType="rescue"
+          Card={RescuingCardList}
+        >
+          <Banner>
+            <div className="px-32 pt-12 pb-12 flex justify-between ">
+              <div>
+                <h2 className="text-8xl font-bold text-gray-900 leading-tight mb-10">
+                  救援成就
+                </h2>
+                <p className="mb-4 text-4xl">你拯救了這些貓貓</p>
+              </div>
+              <img
+                className="rounded-full  w-1/3"
+                src="/src/assets/imgs/貓咪募款圖.jpg"
+                alt="募款貓的圖示"
+              />
+            </div>
+          </Banner>
+        </Overview>
       )}
       {q === "adopt" && (
-        <>
-          <h2>送養成就</h2>
-          <AdoptingCardList currentData={cats} />
-        </>
+        <Overview
+          data={cats}
+          handleSetData={handleSetData}
+          sortType="adopt"
+          Card={AdoptingCardList}
+        >
+          <Banner>
+            <div className="px-32 pt-12 pb-12 flex justify-between ">
+              <div>
+                <h2 className="text-8xl font-bold text-gray-900 leading-tight mb-10">
+                  送養成就
+                </h2>
+                <p className="mb-4 text-4xl">你幫助這些貓貓找到家</p>
+              </div>
+              <img
+                className="rounded-full  w-1/3"
+                src="/src/assets/imgs/收養貓的圖示.jpg"
+                alt="收養貓的圖示"
+              />
+            </div>
+          </Banner>
+        </Overview>
       )}
-    </div>
+    </>
   );
 }
