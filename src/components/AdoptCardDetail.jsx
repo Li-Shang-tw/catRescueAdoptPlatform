@@ -1,5 +1,6 @@
 import Chip from "@mui/material/Chip";
 import FaceIcon from "@mui/icons-material/Face";
+import Button from "@mui/material/Button";
 
 //引用composable
 import { getLoactionName } from "../composable/getLocationName";
@@ -14,7 +15,6 @@ import { CurrentUserContext } from "../context/CurrentUserContext";
 
 //引用元件
 import ModalSet from "./ModalSet";
-import EditBtn from "./EditBtn";
 import CardOutline from "./CardOutline";
 import FormForAdopt from "./FormForAdopt";
 
@@ -23,7 +23,6 @@ export default function AdoptCardDetail({
   updateAdoptProject,
   style,
 }) {
-  console.log(adoptProject);
   //取得當前用戶
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
   function AdoptBtn(id) {
@@ -38,9 +37,14 @@ export default function AdoptCardDetail({
       );
     } else if (adoptProject.state === "3") {
       return (
-        <div onClick={() => requestAdopt(adoptProject.id)}>
-          <EditBtn>認養</EditBtn>
-        </div>
+        
+          <Button
+            variant="contained"
+            onClick={() => requestAdopt(adoptProject.id)}
+          >
+            認養
+          </Button>
+       
       );
     } else if (adoptProject.state === "4") {
       return (
@@ -54,27 +58,25 @@ export default function AdoptCardDetail({
     }
   }
   async function requestAdopt(id) {
-    if (adoptProject.requestingUsers) {
-      //在cat資料上的requestAdopt加入currentUser的id
-      await putCatAPI(id, {
-        requestingUsers: [...adoptProject.requestingUsers, currentUser.id],
-      });
-      //更新adoptProject
-      updateAdoptProject({
-        requestingUsers: [...adoptProject.requestingUsers, currentUser.id],
-      });
-      //在user資料上的requestAdopt加入cat的id
-      await putUserAPI(currentUser.id, {
-        requestingProject: [...currentUser.requestingProject, id],
-      });
-      //更新currentUser
-      setCurrentUser({
-        ...currentUser,
-        requestingProject: [...currentUser.requestingProject, id],
-      });
+    //在cat資料上的requestAdopt加入currentUser的id
+    await putCatAPI(id, {
+      requestingUsers: [...adoptProject.requestingUsers, currentUser.id],
+    });
+    //更新adoptProject
+    updateAdoptProject({
+      requestingUsers: [...adoptProject.requestingUsers, currentUser.id],
+    });
+    //在user資料上的requestAdopt加入cat的id
+    await putUserAPI(currentUser.id, {
+      requestingProject: [...currentUser.requestingProject, id],
+    });
+    //更新currentUser
+    setCurrentUser({
+      ...currentUser,
+      requestingProject: [...currentUser.requestingProject, id],
+    });
 
-      alert("已送出認養申請");
-    }
+    alert("已送出認養申請");
   }
   return (
     <CardOutline style={`px-5 py-4 ${style}`}>
