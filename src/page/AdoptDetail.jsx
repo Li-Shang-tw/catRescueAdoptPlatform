@@ -48,21 +48,21 @@ export default function AdoptDetail() {
     setAdoptProject({ ...adoptProject, ...feature });
   }
   return (
-    <div className="px-5" style={{ backgroundColor: "#ffe9d2" }}>
+    <div className="px-5 pb-5" style={{ backgroundColor: "#ffe9d2" }}>
       <Carousel image={adoptProject.image} />
-      <div className="w-10/12 mx-auto pb-4">
-        <div className="flex justify-between mb-7">
+      <div className=" w-11/12  mx-auto">
+        <div className=" flex flex-col md:flex-row   justify-between mb-7 ">
           <AdoptCardDetail
             adoptProject={adoptProject}
             updateAdoptProject={updateAdoptProject}
             currentUser={currentUser}
-            style="w-5/12"
+            style="  w-full md:w-6/12 mr-10  mb-5 md:mb-0 lg:mr-0 lg:w-5/12"
           />
 
           <UserCard
             user={resucer}
             type="2"
-            style=" w-5/12 flex p-4 items-center justify-between"
+            style=" w-full md:w-6/12 lg:w-5/12 flex flex-col sm:flex-row p-4 items-center justify-between"
           />
         </div>
 
@@ -76,14 +76,12 @@ export default function AdoptDetail() {
             />
           )}
         {adoptProject.state === "4" && adopter && (
-          <div className="flex justify-end">
-            <UserCard
-              user={adopter}
-              type="2"
-              project={adoptProject}
-              style=" w-5/12 flex p-4 items-center justify-between"
-            />
-          </div>
+          <UserCard
+            user={adopter}
+            type="2"
+            project={adoptProject}
+            style="  w-full md:w-6/12   lg:w-5/12 flex flex-col sm:flex-row p-4 items-center justify-between"
+          />
         )}
       </div>
     </div>
