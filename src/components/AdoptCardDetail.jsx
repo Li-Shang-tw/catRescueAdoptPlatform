@@ -14,6 +14,7 @@ import { useContext } from "react";
 import { CurrentUserContext } from "../context/CurrentUserContext";
 
 //引用元件
+import EditBtn from "./EditBtn";
 import ModalSet from "./ModalSet";
 import CardOutline from "./CardOutline";
 import FormForAdopt from "./FormForAdopt";
@@ -37,14 +38,15 @@ export default function AdoptCardDetail({
       );
     } else if (adoptProject.state === "3") {
       return (
-        
-          <Button
-            variant="contained"
-            onClick={() => requestAdopt(adoptProject.id)}
-          >
-            認養
-          </Button>
-       
+        <Button
+          variant="contained"
+          onClick={() => requestAdopt(adoptProject.id)}
+          color={
+            currentUser?.requestingProject.length >= 3 ? "error" : "primary"
+          }
+        >
+          認養
+        </Button>
       );
     } else if (adoptProject.state === "4") {
       return (
