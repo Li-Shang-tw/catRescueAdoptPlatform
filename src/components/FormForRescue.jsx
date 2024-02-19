@@ -47,6 +47,11 @@ export default function FormforCreateRescue({
   const handleClose = useContext(ModalOpenContext);
 
   const onSubmit = async (data) => {
+    //先將不會用到的欄位設為空
+    data.adoptId = "";
+    data.breed = "";
+    data.gender = "";
+    data.health = "";
     if (type === "edit") {
       //將data的image重新賦予創造的url
       data.image = previewImage;

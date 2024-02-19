@@ -46,6 +46,13 @@ export default function FormforCreateAdopt({
   const handleClose = useContext(ModalOpenContext);
 
   const onSubmit = async (data) => {
+    //先將不會用到的欄位設為空
+    data.riskLevel = "";
+    data.symptoms = "";
+    data.adoptId = "";
+    data.currentAmount = 0;
+    data.targetAmount = 0;
+
     if (type === "edit") {
       //將data的image重新賦予創造的url
       data.image = previewImage;
