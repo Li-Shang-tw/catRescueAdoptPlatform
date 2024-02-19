@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { postUserAPI, getUsersAPI } from "../callAPI";
 import { CurrentUserContext } from "../context/CurrentUserContext";
 import { useContext } from "react";
@@ -34,20 +34,23 @@ export default function SignUp() {
     alert("註冊成功");
     //導向user
     navigate(`/user/${currentUser.id}}`);
-    // //導向其他頁面
-    // if (window.history.length === 0) {
-    //   //1.沒有歷史紀錄，導向userProfile
-    //   navigate("/user/1");
-    // } else {
-    //   //2.有歷史紀錄，回到上一頁
-    //   navigate(-1);
-    // }
   };
   return (
     <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
       <div className="flex flex-col items-center  mt-10">
-        <h1 className="text-4xl font-bold mb-3.5 ">貓咪救援認養平台</h1>
+        <img
+          src="/src/assets/imgs/logo.png"
+          alt="logo"
+          className="w-1/2 rounded-full"
+        />
+
         <h3 className="text-2xl font-bold">請註冊</h3>
+        <p className="text-center mt-3">
+          已經有帳號了嗎？
+          <Link to="/SignIn" className="font-bold underline text-blue-700">
+            登入
+          </Link>
+        </p>
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
@@ -122,7 +125,6 @@ export default function SignUp() {
             >
               <option value="rescuer">救援者</option>
               <option value="adopter">收養者</option>
-              <option value="donor">贊助者</option>
             </select>
 
             {errors.role?.message && (

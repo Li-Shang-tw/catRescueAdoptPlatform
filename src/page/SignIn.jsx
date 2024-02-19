@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { CurrentUserContext } from "../context/CurrentUserContext";
 import { useContext } from "react";
 
@@ -52,8 +52,18 @@ export default function SignIn() {
   return (
     <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
       <div className="flex flex-col items-center  mt-10">
-        <h1 className="text-4xl font-bold mb-3.5 ">貓咪救援認養平台</h1>
+        <img
+          src="/src/assets/imgs/logo.png"
+          alt="logo"
+          className="w-1/2 rounded-full"
+        />
         <h3 className="text-2xl font-bold">請登入</h3>
+        <p className="text-center mt-3">
+          還沒有帳號嗎？
+          <Link to="/SignUp" className="font-bold underline text-blue-700">
+            註冊
+          </Link>
+        </p>
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
