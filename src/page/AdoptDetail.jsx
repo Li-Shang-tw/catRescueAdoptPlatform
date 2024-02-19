@@ -76,12 +76,15 @@ export default function AdoptDetail() {
             />
           )}
         {adoptProject.state === "4" && adopter && (
-          <UserCard
-            user={adopter}
-            type="2"
-            project={adoptProject}
-            style="  w-full md:w-6/12   lg:w-5/12 flex flex-col sm:flex-row p-4 items-center justify-between"
-          />
+          <div>
+            <h2 className="font-bold text-4xl mb-5">領養者</h2>
+            <UserCard
+              user={adopter}
+              type="2"
+              project={adoptProject}
+              style="  w-full justify-evenly flex flex-col sm:flex-row p-4 items-center justify-between"
+            />
+          </div>
         )}
       </div>
     </div>
