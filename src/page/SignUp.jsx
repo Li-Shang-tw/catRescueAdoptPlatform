@@ -20,6 +20,9 @@ export default function SignUp() {
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
+    //移除confirmPassword
+    delete data.confirmPassword;
+
     //將註冊資料傳送到api
     await postUserAPI(data);
     //從api中取得剛剛建立的資料，存入userContext
