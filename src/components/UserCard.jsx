@@ -108,14 +108,14 @@ export default function UserCard({
           sx={{ width: 150, height: 150 }}
         />
         {type === "2" && (
-          <div className="mt-5">
+          <div className="my-5">
             <Link to={`/otherUser/${user.id}`}>
               <Button variant="contained">About</Button>
             </Link>
           </div>
         )}
       </div>
-      <div className="text-center flex flex-col">
+      <div className="text-center ">
         <p className="mb-2 text-2xl font-bold">{user.name}</p>
         <div>
           <span className="mr-2 mb-1">
