@@ -1,4 +1,5 @@
 import VolunteerActivismIcon from "@mui/icons-material/VolunteerActivism";
+import CardOutline from "./CardOutline";
 
 export default function ListOfDonater({ rescueProject }) {
   //排除初次render時，rescueProject還沒有資料的情況
@@ -15,10 +16,11 @@ export default function ListOfDonater({ rescueProject }) {
   ));
 
   return (
-    <>
-      <div className="bg-white">
+    <div className="mt-5">
+      <CardOutline>
+        <h3 className="text-lg font-bold p-4">捐款者名單</h3>
         <ul>{donaterList}</ul>
-      </div>
-    </>
+      </CardOutline>
+    </div>
   );
 }

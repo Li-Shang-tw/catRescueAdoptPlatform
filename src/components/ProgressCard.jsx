@@ -50,7 +50,7 @@ export default function ProgressCard({ rescueProject, handleUpdatRescueCat }) {
             )}
           {rescueProject.state === "2" && (
             <ModalSet
-              btn={<EditBtn>轉成收養專站</EditBtn>}
+              btn={<EditBtn>轉成收養專案</EditBtn>}
               form={<FormTransterToAdopt projectId={rescueProject.id} />}
             />
           )}
