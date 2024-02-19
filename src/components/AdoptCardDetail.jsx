@@ -60,6 +60,11 @@ export default function AdoptCardDetail({
     }
   }
   async function requestAdopt(id) {
+    //檢查currentUser的requestingProject是否已經有三個
+    if (currentUser.requestingProject.length >= 3) {
+      alert("您已經有三個認養申請");
+      return;
+    }
     //在cat資料上的requestAdopt加入currentUser的id
     await putCatAPI(id, {
       requestingUsers: [...adoptProject.requestingUsers, currentUser.id],
