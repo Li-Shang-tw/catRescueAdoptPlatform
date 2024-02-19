@@ -42,13 +42,15 @@ export default function OtherUsers() {
         Card={OtherUsersCardList}
       >
         <Banner>
-          <div className="px-32 pt-12 pb-12 flex justify-between ">
+          <div className="py-12 w-10/12 mx-auto flex  flex-col items-center sm:flex-row  justify-between ">
             <div>
-              <h1 className="text-8xl font-bold text-gray-900 leading-tight mb-10">
+              <h1 className="font-bold text-gray-900 leading-tight mb-10 text-4xl md:text-7xl lg:text-8xl text-center">
                 {(role === "rescuer" && "救援者總攬") ||
                   (role === "adopter" && "收養者總覽")}
               </h1>
-              <p className="mb-4 text-4xl">讓我們認識這些英雄</p>
+              <p className="mb-4 xl:text-4xl  md-text-3xl text-xl text-center">
+                讓我們認識這些英雄
+              </p>
             </div>
             {(role === "rescuer" && (
               <img
