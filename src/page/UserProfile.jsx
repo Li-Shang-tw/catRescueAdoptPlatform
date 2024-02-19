@@ -26,7 +26,10 @@ export default function UserProfile() {
     <div style={{ backgroundColor: "#ffe9d2" }} className="pt-7">
       <div className="mb-10 flex justify-center ">
         <div className="w-1/2">
-          <UserCard user={currentUser} style="flex justify-around py-4" />
+          <UserCard
+            user={currentUser}
+            style="flex flex-col sm:flex-row  justify-around py-4"
+          />
         </div>
       </div>
       <AccountSetting />
