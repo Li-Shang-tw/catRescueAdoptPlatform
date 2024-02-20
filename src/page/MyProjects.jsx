@@ -20,10 +20,11 @@ export default function MyAdoptProjects() {
   //用useEffect來呼叫API
   useEffect(() => {
     const fetchData = async () => {
-      //當type為rescue時，statw為3
+      //當type為rescue時
       if (type === "rescue") {
         if (!currentUser) return;
         const data = await getCatsOfCurrentUserAPI(currentUser.id, "1");
+        console.log(data);
         setyCats(data);
       } else if (type === "adopt") {
         if (!currentUser) return;
