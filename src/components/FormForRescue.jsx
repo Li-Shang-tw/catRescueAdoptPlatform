@@ -13,6 +13,7 @@ import {
   putCatAPI,
 } from "../callAPI";
 import { useNavigate } from "react-router-dom";
+import unknowCatIamge from "../assets/imgs/未知貓.jpg";
 export default function FormforCreateRescue({
   type,
   rescueProject,
@@ -27,7 +28,7 @@ export default function FormforCreateRescue({
     symptoms: rescueProject ? rescueProject.symptoms : "",
     cta: rescueProject ? rescueProject.cta : "",
     targetAmount: rescueProject ? rescueProject.targetAmount : 0,
-    image: rescueProject ? rescueProject.image : "",
+    image: rescueProject ? rescueProject.image : unknowCatIamge,
   };
 
   const {
