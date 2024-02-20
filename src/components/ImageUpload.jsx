@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import unknowCatImg from "../assets/imgs/未知貓.jpg";
 export default function ImageUpload({
   register,
   watch,
@@ -29,7 +30,7 @@ export default function ImageUpload({
       ) : (
         <img
           className="max-w-full rounded-lg"
-          src="/src/assets/imgs/未知貓.jpg"
+          src={unknowCatImg}
           alt="fakeImage"
         />
       )}
