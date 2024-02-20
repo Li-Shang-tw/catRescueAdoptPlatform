@@ -4,8 +4,10 @@ import { getOtherUsersAPI } from "../callAPI.js";
 import OtherUsersCardList from "../components/OtherUsersCardList.jsx";
 import { CurrentUserContext } from "../context/CurrentUserContext.js";
 import Banner from "../components/Banner.jsx";
-
 import Overview from "./Overview.jsx";
+
+import rescuerImage from "../assets/imgs/救援者.jpg";
+import adopterImage from "../assets/imgs/收容者.jpg";
 export default function OtherUsers() {
   const [otherUsers, setOtherUsers] = useState(null);
   const [searchParams] = useSearchParams();
@@ -55,14 +57,14 @@ export default function OtherUsers() {
             {(role === "rescuer" && (
               <img
                 className="rounded-full  w-1/3"
-                src="/src/assets/imgs/救援者.jpg"
+                src={rescuerImage}
                 alt="救援者"
               />
             )) ||
               (role === "adopter" && (
                 <img
                   className="rounded-full  w-1/3"
-                  src="/src/assets/imgs/收容者.jpg"
+                  src={adopterImage}
                   alt="收養者"
                 />
               ))}
