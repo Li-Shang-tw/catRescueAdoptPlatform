@@ -36,8 +36,9 @@ export default function Navigator() {
 
   //取得用戶名稱與路徑id
   function getUserNameLastWord() {
-    const userName = currentUser.name;
+    const userName = currentUser?.name;
     //用戶名稱只取最後一個字
+    if (!userName) return;
     const userNameLastWord = userName.substr(userName.length - 1);
     return userNameLastWord;
   }
