@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createHashRouter } from "react-router-dom";
 //載入Mui主題
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./theme/ThemeMui";
@@ -24,7 +24,7 @@ import OtherUsers from "./page/OtherUsers";
 import OtherUserDetail from "./page/OtherUserDetail";
 import RequestAdopts from "./page/RequestAdopts";
 import MyPet from "./page/MyPet";
-export const Router = createBrowserRouter([
+export const Router = createHashRouter([
   {
     path: "/",
     element: (

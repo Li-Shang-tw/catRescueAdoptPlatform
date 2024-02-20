@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@emotion/react": "^11.11.3",
@@ -16,6 +17,7 @@
     "@mui/material": "^5.15.2",
     "axios": "^1.6.4",
     "evergreen-ui": "^7.1.9",
+    "gh-pages": "^6.1.1",
     "js-cookie": "^3.0.5",
     "nanoid": "^5.0.4",
     "react": "^18.2.0",

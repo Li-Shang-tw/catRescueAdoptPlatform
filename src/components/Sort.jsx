@@ -23,13 +23,13 @@ export default function Sort({ handleSort, sortType }) {
             label="Sort"
             onChange={handleOptionChange}
           >
-            <MenuItem value={"timeDes"}>新>舊(時間)</MenuItem>
-            <MenuItem value={"timeAsc"}>舊>新(時間)</MenuItem>
+            <MenuItem value={"timeDes"}>新舊(時間)</MenuItem>
+            <MenuItem value={"timeAsc"}>舊新(時間)</MenuItem>
             {sortType === "rescue" && (
-              <MenuItem value={"riskDes"}>高>低(危險度)</MenuItem>
+              <MenuItem value={"riskDes"}>高低(危險度)</MenuItem>
             )}
             {sortType === "rescue" && (
-              <MenuItem value={"riskAsc"}>低>高(危險度)</MenuItem>
+              <MenuItem value={"riskAsc"}>低高(危險度)</MenuItem>
             )}
           </Select>
         </FormControl>

@@ -109,35 +109,6 @@ export default function UserProfile() {
           </div>
         </CardInUserPage>
       )}
-
-      <CardInUserPage title="追蹤的專案/用戶">
-        <div>
-          <Link to={`/rescue/myproject/${currentUser.id}/?q=achievement`}>
-            <CardItemInUserPage>
-              <div>
-                <MedicationIcon />
-                <span className="ml-2">救援專案</span>
-              </div>
-            </CardItemInUserPage>
-          </Link>
-          <Link to={`/adopt/myproject/${currentUser.id}/?q=achievement`}>
-            <CardItemInUserPage>
-              <div>
-                <CastleIcon />
-                <span className="ml-2">送養專案</span>
-              </div>
-            </CardItemInUserPage>
-          </Link>
-          <Link to={`/adopt/myproject/${currentUser.id}/?q=achievement`}>
-            <CardItemInUserPage>
-              <div>
-                <PersonIcon />
-                <span className="ml-2">追蹤的用戶</span>
-              </div>
-            </CardItemInUserPage>
-          </Link>
-        </div>
-      </CardInUserPage>
     </div>
   );
 }
