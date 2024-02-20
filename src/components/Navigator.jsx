@@ -61,11 +61,11 @@ export default function Navigator() {
             <img
               src="/src/assets/imgs/logo.png"
               alt="logo"
-              className="w-2/6 rounded-full"
+              className="w-16 rounded-full mt-2"
             />
           </NavLink>
         </h1>
-        <ul className=" w-4/12 justify-between cursor-pointer hidden md:flex">
+        <ul className=" w-6/12  lg:w-4/12 justify-between cursor-pointer hidden md:flex">
           <li className="px-4 py-3 rounded-full  hover:bg-yellow-400 font-bold">
             <NavLink
               to="/rescue"
@@ -75,7 +75,7 @@ export default function Navigator() {
                 };
               }}
             >
-              貓咪救援
+              <span className="text-xl"> 貓咪募款</span>
             </NavLink>
           </li>
           <li className="px-4 py-3  rounded-full hover:bg-yellow-400 font-bold">
@@ -87,7 +87,7 @@ export default function Navigator() {
                 };
               }}
             >
-              貓咪領養
+              <span className="text-xl"> 貓咪領養</span>
             </NavLink>
           </li>
           <li className="px-4 py-3 rounded-full  hover:bg-yellow-400 font-bold">
@@ -98,7 +98,7 @@ export default function Navigator() {
               aria-expanded={open ? "true" : undefined}
               onClick={handleClick}
             >
-              其他用戶
+              <span className="text-xl"> 其他用戶</span>
             </div>
             <Menu
               id="basic-menu"
@@ -110,10 +110,14 @@ export default function Navigator() {
               }}
             >
               <MenuItem>
-                <NavLink to="/otherUsers?role=rescuer">救援者</NavLink>
+                <NavLink to="/otherUsers?role=rescuer">
+                  <span className="font-bold text-lg">救援者</span>
+                </NavLink>
               </MenuItem>
               <MenuItem>
-                <NavLink to="/otherUsers?role=adopter">認養者</NavLink>
+                <NavLink to="/otherUsers?role=adopter">
+                  <span className="font-bold text-lg">認養者</span>
+                </NavLink>
               </MenuItem>
             </Menu>
           </li>
