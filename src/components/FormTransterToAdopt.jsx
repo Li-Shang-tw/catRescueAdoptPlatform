@@ -27,11 +27,11 @@ export default function FormforTransterToAdopt({ projectId }) {
     await putCatAPI(projectId, data);
 
     //更新user的resuceCats
-    const newAdoptCats = [...currentUser.adoptCats, projectId];
+    const newAdoptCats = [...currentUser.adoptProject, projectId];
     //更新userContext的user
-    setCurrentUser({ ...currentUser, adoptCats: newAdoptCats });
+    setCurrentUser({ ...currentUser, adoptProject: newAdoptCats });
     //發送put請求 更新user的rescueCats
-    await putUserAPI(currentUser.id, { adoptCats: newAdoptCats });
+    await putUserAPI(currentUser.id, { adoptProject: newAdoptCats });
     alert("轉換成功");
     //關閉modal
     handleClose();
