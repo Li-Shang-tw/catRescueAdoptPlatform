@@ -2,12 +2,13 @@ import Chip from "@mui/material/Chip";
 
 import Loading from "./Loading";
 import CatCard from "./CatCard";
+import NoData from "./NoData";
 
 export default function Card({ currentData }) {
   if (!currentData) {
     return <Loading />;
-  } else if (currentData === "Not foun") {
-    return <p>暫時沒有救援貓貓的專案</p>;
+  } else if (currentData === "Not foun" || currentData.length === 0) {
+    return <NoData />;
   }
 
   const cardsList = currentData?.map((item) => (

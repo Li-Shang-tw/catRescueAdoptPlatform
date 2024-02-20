@@ -164,10 +164,11 @@ function getCatsOfOtherUserAPI(rescuerId) {
     headers: { "content-type": "application/json" },
   })
     .then((res) => {
+      console.log(res);
       if (res.ok) {
         return res.json();
       }
-      // handle error
+      // // handle error
       return res.json();
     })
 

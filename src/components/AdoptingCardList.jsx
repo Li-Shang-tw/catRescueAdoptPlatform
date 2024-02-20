@@ -1,12 +1,14 @@
 import Loading from "./Loading";
 import CatCard from "./CatCard";
+import NoData from "./NoData";
 
 export default function AdoptingCardList({ currentData }) {
   //如果尚未有資料的話
+  console.log(currentData);
   if (!currentData) {
     return <Loading />;
-  } else if (currentData === "Not found") {
-    return <p>暫時沒有送養貓貓的資料</p>;
+  } else if (currentData === "Not found" || currentData.length === 0) {
+    return <NoData />;
   }
 
   const cardsList = currentData?.map((item) => (
