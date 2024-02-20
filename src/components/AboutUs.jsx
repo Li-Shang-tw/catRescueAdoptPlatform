@@ -1,3 +1,4 @@
+import about from "../assets/imgs/about.jpg";
 export default function AboutUs() {
   return (
     <div
@@ -5,11 +6,7 @@ export default function AboutUs() {
    py-5"
     >
       <div className="w-10/12 sm:w-5/12">
-        <img
-          src="/src/assets/imgs/about.jpg"
-          alt="hero"
-          className="rounded-full"
-        />
+        <img src={about} alt="hero" className="rounded-full" />
       </div>
       <div className=" flex flex-col items-center w-10/12 sm:w-5/12">
         <h2 className="xl:text-5xl     text-4xl  font-bold p-8 text-center">

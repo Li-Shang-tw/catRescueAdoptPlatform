@@ -3,6 +3,7 @@ import { getAdoptingCatsAPI } from "../callAPI";
 import Overview from "./Overview";
 import Banner from "../components/Banner";
 import AdoptingCardList from "../components/AdoptingCardList";
+import adoptImage from "../assets/imgs/收養貓的圖示.jpg";
 export default function AdoptContainer() {
   const [adoptCats, setAdoptCats] = useState(null);
 
@@ -39,7 +40,7 @@ export default function AdoptContainer() {
             </div>
             <img
               className="rounded-full  w-3/5 sm:w-1/2 md:w-1/3"
-              src="/src/assets/imgs/收養貓的圖示.jpg"
+              src={adoptImage}
               alt="收養貓的圖示"
             />
           </div>

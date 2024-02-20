@@ -5,6 +5,8 @@ import { getRescuingCatsAPI } from "../callAPI";
 import RescuingCardList from "../components/RescuingCardList";
 import Banner from "../components/Banner";
 
+import donateImage from "../assets/imgs/貓咪募款圖.jpg";
+
 export default function RescueContainer() {
   //先設定rescueCat的state
   const [rescueCats, setRescueCats] = useState(null);
@@ -40,7 +42,7 @@ export default function RescueContainer() {
             </div>
             <img
               className="rounded-full  w-3/5 sm:w-1/2 md:w-1/3"
-              src="/src/assets/imgs/貓咪募款圖.jpg"
+              src={donateImage}
               alt="募款貓的圖示"
             />
           </div>

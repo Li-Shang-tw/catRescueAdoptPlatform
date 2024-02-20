@@ -10,6 +10,7 @@ import Overview from "./Overview";
 import Banner from "../components/Banner";
 import RescuingCardList from "../components/RescuingCardList";
 import AdoptingCardList from "../components/AdoptingCardList";
+import donateImage from "../assets/imgs/貓咪募款圖.jpg";
 export default function Achievement() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [cats, setCats] = useState(null);
@@ -61,7 +62,7 @@ export default function Achievement() {
               </div>
               <img
                 className="rounded-full  w-1/3"
-                src="/src/assets/imgs/貓咪募款圖.jpg"
+                src={donateImage}
                 alt="募款貓的圖示"
               />
             </div>

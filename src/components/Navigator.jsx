@@ -10,6 +10,8 @@ import { CurrentUserContext } from "../context/CurrentUserContext";
 //---元件---
 import DrawerMenu from "./DrawerMenu";
 
+import logo from "../assets/imgs/logo.png";
+
 export default function Navigator() {
   //---取得登入者資料-----
   const userData = useContext(CurrentUserContext);
@@ -58,11 +60,7 @@ export default function Navigator() {
         <h1 className="font-bold cursor-pointer">
           <NavLink to="/">
             {" "}
-            <img
-              src="/src/assets/imgs/logo.png"
-              alt="logo"
-              className="w-16 rounded-full mt-2"
-            />
+            <img src={logo} alt="logo" className="w-16 rounded-full mt-2" />
           </NavLink>
         </h1>
         <ul className=" w-6/12  lg:w-4/12 justify-between cursor-pointer hidden md:flex">

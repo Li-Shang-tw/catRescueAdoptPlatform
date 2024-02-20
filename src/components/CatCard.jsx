@@ -4,6 +4,7 @@ import interpretAgeCatergory from "../composable/interpretAgeCatergory";
 import formatTime from "../composable/formatTime";
 import CardOutline from "./CardOutline";
 import Chip from "@mui/material/Chip";
+import defaultImg from "../assets/imgs/rescuephoto2.jpg";
 export default function Card({ item, type }) {
   return (
     <CardOutline style="duration-500 hover:scale-110">
@@ -11,7 +12,7 @@ export default function Card({ item, type }) {
         <div className="flex flex-col items-center ">
           <img
             className=" mb-2.5 rounded-b-sm"
-            src={item.image ? item.image : "/src/assets/imgs/rescuephoto2.jpg"}
+            src={item.image ? item.image : { defaultImg }}
             alt="rescueImg"
           />
 

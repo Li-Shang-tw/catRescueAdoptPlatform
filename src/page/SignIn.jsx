@@ -4,7 +4,7 @@ import { CurrentUserContext } from "../context/CurrentUserContext";
 import { useContext } from "react";
 
 import { getUsersAPI } from "../callAPI";
-import { DisabledByDefault } from "@mui/icons-material";
+import logo from "../assets/imgs/logo.png";
 
 export default function SignIn() {
   const {
@@ -52,11 +52,7 @@ export default function SignIn() {
   return (
     <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
       <div className="flex flex-col items-center  mt-10">
-        <img
-          src="/src/assets/imgs/logo.png"
-          alt="logo"
-          className="w-1/2 rounded-full"
-        />
+        <img src={logo} alt="logo" className="w-1/2 rounded-full" />
         <h3 className="text-2xl font-bold">請登入</h3>
         <p className="text-center mt-3">
           還沒有帳號嗎？

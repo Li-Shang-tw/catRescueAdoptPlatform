@@ -1,3 +1,5 @@
+import banner from "../assets/imgs/banner.jpg";
+
 export default function Hero() {
   return (
     <div
@@ -13,11 +15,7 @@ export default function Hero() {
         </p>
       </div>
       <div className="w-2/3">
-        <img
-          src="/src/assets/imgs/banner.jpg"
-          alt="hero"
-          className="rounded-full"
-        />
+        <img src={banner} alt="hero" className="rounded-full" />
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
-
+import defaultImg from "../assets/imgs/rescueAvatar.jpg";
 //載入rescuer資料
 import rescuerData from "../assets/recuerData.json";
 
@@ -14,9 +14,7 @@ export default function CardRescuer({ id }) {
       <div className="relative">
         <img
           className="rounded-md rounded-b-3xl mb-4 "
-          src={
-            rescuer.avatar ? rescuer.avatar : "src/assets/imgs/rescueAvatar.jpg"
-          }
+          src={rescuer.avatar ? rescuer.avatar : { defaultImg }}
           alt="rescuerAvatar"
         />
       </div>
