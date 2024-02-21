@@ -18,10 +18,12 @@
 
 
 ## Build With
-- React
+- React v-18
 - React Router v-6.4
-- React React Hook Form
+- React React Hook Form v-7
 - Material UI
-- TailWind
+- TailWindCss v-3.3
 - vite
+- axios v-1.6
+- mockapi
 
