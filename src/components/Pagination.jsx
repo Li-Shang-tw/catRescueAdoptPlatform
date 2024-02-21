@@ -1,22 +1,20 @@
-import { Pane, Pagination } from "evergreen-ui";
-import { useState } from "react";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
 
 export default function PaginationComponent({
   totalPages,
   currentPage,
   handlePageChange,
-  handleNextPage,
-  handlePreviousPage,
 }) {
   return (
-    <Pane className="flex justify-center">
-      <Pagination
-        page={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-        onPreviousPage={handlePreviousPage}
-        onNextPage={handleNextPage}
-      />
-    </Pane>
+    <div className="flex justify-center">
+      <Stack spacing={2}>
+        <Pagination
+          count={totalPages}
+          page={currentPage}
+          onChange={handlePageChange}
+        />
+      </Stack>
+    </div>
   );
 }
